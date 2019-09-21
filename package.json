@@ -2,13 +2,13 @@
   "name": "project-3",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "main",
   "dependencies": {
     "electron": "^6.0.10"
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "electron ."
   },
   "author": "",
   "license": "ISC"
