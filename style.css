@@ -1,0 +1,9 @@
+canvas {
+    position: absolute;
+}
+#background{
+    z-index: 1;
+}
+#myCanvas{
+    z-index: 2;
+}
