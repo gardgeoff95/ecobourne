@@ -63,28 +63,62 @@ function renderBackground() {
   window.requestAnimationFrame(mainLoop);
 }
 
-let Animal = function(moveDelay) {
+function rabbitMove() {}
+
+let Animal = function(vitality, moveDelay, color) {
   this.col = 5;
   this.row = 5;
-  this.speed = 10;
-  this.regulator = false;
+  this.color = color;
   this.moveDelay = moveDelay;
   this.moveCounter = 0;
+  this.timeAlive = 0;
+  this.alive = true;
+  this.draw = function() {
+    drawAnimals(this.col, this.row, this.color);
+  };
   this.move = function() {
-    this.moveCounter += this.moveDelay;
-    if (this.moveCounter > 100) {
-      this.col += 1;
-      this.moveCounter = 0;
+    if (this.alive) {
+      this.moveCounter += this.moveDelay;
+      if (this.moveCounter > 100) {
+        this.col += 1;
+
+        this.moveCounter = 0;
+      }
+    }
+  };
+  this.moveDown = function() {
+    if (this.alive) {
+      this.moveCounter += this.moveDelay;
+      if (this.moveCounter > 100) {
+        this.row += 1;
+        this.moveCounter = 0;
+      }
+    }
+  };
+  this.die = function() {
+    this.timeAlive++;
+    console.log(this.timeAlive);
+    if (this.timeAlive >= vitality) {
+      this.color = "red";
+      this.alive = false;
     }
   };
 };
-let bunny = new Animal(5.0);
+
+bunniesArray = [];
+let bunny = new Animal(100, 5.0, "yellow");
+let newBunny = new Animal(400, 5.0, "blue");
 
 createArray();
 let frameCount = 0;
 function mainLoop() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  drawAnimals(bunny.col, bunny.row, "yellow");
+  bunny.draw();
+
   bunny.move();
+  bunny.die();
+  newBunny.draw();
+  newBunny.moveDown();
+  newBunny.die();
 }
 setInterval(mainLoop, 10);
