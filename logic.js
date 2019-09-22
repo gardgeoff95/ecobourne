@@ -10,7 +10,8 @@ const backgroundCanvas = document.getElementById("background");
 const backGroundCtx = backgroundCanvas.getContext("2d");
 
 let mapArray = new Array(50);
-let bunniesArray = [];
+let bunnieCount = 0;
+
 
 backgroundCanvas.width = 800;
 backgroundCanvas.height = 800;
@@ -85,6 +86,12 @@ let Animal = function(vitality, color, speedModifier) {
   this.updateDelay = function() {
     this.moveDelay = range.value / 2;
   };
+  this.multiply = function() {
+    if (this.timeAlive > 50) {
+      console.log(bunniesArray);
+      bunniesArray.push(new Animal(200, "yellow", 20));
+    }
+  }
   this.draw = function() {
     drawAnimals(this.col, this.row, this.color);
   };
@@ -126,6 +133,13 @@ let Animal = function(vitality, color, speedModifier) {
           case "right":
             this.col += 1;
         }
+        this.timeAlive ++;
+        if (this.timeAlive > 50) {
+          this.multiply();
+          this.timeAlive = 0;
+
+
+        }
         this.moveCounter = 0;
 
         
@@ -166,17 +180,16 @@ function getMousePos(canvas, evt) {
     y: Math.floor((evt.clientY - rect.top) / board.tileHeight)
   };
 }
+let bunniesArray = [new Animal(500, "yellow", 20)];
+function initialize(animal){
+  for (i = 0; i < bunniesArray.length; i++) {
+    bunniesArray[i].draw();
+    bunniesArray[i].updateDelay();
+    bunniesArray[i].idle();
 
-let bunny = new Animal(
-  100,
-  "yellow",
-  20
-);
-let bunny2 = new Animal(
-  100,
-  "yellow",
-  20
-);
+  }
+
+}
 
 createArray();
 console.log(mapArray);
@@ -184,11 +197,9 @@ let frameCount = 0;
 function mainLoop() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-  bunny.draw();
-  bunny.idle();
-  bunny.die();
 
-  bunny.updateDelay();
+  initialize();
+  
 
 
 }
