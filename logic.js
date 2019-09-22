@@ -1,18 +1,93 @@
-let range = document.getElementById("range");
 const board = {
   maxTiles: 50,
   tileWidth: 16,
   tileHeight: 16
 };
+
 const canvas = document.getElementById("myCanvas");
 const ctx = canvas.getContext("2d");
 const backgroundCanvas = document.getElementById("background");
 const backGroundCtx = backgroundCanvas.getContext("2d");
 
+let range = document.getElementById("range");
 let mapArray = new Array(50);
 let bunnieCount = 0;
+let Animal = function(vitality, color, speedModifier) {
+  this.col = 20;
+  this.row = 20;
+  this.speedModifier = speedModifier;
+  this.color = color;
+  this.moveDelay = (range.value / 2) * this.speedModifier;
+  this.moveCounter = 0;
+  this.timeAlive = 0;
+  this.multiplyTime = 0;
+  this.alive = true;
+  this.max = 100;
 
+  this.updateDelay = function() {
+    this.moveDelay = range.value / 2;
+  };
+  this.multiply = function() {
+    bunniesArray.push(new Animal(200, "yellow", 20));
+  };
 
+  this.draw = function() {
+    drawAnimals(this.col, this.row, this.color);
+  };
+  this.idle = function() {
+    let possibleJumps = [];
+    let direction;
+
+    if (this.row + 1 < 50 && mapArray[this.row + 1][this.col] === 0) {
+      possibleJumps.push("down");
+    }
+    if (this.row - 1 > 0 && mapArray[this.row - 1][this.col] === 0) {
+      possibleJumps.push("up");
+    }
+    if (mapArray[this.row][this.col + 1] === 0) {
+      possibleJumps.push("right");
+    }
+    if (mapArray[this.row][this.col - 1] === 0) {
+      possibleJumps.push("left");
+    }
+
+    direction = possibleJumps[Math.floor(Math.random() * possibleJumps.length)];
+    if (this.alive) {
+      this.moveCounter += this.moveDelay;
+      if (this.moveCounter > 100) {
+        switch (direction) {
+          case "up":
+            this.row -= 1;
+            break;
+          case "down":
+            this.row += 1;
+            break;
+          case "left":
+            this.col -= 1;
+            break;
+          case "right":
+            this.col += 1;
+        }
+        this.multiplyTime++;
+        this.timeAlive++;
+        if (this.multiplyTime > 50 && bunniesArray.length < this.max) {
+          
+          this.multiply();
+          this.multiplyTime = 0;
+        } else if (this.timeAlive > randomNumber(200, 300)) {
+          console.log("gettin called")
+          this.die();
+        }
+        this.moveCounter = 0;
+      }
+    }
+  };
+
+  this.die = function() {
+    this.color = "red";
+    this.alive = false;
+  };
+};
 backgroundCanvas.width = 800;
 backgroundCanvas.height = 800;
 canvas.height = board.tileHeight * board.maxTiles;
@@ -46,13 +121,11 @@ function createArray() {
   }
   for (let x = 0; x < board.maxTiles; x++) {
     for (let y = 0; y < board.maxTiles; y++) {
-      if (randomNumber(1, 100) == 5){
+      if (randomNumber(1, 100) == 5) {
         mapArray[x][y] = 1;
-
       } else {
         mapArray[x][y] = 0;
       }
-      
     }
   }
   renderBackground();
@@ -71,91 +144,8 @@ function renderBackground() {
       }
     }
   }
-
 }
 
-let Animal = function(vitality, color, speedModifier) {
-  this.col = 20;
-  this.row = 20;
-  this.speedModifier = speedModifier;
-  this.color = color;
-  this.moveDelay = (range.value / 2) * this.speedModifier;
-  this.moveCounter = 0;
-  this.timeAlive = 0;
-  this.alive = true;
-  this.updateDelay = function() {
-    this.moveDelay = range.value / 2;
-  };
-  this.multiply = function() {
-    if (this.timeAlive > 50) {
-      console.log(bunniesArray);
-      bunniesArray.push(new Animal(200, "yellow", 20));
-    }
-  }
-  this.draw = function() {
-    drawAnimals(this.col, this.row, this.color);
-  };
-  this.idle = function() {
-    let possibleJumps = [];
-    let direction;
-    
-    
-
-    if (this.row + 1 < 50 && mapArray[this.row + 1][this.col] === 0) {
-      possibleJumps.push("down");
-    }
-    if (this.row - 1 > 0 && mapArray[this.row - 1][this.col] === 0) {
-      possibleJumps.push("up");
-    }
-    if (mapArray[this.row][this.col + 1] === 0) {
-      possibleJumps.push("right");
-    }
-    if (mapArray[this.row][this.col - 1] === 0 ) {
-      possibleJumps.push("left");
-    }
-  
-
-    direction =
-      possibleJumps[Math.floor(Math.random() * possibleJumps.length)];
-    if (this.alive) {
-      this.moveCounter += this.moveDelay;
-      if (this.moveCounter > 100) {
-        switch (direction) {
-          case "up":
-            this.row -= 1;
-            break;
-          case "down":
-            this.row += 1;
-            break;
-          case "left":
-            this.col -= 1;
-            break;
-          case "right":
-            this.col += 1;
-        }
-        this.timeAlive ++;
-        if (this.timeAlive > 50) {
-          this.multiply();
-          this.timeAlive = 0;
-
-
-        }
-        this.moveCounter = 0;
-
-        
-
-      }
-    }
-  };
-
-  this.die = function() {
-    this.timeAlive++;
-    if (this.timeAlive >= vitality) {
-      this.color = "red";
-      this.alive = false;
-    }
-  };
-};
 function click(event) {
   var x = event.clientX;
   var y = event.clientY;
@@ -165,7 +155,7 @@ canvas.addEventListener(
   "click",
   function(evt) {
     var mousePos = getMousePos(canvas, evt);
-    
+
     mapArray[mousePos.y][mousePos.x] = 1;
     renderBackground();
   },
@@ -181,14 +171,12 @@ function getMousePos(canvas, evt) {
   };
 }
 let bunniesArray = [new Animal(500, "yellow", 20)];
-function initialize(animal){
+function initialize(animal) {
   for (i = 0; i < bunniesArray.length; i++) {
     bunniesArray[i].draw();
     bunniesArray[i].updateDelay();
     bunniesArray[i].idle();
-
   }
-
 }
 
 createArray();
@@ -197,10 +185,6 @@ let frameCount = 0;
 function mainLoop() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-
   initialize();
-  
-
-
 }
 setInterval(mainLoop, 10);
