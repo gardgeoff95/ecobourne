@@ -1,5 +1,6 @@
 const board = {
-  maxTiles: 55,
+  maxTiles: 50,
+  
   tileWidth: 16,
   tileHeight: 16
 };
@@ -16,7 +17,10 @@ let bunnyImg = new Image();
 let grassImg = new Image();
 
 grassImg.src ="grassTiles.png"
-bunnyImg.src = "fox.png";
+bunnyImg.src = "rabbit.png";
+grassImg.onload = () =>{
+  window.requestAnimationFrame(mainLoop);
+}
 
 let Animal = function(vitality, color, speedModifier) {
   this.col = 20;
@@ -31,7 +35,7 @@ let Animal = function(vitality, color, speedModifier) {
   this.max = 10;
 
   this.updateDelay = function() {
-    this.moveDelay = range.value / 2;
+    this.moveDelay = (range.value / 2) + randomNumber(1, 10);
   };
   this.multiply = function() {
     bunniesArray.push(new Animal(200, "yellow", 20));
@@ -143,7 +147,7 @@ function createArray() {
   }
   for (let x = 0; x < board.maxTiles; x++) {
     for (let y = 0; y < board.maxTiles; y++) {
-      switch (randomNumber(1, 100)) {
+      switch (randomNumber(1, 10)) {
         case 5:
           mapArray[x][y] = 1;
           break;
@@ -162,7 +166,7 @@ function renderBackground() {
     for (let x = 0; x < mapArray.length; x++) {
       switch (mapArray[y][x]) {
         case 0:
-          drawBackground(x, y, "green");
+          drawBackground(x, y, "#608038");
           break;
         case 1:
           drawBackground(x, y, "black");
