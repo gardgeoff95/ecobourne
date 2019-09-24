@@ -1,6 +1,6 @@
 const board = {
   maxTiles: 50,
-  
+
   tileWidth: 16,
   tileHeight: 16
 };
@@ -15,12 +15,12 @@ let mapArray = new Array(40);
 let bunnieCount = 0;
 let bunnyImg = new Image();
 let grassImg = new Image();
-
-grassImg.src ="grassTiles.png"
+grassLoaded = false;
+grassImg.src = "grassTiles.png";
 bunnyImg.src = "rabbit.png";
-grassImg.onload = () =>{
-  window.requestAnimationFrame(mainLoop);
-}
+grassImg.onload = () => {
+  renderBackground;
+};
 
 let Animal = function(vitality, color, speedModifier) {
   this.col = 20;
@@ -35,14 +35,15 @@ let Animal = function(vitality, color, speedModifier) {
   this.max = 10;
 
   this.updateDelay = function() {
-    this.moveDelay = (range.value / 2) + randomNumber(1, 10);
+    this.moveDelay = range.value / 2 + randomNumber(1, 10);
   };
   this.multiply = function() {
     bunniesArray.push(new Animal(200, "yellow", 20));
   };
 
   this.draw = function() {
-    drawAnimals(bunnyImg, this.col, this.row, this.color);
+    draw("image", bunnyImg, this.col, this.row, this.color)
+   
   };
   this.idle = function() {
     let possibleJumps = [];
@@ -105,42 +106,32 @@ canvas.width = board.tileWidth * board.maxTiles;
 function randomNumber(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 }
-function drawBackground(x, y, color) {
-  backGroundCtx.fillStyle = color;
-  backGroundCtx.fillRect(
-    x * board.tileWidth,
-    y * board.tileHeight,
-    board.tileWidth,
-    board.tileHeight
-  );
+function drawBackground(x, y, color) {}
+
+function draw(type, img = null, x, y, color) {
+  if (type == "rect") {
+    backGroundCtx.fillStyle = color;
+    backGroundCtx.fillRect(
+      x * board.tileWidth,
+      y * board.tileHeight,
+      board.tileWidth,
+      board.tileHeight
+    );
+  } else if (type == "image") {
+    ctx.drawImage(
+      img,
+      0,
+      0,
+      16,
+      16,
+      x * board.tileWidth,
+      y * board.tileHeight,
+      board.tileWidth,
+      board.tileHeight
+    );
+  }
 }
-function drawGrass(img, tileNum, x, y) {
-  ctx.drawImage(
-    img,
-    0 * tileNum,
-    0,
-    16,
-    16,
-    x * board.tileWidth,
-    y * board.tileHeight,
-    board.tileWidth,
-    board.tileHeight
-  );
-}
-function drawAnimals(img, x, y) {
-  
-  ctx.drawImage(
-    img,
-    0,
-    0,
-    16,
-    16,
-    x * board.tileWidth,
-    y * board.tileHeight,
-    board.tileWidth,
-    board.tileHeight
-  );
-}
+
 function createArray() {
   for (let i = 0; i < board.maxTiles; i++) {
     mapArray[i] = [];
@@ -155,7 +146,6 @@ function createArray() {
           mapArray[x][y] = 0;
           break;
       }
-      
     }
   }
   renderBackground();
@@ -166,10 +156,10 @@ function renderBackground() {
     for (let x = 0; x < mapArray.length; x++) {
       switch (mapArray[y][x]) {
         case 0:
-          drawBackground(x, y, "#608038");
+          draw("rect", null, x, y, "#58774c");
           break;
         case 1:
-          drawBackground(x, y, "black");
+          draw("rect", null, x, y, "black");
           break;
       }
     }
@@ -219,7 +209,6 @@ function mainLoop() {
 }
 function startGame() {
   setInterval(mainLoop, 10);
-
 }
-startGame();
 
+startGame();
