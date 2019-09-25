@@ -228,7 +228,21 @@ function draw(type, img = null, x, y, color) {
       board.tileWidth,
       board.tileHeight
     );
+  } else if (type == "imageBack") {
+    let tiles = [0, 16, 32]
+    backGroundCtx.drawImage(
+      img,
+      tiles[Math.floor(Math.random()*tiles.length)],
+      0,
+      16,
+      16,
+      x * board.tileWidth,
+      y * board.tileHeight,
+      board.tileWidth,
+      board.tileHeight
+    );
   }
+  
 }
 
 function createArray() {
@@ -245,6 +259,8 @@ function createArray() {
           mapArray[x][y] = 3;
           board.foodPositions.push({ xPos: x, yPos: y });
           break;
+        case 7:
+          mapArray[x][y] = 2;
         default:
           mapArray[x][y] = 0;
           break;
@@ -258,7 +274,7 @@ function renderBackground() {
     for (let x = 0; x < mapArray.length; x++) {
       switch (mapArray[y][x]) {
         case 0:
-          draw("rect", null, x, y, "#58774c");
+          draw("imageBack", grassImg, x, y);
           break;
         case 1:
           draw("rect", null, x, y, "black");
@@ -302,7 +318,7 @@ function initialize(animal) {
     bunniesArray[i].draw();
     bunniesArray[i].updateDelay();
     bunniesArray[i].move();
-    bunniesArray[i].findFood();
+    // bunniesArray[i].findFood();
     bunniesArray[i].detectBunny();
   }
 }
