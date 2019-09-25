@@ -53,7 +53,7 @@ let Animal = function(vitality, color, speedModifier) {
   this.findFood = function() {
     col = this.col;
     row = this.row;
-    if ((this.state = "hungry")) {
+    if (this.state == "hungry" && this.foodSearch) {
       let food = {
         x: null,
         y: null
@@ -66,17 +66,18 @@ let Animal = function(vitality, color, speedModifier) {
             let objX = arrayItem.yPos;
             let objY = arrayItem.xPos;
 
-            if (tempX + tempY < 10) {
+            if (tempX + tempY < 50) {
               food.x = objX;
               food.y = objY;
-              // this.foodSearch = false;  // this.foodSearch = false;
+              this.foodSearch = false;
             }
           });
         }
-
       }
-      console.log(food);
-      // this.closestFood.x = food.x
+
+      this.closestFood.x = food.x;
+      this.closestFood.y = food.y;
+      this.move();
     }
   };
 
@@ -85,10 +86,10 @@ let Animal = function(vitality, color, speedModifier) {
     this.alive = false;
   };
   this.move = function() {
-
-
+    
     let possibleJumps = [];
     let direction;
+    console.log(this.state);
 
     if (this.row + 1 < 50 && mapArray[this.row + 1][this.col] === 0) {
       possibleJumps.push("down");
@@ -106,40 +107,27 @@ let Animal = function(vitality, color, speedModifier) {
     if (this.state == "idle") {
       direction =
         possibleJumps[Math.floor(Math.random() * possibleJumps.length)];
-    } else if (this.state == "hungry") {
-      let lengthLeft;
-      let lengthRight;
-      let lengthDown;
-      let lengthUp;
-      let closestFoodX = this.closestFood.x;
-      let closestFoodY = this.closestFood.y;
-      possibleJumps.forEach(function(direction) {
-        if (direction === "left") {
-          lengthLeft = closestFoodX + closestFoodY - (this.col + 1 + this.row);
-        } else if (direction === "right") {
-          lengthRight = closestFoodX + closestFoodY - (this.col - 1 + this.row);
-        } else if (direction === "up") {
-          lengthUp = closestFoodX + closestFoodY - (this.col + this.row - 1);
-        } else if (direction === "down") {
-          lengthDown = closestFoodX + closestFoodY - (this.col + this.row + 1);
-        }
-      });
-      let min = Math.min(lengthLeft, lengthRight, lengthUp, lengthDown);
-      if (min == lengthLeft) {
-        direction = "left";
-      } else if (min == lengthRight) {
-        direction = "right";
-      } else if (min == lengthUp) {
-        direction = "up";
-      } else if (min == lengthDown) {
-        direction = "down";
-      }
-    }
-
-    if (this.alive) {
+    } else if (this.alive && this.state == "hungry") {
       this.moveCounter += this.moveDelay;
       if (this.moveCounter > 100) {
-        console.log("gettin called");
+        if (this.row > this.closestFood.y && possibleJumps.includes("up")) {
+          this.row -= 1;
+        } else if (this.row < this.closestFood.y && possibleJumps.includes("down")) {
+          this.row += 1;
+        } else if (this.col > this.closestFood.x && possibleJumps.includes("left")) {
+          this.col -= 1;
+        } else if (this.col < this.closestFood.x && possibleJumps.includes("right")) {
+          this.col += 1;
+        } 
+        this.moveCounter = 0;
+      }
+     
+    }
+
+    if (this.alive && this.state === "idle") {
+      console.log(direction);
+      this.moveCounter += this.moveDelay;
+      if (this.moveCounter > 100) {
         switch (direction) {
           case "up":
             this.row -= 1;
@@ -167,7 +155,7 @@ let Animal = function(vitality, color, speedModifier) {
   };
 };
 backgroundCanvas.width = 880;
-backgroundCanvas.height = 640;
+backgroundCanvas.height = 800;
 canvas.height = board.tileHeight * board.maxTiles;
 canvas.width = board.tileWidth * board.maxTiles;
 
