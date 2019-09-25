@@ -36,6 +36,7 @@ let Animal = function(x, y, id, color, speedModifier) {
   this.max = 10;
   this.state = "idle";
   this.hunger = 0;
+  this.maxHunger = randomNumber(1000, 3000)
   this.multiplyTime = 500;
   this.foodSearch = true;
   this.gestationTime = 0;
@@ -190,7 +191,7 @@ let Animal = function(x, y, id, color, speedModifier) {
         if (this.timeAlive > randomNumber(200, 300)) {
           // this.die();
         }
-        if (this.hunger > 1500 * this.moveDelay) {
+        if (this.hunger > this.maxHunger * this.moveDelay) {
           this.state = "hungry";
           this.foodSearch = true;
           this.findFood();
@@ -311,7 +312,10 @@ function getMousePos(canvas, evt) {
   };
 }
 let bunniesArray = [
-  new Animal(randomNumber(20, 25), randomNumber(20, 25), bunnyId, "yellow", 20)
+  new Animal(randomNumber(20, 25), randomNumber(20, 25), bunnyId, "yellow", 20),
+  new Animal(randomNumber(20, 25), randomNumber(20, 25), 2, "yellow", 20),
+  new Animal(randomNumber(20, 25), randomNumber(20, 25), 3, "yellow", 20),
+  new Animal(randomNumber(20, 25), randomNumber(20, 25), 4, "yellow", 20)
 ];
 function initialize(animal) {
   for (i = 0; i < bunniesArray.length; i++) {
