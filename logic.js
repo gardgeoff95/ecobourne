@@ -11,6 +11,7 @@ const ctx = canvas.getContext("2d");
 const backgroundCanvas = document.getElementById("background");
 const backGroundCtx = backgroundCanvas.getContext("2d");
 
+let bunnyId = 1;
 let range = document.getElementById("range");
 let mapArray = new Array(40);
 let bunnieCount = 0;
@@ -22,30 +23,52 @@ bunnyImg.src = "rabbit.png";
 grassImg.onload = () => {
   renderBackground();
 };
-let Animal = function(vitality, color, speedModifier) {
-  this.col = 20;
-  this.row = 20;
+let Animal = function(id, color, speedModifier) {
+  this.id = id;
+  this.col = randomNumber(15, 30);
+  this.row = randomNumber(15, 30);
   this.speedModifier = speedModifier;
   this.color = color;
   this.moveDelay = (range.value / 2) * this.speedModifier;
   this.moveCounter = 0;
   this.timeAlive = 0;
-  this.multiplyTime = 0;
   this.alive = true;
   this.max = 10;
-  this.state = "hungry";
+  this.state = "idle";
+  this.multiplyTime = 500;
   this.foodSearch = true;
+  this.wait = 0;
+  this.waitTime = randomNumber(500, 700);
+
   this.closestFood = {
     x: null,
     y: null
   };
+  this.detectBunny = function() {
+    for (let i = 0; i < bunniesArray.length; i++) {
+      if (
+        this.col === bunniesArray[i].col &&
+        this.row === bunniesArray[i].row &&
+        this.id != bunniesArray[i].id
+      ) {
+        
+        if (this.multiplyTime == 500) {
+          this.multiplyTime -= 1;
+          this.multiply();
+      
+      }
+    }
+  };
+}
 
   this.updateDelay = function() {
     this.moveDelay = range.value / 2 + randomNumber(1, 10);
   };
-  // this.multiply = function() {
-  //   bunniesArray.push(new Animal(200, "yellow", 20));
-  // };
+  this.multiply = function() {
+  
+    bunnyId++;
+    bunniesArray.push(new Animal(bunnyId, "yellow", 20));
+  };
 
   this.draw = function() {
     draw("image", bunnyImg, this.col, this.row, this.color);
@@ -86,10 +109,8 @@ let Animal = function(vitality, color, speedModifier) {
     this.alive = false;
   };
   this.move = function() {
-    
     let possibleJumps = [];
     let direction;
-    console.log(this.state);
 
     if (this.row + 1 < 50 && mapArray[this.row + 1][this.col] === 0) {
       possibleJumps.push("down");
@@ -112,22 +133,30 @@ let Animal = function(vitality, color, speedModifier) {
       if (this.moveCounter > 100) {
         if (this.row > this.closestFood.y && possibleJumps.includes("up")) {
           this.row -= 1;
-        } else if (this.row < this.closestFood.y && possibleJumps.includes("down")) {
+        } else if (
+          this.row < this.closestFood.y &&
+          possibleJumps.includes("down")
+        ) {
           this.row += 1;
-        } else if (this.col > this.closestFood.x && possibleJumps.includes("left")) {
+        } else if (
+          this.col > this.closestFood.x &&
+          possibleJumps.includes("left")
+        ) {
           this.col -= 1;
-        } else if (this.col < this.closestFood.x && possibleJumps.includes("right")) {
+        } else if (
+          this.col < this.closestFood.x &&
+          possibleJumps.includes("right")
+        ) {
           this.col += 1;
-        } 
+        }
         this.moveCounter = 0;
       }
-     
     }
 
     if (this.alive && this.state === "idle") {
-      console.log(direction);
+      this.wait ++
       this.moveCounter += this.moveDelay;
-      if (this.moveCounter > 100) {
+      if (this.moveCounter > randomNumber(25, 150)) {
         switch (direction) {
           case "up":
             this.row -= 1;
@@ -143,10 +172,8 @@ let Animal = function(vitality, color, speedModifier) {
         }
         // this.multiplyTime++;
         this.timeAlive++;
-        if (this.multiplyTime > 50 && bunniesArray.length < this.max) {
-          // this.multiply();
-          this.multiplyTime = 0;
-        } else if (this.timeAlive > randomNumber(200, 300)) {
+
+        if (this.timeAlive > randomNumber(200, 300)) {
           // this.die();
         }
         this.moveCounter = 0;
@@ -216,7 +243,7 @@ function renderBackground() {
           draw("rect", null, x, y, "#58774c");
           break;
         case 1:
-          draw("image", bunnyImg, x, y, "black");
+          draw("rect", null, x, y, "black");
           break;
         case 3:
           draw("rect", null, x, y, "purple");
@@ -249,13 +276,17 @@ function getMousePos(canvas, evt) {
     y: Math.floor((evt.clientY - rect.top) / board.tileHeight)
   };
 }
-let bunniesArray = [new Animal(500, "yellow", 20)];
+let bunniesArray = [
+  new Animal(bunnyId, "yellow", 20),
+  new Animal(2, "yellow", 20)
+];
 function initialize(animal) {
   for (i = 0; i < bunniesArray.length; i++) {
     bunniesArray[i].draw();
     bunniesArray[i].updateDelay();
-    // bunniesArray[i].move();
-    bunniesArray[i].findFood();
+    bunniesArray[i].move();
+    // bunniesArray[i].findFood();
+    bunniesArray[i].detectBunny();
   }
 }
 
