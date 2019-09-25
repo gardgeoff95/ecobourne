@@ -35,9 +35,11 @@ let Animal = function(x, y, id, color, speedModifier) {
   this.alive = true;
   this.max = 10;
   this.state = "idle";
+  this.hunger = 0;
   this.multiplyTime = 500;
   this.foodSearch = true;
   this.gestationTime = 0;
+  this.eating = 0;
 
 
   this.closestFood = {
@@ -152,9 +154,19 @@ let Animal = function(x, y, id, color, speedModifier) {
         }
         this.moveCounter = 0;
       }
+      this.eating ++
+      if (this.eating > 500) {
+        this.state = "idle"
+        this.hunger = 0;
+
+      }
+     
+
     }
 
     if (this.alive && this.state === "idle") {
+      this.hunger++
+      console.log(this.hunger)
       this.gestationTime ++
       this.moveCounter += this.moveDelay;
       if (this.moveCounter > randomNumber(25, 150)) {
@@ -176,6 +188,11 @@ let Animal = function(x, y, id, color, speedModifier) {
 
         if (this.timeAlive > randomNumber(200, 300)) {
           // this.die();
+        } 
+        if(this.hunger > randomNumber(500, 700)) {
+          this.state = "hungry"
+          this.findFood();
+
         }
         this.moveCounter = 0;
       }
@@ -278,15 +295,14 @@ function getMousePos(canvas, evt) {
   };
 }
 let bunniesArray = [
-  new Animal(randomNumber(20, 25), randomNumber(20, 25), bunnyId, "yellow", 20),
-  new Animal(randomNumber(20, 25), randomNumber(20, 25), 2, "yellow", 20)
+  new Animal(randomNumber(20, 25), randomNumber(20, 25), bunnyId, "yellow", 20)
 ];
 function initialize(animal) {
   for (i = 0; i < bunniesArray.length; i++) {
     bunniesArray[i].draw();
     bunniesArray[i].updateDelay();
     bunniesArray[i].move();
-    // bunniesArray[i].findFood();
+    bunniesArray[i].findFood();
     bunniesArray[i].detectBunny();
   }
 }
