@@ -23,13 +23,13 @@ bunnyImg.src = "rabbit.png";
 grassImg.onload = () => {
   renderBackground();
 };
-let Animal = function(id, color, speedModifier) {
+let Animal = function(x, y, id, color, speedModifier) {
   this.id = id;
-  this.col = randomNumber(15, 30);
-  this.row = randomNumber(15, 30);
+  this.col = x;
+  this.row = y;
   this.speedModifier = speedModifier;
   this.color = color;
-  this.moveDelay = (range.value / 2) * this.speedModifier;
+  this.moveDelay = (range.value / 50) *  this.speedModifier;
   this.moveCounter = 0;
   this.timeAlive = 0;
   this.alive = true;
@@ -37,8 +37,8 @@ let Animal = function(id, color, speedModifier) {
   this.state = "idle";
   this.multiplyTime = 500;
   this.foodSearch = true;
-  this.wait = 0;
-  this.waitTime = randomNumber(500, 700);
+  this.gestationTime = 0;
+
 
   this.closestFood = {
     x: null,
@@ -52,7 +52,7 @@ let Animal = function(id, color, speedModifier) {
         this.id != bunniesArray[i].id
       ) {
         
-        if (this.multiplyTime == 500) {
+        if (this.multiplyTime == 500 && this.gestationTime > 1000) {
           this.multiplyTime -= 1;
           this.multiply();
       
@@ -62,12 +62,12 @@ let Animal = function(id, color, speedModifier) {
 }
 
   this.updateDelay = function() {
-    this.moveDelay = range.value / 2 + randomNumber(1, 10);
+    this.moveDelay = range.value / 2;
   };
   this.multiply = function() {
   
     bunnyId++;
-    bunniesArray.push(new Animal(bunnyId, "yellow", 20));
+    bunniesArray.push(new Animal(this.col +5, this.row, bunnyId, "yellow", 20));
   };
 
   this.draw = function() {
@@ -129,6 +129,7 @@ let Animal = function(id, color, speedModifier) {
       direction =
         possibleJumps[Math.floor(Math.random() * possibleJumps.length)];
     } else if (this.alive && this.state == "hungry") {
+      this.gestationTime ++;
       this.moveCounter += this.moveDelay;
       if (this.moveCounter > 100) {
         if (this.row > this.closestFood.y && possibleJumps.includes("up")) {
@@ -154,7 +155,7 @@ let Animal = function(id, color, speedModifier) {
     }
 
     if (this.alive && this.state === "idle") {
-      this.wait ++
+      this.gestationTime ++
       this.moveCounter += this.moveDelay;
       if (this.moveCounter > randomNumber(25, 150)) {
         switch (direction) {
@@ -277,8 +278,8 @@ function getMousePos(canvas, evt) {
   };
 }
 let bunniesArray = [
-  new Animal(bunnyId, "yellow", 20),
-  new Animal(2, "yellow", 20)
+  new Animal(randomNumber(20, 25), randomNumber(20, 25), bunnyId, "yellow", 20),
+  new Animal(randomNumber(20, 25), randomNumber(20, 25), 2, "yellow", 20)
 ];
 function initialize(animal) {
   for (i = 0; i < bunniesArray.length; i++) {
