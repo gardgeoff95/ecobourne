@@ -157,7 +157,7 @@ let Animal = function(x, y, id, color, speedModifier) {
         }
         this.moveCounter = 0;
       }
-      this.eating++;
+      this.eating += 1;
       if (this.eating > 500) {
         this.state = "idle";
         this.hunger = 0;
@@ -166,7 +166,7 @@ let Animal = function(x, y, id, color, speedModifier) {
     }
 
     if (this.alive && this.state === "idle") {
-      this.hunger++;
+      this.hunger+= this.moveDelay;
  
       this.gestationTime++;
       this.moveCounter += this.moveDelay;
@@ -190,7 +190,7 @@ let Animal = function(x, y, id, color, speedModifier) {
         if (this.timeAlive > randomNumber(200, 300)) {
           // this.die();
         }
-        if (this.hunger > 700) {
+        if (this.hunger > 1500 * this.moveDelay) {
           this.state = "hungry";
           this.foodSearch = true;
           this.findFood();
