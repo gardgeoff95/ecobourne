@@ -50,12 +50,17 @@ let Animal = function(x, y, id, color, speedModifier) {
   this.stateManager = function() {
     if (this.state === "idle") {
       this.move();
-    } else if (this.state === "hungry") {
+    } else if (this.state === "hungry" && board.foodPositions.length != 0) {
       this.pathForFood();
     }
-    if (this.foodSearch) {
+    if (this.foodSearch && board.foodPositions.length > 0) {
       this.findFood();
     }
+    if (this.state == "dead") {
+      console.log("should die")
+      this.die();
+    }
+    console.log(this.state)
 
   };
 
@@ -78,7 +83,7 @@ let Animal = function(x, y, id, color, speedModifier) {
     this.moveDelay = range.value / 2;
   };
   this.multiply = function() {
-    console.log("AY");
+ 
     if (bunniesArray.length < this.max) {
       bunnyId++;
       bunniesArray.push(
@@ -100,14 +105,17 @@ let Animal = function(x, y, id, color, speedModifier) {
     this.closestFood.y = y;
     this.state = "hungry";
     this.foodSearch = false;
-    
-    console.log(board.foodPositions)
+
     return;
   };
 
   this.die = function() {
-    this.color = "red";
-    this.alive = false;
+    console.log("death came for this rabbit")
+    for ( let i = 0; i < bunniesArray.length; i++) {
+      if (this.id === bunniesArray[i].id){
+        bunniesArray.splice(i, 1);
+      }
+    }
   };
   this.pathForFood = function() {
     let possibleJumps = [];
@@ -209,12 +217,20 @@ let Animal = function(x, y, id, color, speedModifier) {
       }
 
       this.timeAlive++;
+      console.log(this.hunger)
 
-      if (this.timeAlive > randomNumber(200, 300)) {
-        // this.die();
+      if (this.timeAlive > randomNumber(1000, 2000)) {
+        this.die();
       }
-      if (this.hunger > this.maxHunger * this.moveDelay) {
+      if (this.hunger > this.maxHunger * this.moveDelay &&
+          board.foodPositions.lengt != 0) {
+        
         this.foodSearch = true;
+      }
+      if (this.hunger > 5000) {
+
+        this.state = "dead"
+    
       }
       this.moveCounter = 0;
     }
