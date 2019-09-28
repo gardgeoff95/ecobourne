@@ -43,6 +43,7 @@ let Animal = function(animalType, x, y, id, color, speedModifier) {
   this.maxHunger = randomNumber(500, 700);
   this.starvation = randomNumber(15000, 20000) * this.moveDelay;
   this.currentDirection = "left";
+  this.upOrDown = "up";
   this.multiplyTime = 500;
   this.foodSearch = false;
   this.gestationTime = 0;
@@ -128,6 +129,18 @@ let Animal = function(animalType, x, y, id, color, speedModifier) {
     for (let i = 0; i < bunniesArray.length; i++) {
       if (this.id === bunniesArray[i].id) {
         bunniesArray.splice(i, 1);
+      }
+    }
+  };
+  this.checkForBunnies = function() {
+    for (let i = 0; i < bunniesArray.length; i++) {
+      if (
+        this.col + 1 === bunniesArray[i].col ||
+        this.col - 1 === bunniesArray[i].col ||
+        this.row + 1 === bunniesArray[i].row ||
+        this.row - 1 === bunniesArray[i].row
+      ) {
+        bunniesArray[i].state = "dead";
       }
     }
   };
@@ -247,15 +260,10 @@ let Animal = function(animalType, x, y, id, color, speedModifier) {
         }
         this.moveCounter = 0;
       }
-   
     } else if (this.animalType === "fox") {
       console.log("i'm a fox and I should be moving");
       let possibleJumps = [];
       let direction;
-      
-      
-   
-      
 
       if (this.row + 1 < 50 && mapArray[this.row + 1][this.col] === 0) {
         possibleJumps.push("down");
@@ -270,34 +278,57 @@ let Animal = function(animalType, x, y, id, color, speedModifier) {
         possibleJumps.push("left");
       }
 
-     
-      
       this.moveCounter += this.moveDelay;
+      console.log(this.col);
 
       if (this.moveCounter > randomNumber(50, 75)) {
-        if (possibleJumps.includes("left") && this.col > 0 && this.currentDirection === "left") {
-          this.col --
-
-          
-        } else if (possibleJumps.includes("up") && this.col === 0) {
-          this.currentDirection = "right"
-          this.row --
-          this.col ++
-         
-          
-        } else if (possibleJumps.includes("right") && this.col < 50 && this.currentDirection ==="right"){
-          this.col ++
+        if (
+          possibleJumps.includes("left") &&
+          this.col > 0 &&
+          this.currentDirection === "left"
+        ) {
+          this.col--;
+        } else if (
+          possibleJumps.includes("up") &&
+          this.col === 0 &&
+          this.upOrDown === "up"
+        ) {
+          if (this.currentDirection === "left") {
+            this.currentDirection = "right";
+            this.row--;
+            this.col++;
+          }
+        } else if (possibleJumps.includes("up") && this.col === 49) {
+          if (this.currentDirection === "right") {
+            this.currentDirection = "left";
+            this.row--;
+            this.col--;
+          }
+        } else if (
+          possibleJumps.includes("right") &&
+          this.col < 50 &&
+          this.currentDirection === "right"
+        ) {
+          this.col++;
         }
-        
+        if (
+          this.currentDirection === "right" &&
+          !possibleJumps.includes("right")
+        ) {
+          this.row--;
+        }
+        if (
+          this.currentDirection === "left" &&
+          !possibleJumps.includes("left")
+        ) {
+          this.row--;
+        }
 
-          
-        
         this.moveCounter = 0;
       }
-    
     }
 
-    return
+    return;
   };
 };
 backgroundCanvas.width = 880;
@@ -410,7 +441,16 @@ function getMousePos(canvas, evt) {
     y: Math.floor((evt.clientY - rect.top) / board.tileHeight)
   };
 }
-let bunniesArray = [];
+let bunniesArray = [
+  new Animal(
+    "rabbit",
+    randomNumber(30, 40),
+    randomNumber(30, 40),
+    10,
+    "yellow",
+    20
+  )
+];
 let foxArray = [
   new Animal(
     "fox",
