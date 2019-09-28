@@ -1,22 +1,13 @@
-import React, { Component } from "react";
-import TitleScreen from "./pages/titleScreen/titleScreen.js";
+import React from "react";
+import PageContainer from "./pageContainer.js";
+import { BrowserRouter, Route } from "react-router-dom";
 
-class App extends Component {
-  state = {
-    lobbyMembers: 0,
-    playerNames: []
-  };
-  render() {
-    console.log(this.state);
-    return (
-      <div>
-        <TitleScreen
-          lobbyMembers={this.state.lobbyMembers}
-          playerNames={this.state.playerNames}
-        />
-      </div>
-    );
-  }
+function App() {
+  return (
+    <BrowserRouter>
+      <Route exact path="/" component={PageContainer} />
+    </BrowserRouter>
+  );
 }
 
 export default App;

@@ -1,6 +1,7 @@
 import React from "react";
 
 function GameStats(props) {
+  console.log(props);
   return (
     <div className="container-fluid">
       <div className="row">
