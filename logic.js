@@ -1,20 +1,22 @@
 let board = {
-  maxTiles: 50,
+  maxTiles: 100,
   tileWidth: 16,
   tileHeight: 16,
   foodPositions: [],
   season: 0
 };
-function addFood() {}
-
+const GRASS_1 = 0;
+const GRASS_2 = 2;
+const GRASS_3 = 4;
+const grassArray = [GRASS_1, GRASS_2, GRASS_3];
 const canvas = document.getElementById("myCanvas");
 const ctx = canvas.getContext("2d");
 const backgroundCanvas = document.getElementById("background");
 const backGroundCtx = backgroundCanvas.getContext("2d");
 
-let bunnyId = 1;
-let range = document.getElementById("range");
-let mapArray = new Array(40);
+let bunnyId = 30;
+
+let mapArray = new Array();
 let bunnieCount = 0;
 let bunnyImg = new Image();
 let foxImg = new Image();
@@ -22,25 +24,29 @@ let grassImg = new Image();
 grassLoaded = false;
 grassImg.src = "grassTiles.png";
 bunnyImg.src = "rabbit.png";
-foxImg.src="fox.png";
+foxImg.src = "fox.png";
 grassImg.onload = () => {
   renderBackground();
+  startGame();
 };
 let Animal = function(animalType, x, y, id, color, speedModifier) {
+  this.preyEaten = 0;
   this.animalType = animalType;
   this.id = id;
   this.col = x;
   this.row = y;
   this.speedModifier = speedModifier;
   this.color = color;
-  this.moveDelay = (range.value / 50) * this.speedModifier;
   this.moveCounter = 0;
   this.timeAlive = 0;
-  this.alive = true;
-  this.max = 1000;
+  this.max = 50;
   this.state = "idle";
   this.hunger = 0;
-  this.maxHunger = randomNumber(200, 300);
+  this.foxHungry = true;
+  this.maxHunger = randomNumber(500, 2000);
+  this.starvation = randomNumber(2000, 2100);
+  this.currentDirection = "left";
+  this.upOrDown = "up";
   this.multiplyTime = 500;
   this.foodSearch = false;
   this.gestationTime = 0;
@@ -57,40 +63,63 @@ let Animal = function(animalType, x, y, id, color, speedModifier) {
     } else if (this.state === "hungry" && board.foodPositions.length > 0) {
       this.pathForFood();
     }
+
+    if (
+      this.state === "idle" &&
+      this.animalType === "fox" &&
+      this.preyEaten < 6
+    ) {
+      this.preyBunnies();
+    }
+    if (this.state === "tired") {
+      this.returnToDen();
+    }
     if (this.foodSearch && board.foodPositions.length > 0) {
       this.findFood();
     }
     if (this.state == "dead") {
       this.die();
     }
-    
-    console.log(this.state);
+
+    if (this.animalType === "rabbit") {
+      this.detectBunny();
+    }
   };
+
+  this.returnToDen = function() {};
 
   this.detectBunny = function() {
     for (let i = 0; i < bunniesArray.length; i++) {
-      if (
-        this.col === bunniesArray[i].col &&
-        this.row === bunniesArray[i].row &&
-        this.id != bunniesArray[i].id
-      ) {
-        if (this.multiplyTime == 500 && this.gestationTime > 1000) {
-          this.multiplyTime -= 1;
-          this.multiply();
+      if (bunniesArray[i].state !== "dead") {
+        if (
+          (this.col + 1 === bunniesArray[i].col &&
+            this.row == bunniesArray[i].row) ||
+          (this.col - 1 === bunniesArray[i].col &&
+            this.row == bunniesArray[i].row) ||
+          (this.row + 1 === bunniesArray[i].row &&
+            this.col == bunniesArray[i].col) ||
+          (this.row - 1 === bunniesArray[i].row &&
+            this.col == bunniesArray[i].col) ||
+          (this.col === bunniesArray[i].col &&
+            this.row === bunniesArray[i].row &&
+            this.id != bunniesArray[i].id)
+        ) {
+          if (this.gestationTime > 400 && bunniesArray[i].gestationTime > 200) {
+            this.gestationTime = 0;
+
+            this.multiply();
+          }
         }
       }
     }
   };
 
-  this.updateDelay = function() {
-    this.moveDelay = range.value / 2;
-  };
   this.multiply = function() {
     if (this.animalType === "rabbit") {
       if (bunniesArray.length < this.max) {
         bunnyId++;
         bunniesArray.push(
-          new Animal(this.col + 5, this.row, bunnyId, "yellow", 20)
+          new Animal("rabbit", this.col + 5, this.row, bunnyId, "yellow", 20)
         );
       }
     }
@@ -100,56 +129,95 @@ let Animal = function(animalType, x, y, id, color, speedModifier) {
     if (this.animalType === "rabbit") {
       draw("image", bunnyImg, this.col, this.row);
     } else if (this.animalType === "fox") {
-      draw("image", foxImg, this.col, this.row)
+      draw("image", foxImg, this.col, this.row);
     }
   };
   this.findFood = function() {
-    let randomIndex =
-      board.foodPositions[
-        Math.floor(Math.random() * board.foodPositions.length)
-      ];
+    let randomIndex = randomNumber(0, board.foodPositions.length);
 
-    this.foodToSplice = board.foodPositions.indexOf(randomIndex);
-    let y = randomIndex.xPos;
-    let x = randomIndex.yPos;
-    this.closestFood.x = x;
-    this.closestFood.y = y;
-    this.state = "hungry";
-    this.foodSearch = false;
+    let randomArrayItem = board.foodPositions[randomIndex];
+
+    if (board.foodPositions[randomIndex].taken === false) {
+      let y = randomArrayItem.xPos;
+      let x = randomArrayItem.yPos;
+      this.closestFood.x = x;
+      this.closestFood.y = y;
+      this.state = "hungry";
+
+      this.foodSearch = false;
+    }
 
     return;
   };
 
   this.die = function() {
+    if (this.animalType === "rabbit") {
+      bunniesArray = bunniesArray.filter(bunny => bunny.id != this.id);
+      console.log("Bunnies array ", bunniesArray);
+      console.log("My id is ", this.id);
+    }
+    // for (let i = 0; i < bunniesArray.length; i++) {
+    //   if (this.id === bunniesArray[i].id) {
+    //     bunniesArray.splice(i, 1);
+    //   }
+    // }
+  };
+  this.preyBunnies = function() {
     for (let i = 0; i < bunniesArray.length; i++) {
-      if (this.id === bunniesArray[i].id) {
-        bunniesArray.splice(i, 1);
+      if (
+        (this.col + 1 === bunniesArray[i].col &&
+          this.row === bunniesArray[i].row) ||
+        (this.col - 1 === bunniesArray[i].col &&
+          this.row === bunniesArray[i].row) ||
+        (this.row + 1 === bunniesArray[i].row &&
+          this.col === bunniesArray[i].col) ||
+        (this.row - 1 === bunniesArray[i].row &&
+          this.col === bunniesArray[i].col) ||
+        (this.row === bunniesArray[i].row && this.col === bunniesArray[i].col)
+      ) {
+        console.log("IIIII", i);
+        console.log("GOTTEM -");
+        this.preyEaten++;
+        bunniesArray[i].state = "dead";
+        bunniesArray = bunniesArray.filter(
+          bunny => bunny.id !== bunniesArray[i].id
+        );
+        if (this.preyEaten === 5) {
+          this.state = "tired";
+        }
       }
     }
   };
   this.pathForFood = function() {
-    console.log(board.foodPositions);
     let possibleJumps = [];
 
-    if (this.row + 1 < 50 && mapArray[this.row + 1][this.col] === 0) {
+    if (
+      this.row + 1 < board.maxTiles &&
+      grassArray.includes(mapArray[this.row + 1][this.col])
+    ) {
       possibleJumps.push("down");
     }
-    if (this.row - 1 > 0 && mapArray[this.row - 1][this.col] === 0) {
+    if (
+      this.row - 1 > 0 &&
+      grassArray.includes(mapArray[this.row - 1][this.col])
+    ) {
       possibleJumps.push("up");
     }
-    if (mapArray[this.row][this.col + 1] === 0) {
+    if (grassArray.includes(mapArray[this.row][this.col + 1])) {
       possibleJumps.push("right");
     }
-    if (mapArray[this.row][this.col - 1] === 0) {
+    if (grassArray.includes(mapArray[this.row][this.col - 1])) {
       possibleJumps.push("left");
     }
+
     this.gestationTime++;
-    this.moveCounter += this.moveDelay;
+    this.hunger += 1;
+    this.moveCounter += 20;
     if (this.moveCounter > 100) {
       if (this.row > this.closestFood.y && possibleJumps.includes("up")) {
         this.row -= 1;
         // start
-      }  else if (
+      } else if (
         this.row < this.closestFood.y &&
         possibleJumps.includes("down")
       ) {
@@ -159,7 +227,7 @@ let Animal = function(animalType, x, y, id, color, speedModifier) {
         possibleJumps.includes("left")
       ) {
         this.col -= 1;
-      }  else if (
+      } else if (
         this.col < this.closestFood.x &&
         possibleJumps.includes("right")
       ) {
@@ -172,47 +240,56 @@ let Animal = function(animalType, x, y, id, color, speedModifier) {
       ) {
         this.eating += 1;
         if (this.eating > 15) {
+          board.foodPositions.splice(this.foodToSplice, 1);
+          mapArray[this.closestFood.y][this.closestFood.x] = 0;
+          renderBackground();
+          console.log(board.foodPositions);
+
           this.state = "idle";
           this.hunger = 0;
           this.eating = 0;
-          mapArray[this.closestFood.y][this.closestFood.x] = 0;
-          board.foodPositions.splice(this.foodToSplice, 1);
-          renderBackground();
         }
+      } else if (this.hunger > this.starvation) {
+        console.log("starved");
+        this.die();
       } else {
         this.state = "idle";
       }
       this.moveCounter = 0;
-
     }
-    
+
     return;
-    
   };
   this.move = function() {
     if (this.animalType === "rabbit") {
       let possibleJumps = [];
       let direction;
 
-      if (this.row + 1 < 50 && mapArray[this.row + 1][this.col] === 0) {
+      if (
+        this.row + 1 < board.maxTiles &&
+        grassArray.includes(mapArray[this.row + 1][this.col])
+      ) {
         possibleJumps.push("down");
       }
-      if (this.row - 1 > 0 && mapArray[this.row - 1][this.col] === 0) {
+      if (
+        this.row - 1 > 0 &&
+        grassArray.includes(mapArray[this.row - 1][this.col])
+      ) {
         possibleJumps.push("up");
       }
-      if (mapArray[this.row][this.col + 1] === 0) {
+      if (grassArray.includes(mapArray[this.row][this.col + 1])) {
         possibleJumps.push("right");
       }
-      if (mapArray[this.row][this.col - 1] === 0) {
+      if (grassArray.includes(mapArray[this.row][this.col - 1])) {
         possibleJumps.push("left");
       }
       direction =
         possibleJumps[Math.floor(Math.random() * possibleJumps.length)];
 
-      this.hunger += this.moveDelay;
+      this.hunger += 1;
       this.gestationTime++;
-      this.moveCounter += this.moveDelay;
-      if (this.moveCounter > randomNumber(25, 150)) {
+      this.moveCounter += 50;
+      if (this.moveCounter > randomNumber(300, 400)) {
         switch (direction) {
           case "up":
             this.row -= 1;
@@ -229,37 +306,121 @@ let Animal = function(animalType, x, y, id, color, speedModifier) {
         }
 
         this.timeAlive++;
-        console.log(this.hunger);
+        console.log(this.timeAlive)
 
         if (this.timeAlive > randomNumber(1000, 2000)) {
-          this.die();
+          console.log("died from age");
+          this.state = "dead";
         }
-        if (
-          this.hunger > this.maxHunger * this.moveDelay &&
-          board.foodPositions.lengt != 0
-        ) {
+        if (this.hunger > this.maxHunger && board.foodPositions.length > 1) {
+          console.log("FOOD SEARCH");
           this.foodSearch = true;
         }
-        if (this.hunger > 5000) {
+        if (this.hunger > this.starvation) {
+          console.log("STARVED");
           this.state = "dead";
         }
         this.moveCounter = 0;
       }
-      return;
     } else if (this.animalType === "fox") {
-      console.log("I'm a fox and I'm movin");
+      let possibleJumps = [];
+
+      if (
+        this.row + 1 < board.maxTiles &&
+        grassArray.includes(mapArray[this.row + 1][this.col])
+      ) {
+        possibleJumps.push("down");
+      }
+      if (
+        this.row - 1 > 0 &&
+        grassArray.includes(mapArray[this.row - 1][this.col])
+      ) {
+        possibleJumps.push("up");
+      }
+      if (grassArray.includes(mapArray[this.row][this.col + 1])) {
+        possibleJumps.push("right");
+      }
+      if (grassArray.includes(mapArray[this.row][this.col - 1])) {
+        possibleJumps.push("left");
+      }
+
+      this.moveCounter += 50;
+      if (this.moveCounter > randomNumber(150, 200)) {
+        if (
+          possibleJumps.includes("left") &&
+          this.col > 0 &&
+          this.currentDirection === "left"
+        ) {
+          this.col--;
+        } else if (
+          possibleJumps.includes("up") &&
+          this.col === 0 &&
+          this.upOrDown === "up"
+        ) {
+          if (this.currentDirection === "left") {
+            this.currentDirection = "right";
+            this.row--;
+            this.col++;
+          }
+        } else if (possibleJumps.includes("up") && this.col === 99) {
+          if (this.currentDirection === "right") {
+            this.currentDirection = "left";
+            this.row--;
+            this.col--;
+          }
+        } else if (
+          possibleJumps.includes("right") &&
+          this.col < board.maxTiles &&
+          this.currentDirection === "right"
+        ) {
+          this.col++;
+        }
+        if (
+          this.currentDirection === "right" &&
+          !possibleJumps.includes("right")
+        ) {
+          this.row--;
+        }
+        if (
+          this.currentDirection === "left" &&
+          !possibleJumps.includes("left")
+        ) {
+          this.row--;
+        }
+        if (this.row === 0) {
+          this.currentDirection = "down";
+        }
+        if (
+          this.currentDirection === "down" &&
+          possibleJumps.includes("down")
+        ) {
+          this.row++;
+        } else if (
+          this.currentDirection === "down" &&
+          !possibleJumps.includes("down")
+        ) {
+          this.col++;
+        }
+        if (this.currentDirection === "down" && this.row == 99) {
+          this.currentDirection = "left";
+        }
+
+        this.moveCounter = 0;
+      }
     }
+
+    return;
   };
 };
-backgroundCanvas.width = 880;
-backgroundCanvas.height = 800;
+backgroundCanvas.width = board.tileHeight * board.maxTiles;
+backgroundCanvas.height = board.tileWidth * board.maxTiles;
 canvas.height = board.tileHeight * board.maxTiles;
 canvas.width = board.tileWidth * board.maxTiles;
 
 function randomNumber(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 }
-function draw(type, img = null, x, y, color) {
+function draw(type, img = null, x, y, color, tile) {
   if (type == "rect") {
     backGroundCtx.fillStyle = color;
     backGroundCtx.fillRect(
@@ -268,7 +429,7 @@ function draw(type, img = null, x, y, color) {
       board.tileWidth,
       board.tileHeight
     );
-  } else if (type == "image") {
+  } else if (type === "image") {
     ctx.drawImage(
       img,
       0,
@@ -280,11 +441,12 @@ function draw(type, img = null, x, y, color) {
       board.tileWidth,
       board.tileHeight
     );
-  } else if (type == "imageBack") {
+  } else if (type === "imageBack") {
     let tiles = [0, 16, 32];
+
     backGroundCtx.drawImage(
       img,
-      tiles[Math.floor(Math.random() * tiles.length)],
+      tile,
       0,
       16,
       16,
@@ -302,41 +464,59 @@ function createArray() {
   }
   for (let x = 0; x < board.maxTiles; x++) {
     for (let y = 0; y < board.maxTiles; y++) {
-      switch (randomNumber(1, 500)) {
-        case 5:
-          mapArray[x][y] = 1;
-          break;
-        case 8:
-          mapArray[x][y] = 3;
-          board.foodPositions.push({ xPos: x, yPos: y });
-          break;
-        case 7:
-          mapArray[x][y] = 2;
-        default:
-          mapArray[x][y] = 0;
-          break;
+      const rando = randomNumber(1, 1000);
+
+      if (rando <= 50) {
+        mapArray[x][y] = 1;
+      } else if (rando <= 60) {
+        mapArray[x][y] = 3;
+        board.foodPositions.push({ xPos: x, yPos: y, taken: false, uses: 5 });
+      } else if (rando <= 200) {
+        mapArray[x][y] = GRASS_2;
+      } else if (rando <= 500) {
+        mapArray[x][y] = GRASS_3;
+      } else {
+        mapArray[x][y] = GRASS_1;
       }
     }
   }
 }
 
 function renderBackground() {
-  for (let y = 0; y < mapArray.length; y++) {
-    for (let x = 0; x < mapArray.length; x++) {
+  for (let y = 0; y < board.maxTiles; y++) {
+    for (let x = 0; x < board.maxTiles; x++) {
       switch (mapArray[y][x]) {
-        case 0:
-          draw("imageBack", grassImg, x, y);
+        case GRASS_1:
+          draw("imageBack", grassImg, x, y, null, 16);
           break;
         case 1:
-          draw("rect", null, x, y, "black");
+          draw("imageBack", grassImg, x, y, null, 64);
+          break;
+        case GRASS_2:
+          draw("imageBack", grassImg, x, y, null, 0);
           break;
         case 3:
-          draw("rect", null, x, y, "purple");
+          draw("imageBack", grassImg, x, y, null, 48);
+          break;
+        default:
+          draw("imageBack", grassImg, x, y, null, 32);
+          break;
       }
     }
   }
 }
-
+function addFood() {
+  if (board.foodPositions.length < 50) {
+    let x = randomNumber(1, board.maxTiles);
+    let y = randomNumber(1, board.maxTiles);
+    if (mapArray[x][y] === 0) {
+      mapArray[x][y] = 3;
+      board.foodPositions.push({ xPos: x, yPos: y, taken: false, uses: 5 });
+      renderBackground();
+    }
+  }
+}
+setInterval(addFood, 2000);
 function click(event) {
   var x = event.clientX;
   var y = event.clientY;
@@ -364,40 +544,34 @@ function getMousePos(canvas, evt) {
 let bunniesArray = [
   new Animal(
     "rabbit",
-    randomNumber(20, 25),
-    randomNumber(20, 25),
-    bunnyId,
-    "yellow",
-    20
-  ),
-  new Animal(
-    "rabbit",
-    randomNumber(20, 25),
-    randomNumber(20, 25),
-    5,
-    "yellow",
-    20
-  ),
-  new Animal(
-    "rabbit",
-    randomNumber(20, 25),
-    randomNumber(20, 25),
-    20,
+    randomNumber(30, 40),
+    randomNumber(5, 10),
+    1,
     "yellow",
     20
   )
 ];
 let foxArray = [
-  new Animal("fox", randomNumber(30, 40), randomNumber(30, 40), 10, "yellow", 20)
-]
+  // new Animal(
+  //   "fox",
+  //   randomNumber(30, 40),
+  //   randomNumber(30, 40),
+  //   10,
+  //   "yellow",
+  //   20
+  // )
+];
+
 function initialize(animal) {
   for (i = 0; i < bunniesArray.length; i++) {
-    bunniesArray[i].draw();
-    bunniesArray[i].updateDelay();
-    bunniesArray[i].stateManager();
+    if (bunniesArray[i].state !== "dead") {
+      bunniesArray[i].draw();
+      bunniesArray[i].stateManager();
+    }
   }
   for (i = 0; i < foxArray.length; i++) {
     foxArray[i].draw();
+    foxArray[i].stateManager();
   }
 }
 
@@ -406,7 +580,6 @@ console.log(mapArray);
 let frameCount = 0;
 function mainLoop() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-
   initialize();
   board.season += 1;
 
@@ -416,5 +589,3 @@ function mainLoop() {
 function startGame() {
   setInterval(mainLoop, 10);
 }
-
-startGame();

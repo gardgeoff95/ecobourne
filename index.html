@@ -1,42 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <title>Document</title>
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script async defer src="logic.js"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
 
-  <script async defer src="logic.js"></script>
-  <link rel="stylesheet" href="style.css" />
-</head>
-
-<body>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-8">
-        <div id="stage">
-          <canvas id="background"></canvas>
-          <canvas id="myCanvas"></canvas>
-        </div>
-      </div>
-      <div class="col-md-1">
-
-      </div>
-      <div class="col-md-3">
-
-
-        <div class="slideContainer">
-            <label for="customRange1">Example range</label>
-            <input type="range" class="custom-range" id="range" min="1.0" max ="50">
-          <button>a</button>
-        </div>
-      </div>
+  <body>
+    <div id="stage">
+      <canvas id="background"></canvas>
+      <canvas id="myCanvas"></canvas>
     </div>
-  </div>
-</body>
 
+  </body>
 </html>

@@ -1,17 +1,24 @@
+body{
+  background-color: #222629
+}
 canvas {
     position: absolute;
 }
 #background{
-    z-index: 1;
+
+  
 }
 #myCanvas{
-    z-index: 2;
+
 }
 #stage{
-    margin-top: 50px;
+
+
+
 
 }
 .slidecontainer {
+  display: none;
     width: 50%; /* Width of the outside container */
   }
   
