@@ -104,7 +104,7 @@ let Animal = function(animalType, x, y, id, color, speedModifier) {
             this.row === bunniesArray[i].row &&
             this.id != bunniesArray[i].id)
         ) {
-          if (this.gestationTime > 700 && bunniesArray[i].gestationTime > 200) {
+          if (this.gestationTime > 400 && bunniesArray[i].gestationTime > 200) {
             this.gestationTime = 0;
 
             this.multiply();
@@ -306,7 +306,7 @@ let Animal = function(animalType, x, y, id, color, speedModifier) {
         }
 
         this.timeAlive++;
-        
+        console.log(this.timeAlive)
 
         if (this.timeAlive > randomNumber(1000, 2000)) {
           console.log("died from age");
@@ -490,13 +490,13 @@ function renderBackground() {
           draw("imageBack", grassImg, x, y, null, 16);
           break;
         case 1:
-          draw("imageBack", grassImg, x, y, null, 64)
+          draw("imageBack", grassImg, x, y, null, 64);
           break;
         case GRASS_2:
           draw("imageBack", grassImg, x, y, null, 0);
           break;
         case 3:
-          draw("imageBack", grassImg, x, y, null, 48)
+          draw("imageBack", grassImg, x, y, null, 48);
           break;
         default:
           draw("imageBack", grassImg, x, y, null, 32);
@@ -506,12 +506,14 @@ function renderBackground() {
   }
 }
 function addFood() {
-  let x = randomNumber(1, board.maxTiles);
-  let y = randomNumber(1, board.maxTiles);
-  if (mapArray[x][y] === 0) {
-    mapArray[x][y] = 3;
-    board.foodPositions.push({ xPos: x, yPos: y, taken: false, uses: 5 });
-    renderBackground();
+  if (board.foodPositions.length < 50) {
+    let x = randomNumber(1, board.maxTiles);
+    let y = randomNumber(1, board.maxTiles);
+    if (mapArray[x][y] === 0) {
+      mapArray[x][y] = 3;
+      board.foodPositions.push({ xPos: x, yPos: y, taken: false, uses: 5 });
+      renderBackground();
+    }
   }
 }
 setInterval(addFood, 2000);
@@ -547,49 +549,17 @@ let bunniesArray = [
     1,
     "yellow",
     20
-  ),
-  new Animal(
-    "rabbit",
-    randomNumber(30, 40),
-    randomNumber(5, 10),
-    2,
-    "yellow",
-    20
-  ),
-  new Animal(
-    "rabbit",
-    randomNumber(30, 40),
-    randomNumber(5, 10),
-    2,
-    "yellow",
-    20
-  ),
-  new Animal(
-    "rabbit",
-    randomNumber(30, 40),
-    randomNumber(5, 10),
-    2,
-    "yellow",
-    20
-  ),
-  new Animal(
-    "rabbit",
-    randomNumber(30, 40),
-    randomNumber(5, 10),
-    2,
-    "yellow",
-    20
   )
 ];
 let foxArray = [
-  new Animal(
-    "fox",
-    randomNumber(30, 40),
-    randomNumber(30, 40),
-    10,
-    "yellow",
-    20
-  )
+  // new Animal(
+  //   "fox",
+  //   randomNumber(30, 40),
+  //   randomNumber(30, 40),
+  //   10,
+  //   "yellow",
+  //   20
+  // )
 ];
 
 function initialize(animal) {
