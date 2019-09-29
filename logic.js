@@ -271,7 +271,10 @@ let Animal = function(animalType, x, y, id, color, speedModifier) {
       ) {
         possibleJumps.push("down");
       }
-      if (this.row - 1 > 0 && grassArray.includes(mapArray[this.row - 1][this.col])) {
+      if (
+        this.row - 1 > 0 &&
+        grassArray.includes(mapArray[this.row - 1][this.col])
+      ) {
         possibleJumps.push("up");
       }
       if (grassArray.includes(mapArray[this.row][this.col + 1])) {
@@ -303,6 +306,7 @@ let Animal = function(animalType, x, y, id, color, speedModifier) {
         }
 
         this.timeAlive++;
+        
 
         if (this.timeAlive > randomNumber(1000, 2000)) {
           console.log("died from age");
@@ -323,17 +327,20 @@ let Animal = function(animalType, x, y, id, color, speedModifier) {
 
       if (
         this.row + 1 < board.maxTiles &&
-        mapArray[this.row + 1][this.col] === 0
+        grassArray.includes(mapArray[this.row + 1][this.col])
       ) {
         possibleJumps.push("down");
       }
-      if (this.row - 1 > 0 && mapArray[this.row - 1][this.col] === 0) {
+      if (
+        this.row - 1 > 0 &&
+        grassArray.includes(mapArray[this.row - 1][this.col])
+      ) {
         possibleJumps.push("up");
       }
-      if (mapArray[this.row][this.col + 1] === 0) {
+      if (grassArray.includes(mapArray[this.row][this.col + 1])) {
         possibleJumps.push("right");
       }
-      if (mapArray[this.row][this.col - 1] === 0) {
+      if (grassArray.includes(mapArray[this.row][this.col - 1])) {
         possibleJumps.push("left");
       }
 
@@ -445,8 +452,8 @@ function draw(type, img = null, x, y, color, tile) {
       16,
       x * board.tileWidth,
       y * board.tileHeight,
-      board.tileWidth, 
-      board.tileHeight 
+      board.tileWidth,
+      board.tileHeight
     );
   }
 }
@@ -459,9 +466,9 @@ function createArray() {
     for (let y = 0; y < board.maxTiles; y++) {
       const rando = randomNumber(1, 1000);
 
-      if (rando <= 5) {
+      if (rando <= 50) {
         mapArray[x][y] = 1;
-      } else if (rando <= 8) {
+      } else if (rando <= 60) {
         mapArray[x][y] = 3;
         board.foodPositions.push({ xPos: x, yPos: y, taken: false, uses: 5 });
       } else if (rando <= 200) {
@@ -483,13 +490,13 @@ function renderBackground() {
           draw("imageBack", grassImg, x, y, null, 16);
           break;
         case 1:
-          draw("rect", null, x, y, "black");
+          draw("imageBack", grassImg, x, y, null, 64)
           break;
         case GRASS_2:
           draw("imageBack", grassImg, x, y, null, 0);
           break;
         case 3:
-          draw("rect", null, x, y, "purple");
+          draw("imageBack", grassImg, x, y, null, 48)
           break;
         default:
           draw("imageBack", grassImg, x, y, null, 32);
