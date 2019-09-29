@@ -13,6 +13,7 @@ class TitleScreen extends Component {
       this.props.addPlayer(this.state.value);
     }
   };
+
   onChange = event => {
     this.setState({
       value: event.target.value

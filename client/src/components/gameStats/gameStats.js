@@ -12,7 +12,7 @@ function GameStats(props) {
           </p>
         </div>
         <div className="lobbyMembers col">
-          <p>Lobby: {props.lobbyMembers} / 5</p>
+          <p>There are {props.lobbyMembers} lobby members</p>
         </div>
       </div>
     </div>

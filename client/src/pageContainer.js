@@ -1,8 +1,9 @@
 import React, { Component } from "react";
 import TitleScreen from "./pages/titleScreen/titleScreen";
 import InGame from "./pages/inGame/inGame";
-import ScoreScreen from "./pages/scoreScreen/scoreScreen";
+import LocalScoreScreen from "./pages/localScoreScreen/localScoreScreen";
 import LobbySelection from "./pages/lobbySelection/lobbySelection";
+import GlobalScoreScreen from "./pages/globalScoreScreen/globalScoreScreen";
 
 class PageContainer extends Component {
   state = {
@@ -15,26 +16,13 @@ class PageContainer extends Component {
   handlePageChange = page => {
     this.setState({ currentPage: page });
   };
-  //This function will actually change the page
-  renderPage = () => {
-    if (this.state.page === "TitleScreen") {
-      return <TitleScreen addPlayer={this.addPlayer} />;
-    } else if (this.state.page === "LobbySelection") {
-      return (
-        <LobbySelection
-          lobbyMembers={this.state.lobbyMembers}
-          playerNames={this.state.playerNames}
-        />
-      );
-    } else if (this.state.page === "InGame") {
-      return <InGame />;
-    } else if (this.state.page === "ScoreScreen") {
-      return <ScoreScreen />;
-    } else {
-      return <TitleScreen />;
-    }
+  goToGame = event => {
+    console.log("goToGame");
+    event.preventDefault();
+    this.setState({
+      page: "InGame"
+    });
   };
-  //Not 100% on how to do this lmao, ask Andy
   addPlayer = playerName => {
     let newPlayers = this.state.playerNames;
     newPlayers.push(playerName);
@@ -44,7 +32,59 @@ class PageContainer extends Component {
       page: "LobbySelection"
     });
   };
-  // this.props.history.push("/lobby");
+
+  goToLocalScore = () => {
+    this.setState({
+      page: "LocalScoreScreen"
+    });
+  };
+  goToGlobalScore = () => {
+    this.setState({
+      page: "GlobalScoreScreen"
+    });
+  };
+  //This function will actually change the page
+  renderPage = () => {
+    console.log(this.page);
+    if (this.state.page === "TitleScreen") {
+      return <TitleScreen addPlayer={this.addPlayer} />;
+    } else if (this.state.page === "LobbySelection") {
+      return (
+        <LobbySelection
+          lobbyMembers={this.state.lobbyMembers}
+          playerNames={this.state.playerNames}
+          goToGame={this.goToGame}
+        />
+      );
+    } else if (this.state.page === "InGame") {
+      return (
+        <InGame
+          lobbyMembers={this.state.lobbyMembers}
+          playerNames={this.state.playerNames}
+          goToLocalScore={this.goToLocalScore}
+        />
+      );
+    } else if (this.state.page === "LocalScoreScreen") {
+      return (
+        <LocalScoreScreen
+          lobbyMembers={this.state.lobbyMembers}
+          playerNames={this.state.playerNames}
+          goToGlobalScore={this.goToGlobalScore}
+        />
+      );
+    } else if (this.state.page === "GlobalScoreScreen") {
+      return (
+        <GlobalScoreScreen
+          lobbyMembers={this.state.lobbyMembers}
+          playerNames={this.state.playerNames}
+          goToLocalScore={this.goToLocalScore}
+        />
+      );
+    } else {
+      return <TitleScreen />;
+    }
+  };
+
   render() {
     return (
       //This will be shifted into a chosing page function

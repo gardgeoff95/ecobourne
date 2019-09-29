@@ -25,6 +25,13 @@ class TitleScreen extends Component {
             lobbyMembers={this.props.lobbyMembers}
           />
         </div>
+        <form>
+          <input
+            type="submit"
+            value="Go to game"
+            onClick={this.props.goToGame}
+          />
+        </form>
       </div>
     );
   }
