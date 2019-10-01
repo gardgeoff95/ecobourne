@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Logo from "../../components/Logo/logo";
 
 class TitleScreen extends Component {
   state = {
@@ -25,7 +26,8 @@ class TitleScreen extends Component {
     return (
       <div className="container-fluid">
         <div className="titleSection">
-          <p>EcoBourne</p>
+          {/* <p>EcoBourne</p> */}
+          <Logo />
         </div>
         <div className="userInput">
           <form>
