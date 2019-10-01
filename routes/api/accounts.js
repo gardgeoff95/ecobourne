@@ -10,4 +10,6 @@ router.route("/:id")
     .put(accountController.update)
     .delete(accountController.remove);
 
+router.route(":/snapshots")
+
 module.exports = router;

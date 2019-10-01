@@ -4,7 +4,9 @@
   "description": "",
   "main": "main",
   "dependencies": {
-    "electron": "^6.0.10"
+    "electron": "^6.0.10",
+    "mongo": "^0.1.0",
+    "mongoose": "^5.7.3"
   },
   "devDependencies": {},
   "scripts": {
