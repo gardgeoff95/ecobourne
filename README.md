@@ -1,5 +1,5 @@
 # **ecobourne** 
-### A life Cycle Simulation
+### A Life Cycle Simulation
 ***
 #### How does it work?
 **ecobourne** is a game built with Electron to simulate the life cycle of animals in a controlled, yet evolving ecosystem. The environment is dynamically built using random variables to introduce a new experience each and every simulation that's run.
