@@ -31,6 +31,7 @@ class TitleScreen extends Component {
     console.log("My type of props: ", this.props);
     return (
       <Container>
+
         <div className="titleSection">
           <Logo />
         </div>
@@ -39,6 +40,7 @@ class TitleScreen extends Component {
           <form>
             <label>
               <input
+                placeholder=" Nickname"
                 type="text"
                 value={this.state.value}
                 onChange={this.onChange}

@@ -19,12 +19,28 @@ body {
     transform: translate(-50%, -50%);
 }
 
+
 form {
     position: absolute;
+    /* align-content: center; */
     top: 100%;
     left: 50%;
     transform: translate(-50%, -50%);
 }
+
+Button {
+    /* width: 25%; */
+    position: absolute;
+    top: 60px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+input {
+    border-radius: 25px;
+}
+
+/* Logo Load and animation */
 
 #logoEco {
     width: 50%;
@@ -124,3 +140,6 @@ form {
         fill: #86C232;
     }
 }
+
+/* end Logo Load  */
+
