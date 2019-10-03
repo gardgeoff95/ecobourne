@@ -3,9 +3,9 @@ const Schema = mongoose.Schema;
 
 const animalSchema = new Schema({
     race: { type: String, required: true },
-    number: { type: int, required: true }
+    number: { type: Number, required: true }
 });
 
-const Animal = mongoose.model("Animal", animalSchema);
+const animal = mongoose.model("animal", animalSchema);
 
-module.exports = Animal;
+module.exports = animal;

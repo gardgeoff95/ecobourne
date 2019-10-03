@@ -9,8 +9,14 @@ router.use("/accounts", accountsRoutes);
 // To look for animals
 router.use("/animals", animalsRoutes);
 
-module.exports = {
- Account: require("./accounts"),
- animal: require("./animal")
-}
+// For anything else, render the html page
+router.use(function(req, res) {
+    res.sendFile(path.join(__dirname, "../../client/build/index.html"));
+  });
+
+module.exports = router;
+// {
+//  Account: require("./accounts"),
+//  animal: require("./animal")
+// }
 

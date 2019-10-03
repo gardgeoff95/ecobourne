@@ -1,12 +1,12 @@
 const db = require("../models");
 
 module.exports = {
-    findAll = function(req, res){
+    findAll: function(req, res){
+        // res.send('htllo')
         db.account.find(req.query)
             .then(dbAccount => res.json(dbAccount))
             .catch(err => res.status(422).json(err));
-    }
-    ,
+    },
     findById: function(req, res){
         db.account.find(req.params.id)
         .then(dbAccount => res.json(dbAccount))

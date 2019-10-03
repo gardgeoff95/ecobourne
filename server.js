@@ -1,7 +1,5 @@
 const express = require("express");
 const mongoose = require("mongoose");
-
-// this causes error
 const routes = require("./routes");
 
 var PORT = process.env.PORT || 3001;

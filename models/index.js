@@ -1,5 +1,5 @@
 module.exports = {
-    Lobby: require("./lobby"),
-    Account: require("./account"),
-    Animal: require("./animal")
+    lobby: require("./lobby"),
+    account: require("./account"),
+    animal: require("./animal")
 };

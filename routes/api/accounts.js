@@ -1,22 +1,20 @@
 const router = require("express").Router();
-const accountController = ("../../controller/accountController");
+const accountController = require('../../controller/accountController')
 
 router.route("/")
-    .get(function(req, res){
-        res.send({message: `TODO: return all posts`});
-    })
-// .get(function(req, res) {
-//     console.log("this is the req from router", req)
-//     console.log("this is the res from router", res)
-// }).post(function(req, res){
-//     console.log("this is the req from router", req)
-//     console.log("this is the res from router", res)
-// });
+// .get(function(req,res){
+//     res.send({message:'TODO: return all posts'});
+//     })
+    .get(accountController.findAll)
+    .post(accountController.create);
 
 router.route("/:id")
+// .get(function(req,res){
+//     res.send({message:'TODO: return all posts'});
+//     })
     .get(accountController.findById)
     .put(accountController.update)
-    .delete(accountController.remove);
+    .delete(accountController.delete);
 
 // router.route("/snapshots")
 

@@ -5,14 +5,14 @@ var Schema = mongoose.Schema;
 var newSchema = new Schema({
     accounts: {
         type: Schema.Types.ObjectId,
-        ref: "Account"
+        ref: "account"
     },
     animals: {
         type: Schema.Types.ObjectId,
-        ref: "Animal"
+        ref: "animal"
     }
 });
 
-var NewArticles = mongoose.model("NewArticles", newSchema);
+var newArticles = mongoose.model("newArticles", newSchema);
 
-module.exports = NewArticles;
+module.exports = newArticles;
