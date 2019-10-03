@@ -1,7 +1,9 @@
 const express = require("express");
-
 const mongoose = require("mongoose");
+
+// this causes error
 const routes = require("./routes");
+
 var PORT = process.env.PORT || 3001;
 var app = express();
 
@@ -9,9 +11,11 @@ var app = express();
 app.use(express.urlencoded({ extended: true}));
 app.use(express.json());
 
-app.use(express.static("./"));
+if(process.env.NODE_ENV === "production"){
+    app.use(express.static("client/build"));
+}
 
-// app.use(routes);
+app.use(routes);
 
 // Connect to the Mongo DB
 mongoose.connect(
