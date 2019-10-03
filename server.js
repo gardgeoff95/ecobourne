@@ -1,22 +1,19 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const mongodb = require("mongodb");
-const io = require("socket.io");
 const app = express();
+const http = require("http").createServer(app);
 const PORT = process.env.PORT || 3000;
+const io = require("socket.io")(http);
 
 //Middleware things?
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 //I think this is the stuff that should render react? --Jamie
-if (process.env.NODE_ENV === "production") {
+if (process.env.NODE_ENV === "dev") {
   app.use(express.static("client/build"));
 }
-
-app.listen(PORT, function() {
-  console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
-});
 
 ///////////////////////////////////////////
 //Socket Stuff
@@ -43,4 +40,8 @@ io.on("connection", function(socket) {
   socket.on("disconnect", function() {
     console.log("user disconnected");
   });
+});
+
+http.listen(PORT, function() {
+  console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
 });
