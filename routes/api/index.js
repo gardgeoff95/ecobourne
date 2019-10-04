@@ -7,7 +7,7 @@ const animalsRoutes = require("./animal");
 router.use("/account", accountsRoutes);
 
 // To look for animals
-router.use("/animals", animalsRoutes);
+router.use("/animal", animalsRoutes);
 
 // For anything else, render the html page
 router.use(function(req, res) {

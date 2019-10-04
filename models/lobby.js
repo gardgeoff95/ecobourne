@@ -9,6 +9,6 @@ const lobbySchema = new Schema({
     user5: { type: String, require: false }
 })
 
-const lobby = mongoose.model("lobby", lobbySchema);
+const lobby = mongoose.model("Lobby", lobbySchema);
 
 module.exports = lobby;

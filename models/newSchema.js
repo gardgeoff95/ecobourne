@@ -2,6 +2,7 @@ var mongoose = require("mongoose");
 
 var Schema = mongoose.Schema;
 
+
 var newSchema = new Schema({
     accounts: {
         type: Schema.Types.ObjectId,
@@ -13,6 +14,6 @@ var newSchema = new Schema({
     }
 });
 
-var newArticles = mongoose.model("newArticles", newSchema);
+var newArticles = mongoose.model("NewArticles", newSchema);
 
 module.exports = newArticles;

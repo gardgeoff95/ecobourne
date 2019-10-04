@@ -3,8 +3,8 @@ const db = require("../models");
 module.exports = {
     findAll: function(req, res){
         db.animal.find(req.query)
-            .then(dbAnimal => res.json(dbAnimal))
-            .catch(err => res.status(422).json(err));
+        .then(dbAnimal => res.json(dbAnimal))
+        .catch(err => res.status(422).json(err));
     }
     ,
     findById: function(req, res){

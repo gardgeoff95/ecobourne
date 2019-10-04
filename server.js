@@ -13,16 +13,18 @@ if(process.env.NODE_ENV === "production"){
     app.use(express.static("client/build"));
 }
 
-app.use(routes);
 
 // Connect to the Mongo DB
 mongoose.connect(
-    process.env.MONGODB_URI || "mongodb://localhost/ecobourne",
+    process.env.MONGODB_URI || "mongodb://localhost:27017/ecobourne",
     {
         useNewUrlParser: true,
         useCreateIndex: true
     }
-);
+    );
+    
+app.use(routes);
+
 
 app.listen(PORT, () =>
     console.log(`API Server now listening to PORT ${PORT}`)
