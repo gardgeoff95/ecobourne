@@ -1,3 +1,5 @@
+const mongodb = require("mongodb");
+const io = require("socket.io");
 const express = require("express");
 const mongoose = require("mongoose");
 const routes = require("./routes");
@@ -25,7 +27,33 @@ mongoose.connect(
     
 app.use(routes);
 
+app.listen(PORT, function() {
+  console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
+});
 
-app.listen(PORT, () =>
-    console.log(`API Server now listening to PORT ${PORT}`)
-);
+///////////////////////////////////////////
+//Socket Stuff
+///////////////////////////////////////////
+
+var users = [];
+//Connects
+io.on("connection", function(socket) {
+  console.log("a user connected");
+
+  //Sends a chat message
+  socket.on("chat message", function(msg) {
+    console.log("My Chat Message listener", msg);
+
+    io.emit("chat message", msg);
+  });
+  //Deals with user name
+  socket.on("send-nickname", function(nickname) {
+    socket.nickname = nickname;
+    users.push(socket.nickname);
+    console.log(users);
+  });
+  //Shows that user disconnects
+  socket.on("disconnect", function() {
+    console.log("user disconnected");
+  });
+});
