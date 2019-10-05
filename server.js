@@ -1,11 +1,12 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const mongodb = require("mongodb");
-const io = require("socket.io");
 const routes = require("./routes");
 
 var PORT = process.env.PORT || 3000;
 var app = express();
+const http = require("http").createServer(app);
+const io = require("socket.io")(http);
 
 // Parse request body as JSON
 app.use(express.urlencoded({ extended: true}));
