@@ -2,7 +2,7 @@ import React from "react";
 import PageContainer from "./pageContainer.js";
 import { BrowserRouter, Route } from "react-router-dom";
 
-import Sidebar from './components/sidebar';
+import Sidebar from './components/Sidebar/sidebar';
 
 function App() {
   return (
