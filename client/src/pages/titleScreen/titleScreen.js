@@ -26,7 +26,6 @@ class TitleScreen extends Component {
     return (
       <div className="container-fluid">
         <div className="titleSection">
-          {/* <p>EcoBourne</p> */}
           <Logo />
         </div>
         <div className="userInput">

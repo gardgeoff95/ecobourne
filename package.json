@@ -2,7 +2,21 @@
   "name": "project-3",
   "version": "1.0.0",
   "description": "",
-  "main": "main",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gardgeoff95/Project-3.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gardgeoff95/Project-3/issues"
+  },
+  "homepage": "https://github.com/gardgeoff95/Project-3#readme",
   "dependencies": {
     "debug": "^4.1.1",
     "express": "^4.17.1",
@@ -16,11 +30,5 @@
     "safe-buffer": "^5.2.0",
     "semver": "^6.3.0",
     "socket.io": "^2.3.0"
-  },
-  "devDependencies": {},
-  "scripts": {
-    "start": "electron ."
-  },
-  "author": "",
-  "license": "ISC"
+  }
 }
