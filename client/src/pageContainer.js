@@ -14,16 +14,27 @@ class PageContainer extends Component {
       lobbyMembers: 0,
       page: "TitleScreen",
       userMessage: "",
-      currentUser: ""
+      finalMessage: "",
+      currentUser: "",
+      chatLog: []
     };
     //THIS NEEDS HELP
     this.socket = io("http://localhost:3000");
   }
   componentDidMount() {
-    let lobby = this.state.playerNames.length;
     this.socket.on("user listener", users => {
       console.log("NOW LISTENING");
       this.setState({ playerNames: users });
+    });
+
+    this.socket.on("chat message", data => {
+      console.log(data);
+      let newLog = this.state.chatLog;
+      newLog.push(data);
+      console.log(newLog);
+      this.setState({
+        chatLog: newLog
+      });
     });
   }
 
@@ -72,14 +83,23 @@ class PageContainer extends Component {
   };
   //This will submit the message to the server and load it to the page
   chatBtnClick = event => {
+    var message = this.state.userMessage;
+    this.setState({
+      finalMessage: message
+    });
     console.log(this.state.currentUser, this.state.userMessage);
     event.preventDefault();
-    this.socket.emit("chat message", this.state.userMessage);
+    let chatEntry = {
+      user: this.state.currentUser,
+      msg: this.state.userMessage
+    };
+    console.log(chatEntry);
+    this.socket.emit("chat message", chatEntry);
   };
 
   //This function will actually change the page
   renderPage = () => {
-    console.log(this.state);
+    console.log(this.state.chatLog);
     if (this.state.page === "TitleScreen") {
       return <TitleScreen addPlayer={this.addPlayer} />;
     } else if (this.state.page === "LobbySelection") {
@@ -88,10 +108,10 @@ class PageContainer extends Component {
           lobbyMembers={this.state.lobbyMembers}
           playerNames={this.state.playerNames}
           goToGame={this.goToGame}
+          // The params bellow are what the chat requires
           chatBtnClick={this.chatBtnClick}
           onMessageChange={this.onMessageChange}
-          userMessage={this.state.userMessage}
-          currentUser={this.state.currentUser}
+          chatLog={this.state.chatLog}
         />
       );
     } else if (this.state.page === "InGame") {
