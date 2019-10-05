@@ -283,3 +283,8 @@ input {
 .bm-menu{
     background: #222629;
 }
+
+
+/* media queries */
+
+/* change height variables to pixels on screen size change */
