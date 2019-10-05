@@ -3,7 +3,7 @@ import Button from 'react-bootstrap/Button';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Container from 'react-bootstrap/Container';
-import Logo from "./../../components/Logo/logo";
+import Logo from "../../components/logo/logo";
 import Logo2 from "./../../components/Logo2/logo2";
 import Modal from 'react-bootstrap/Modal';
 import Navbar from 'react-bootstrap/Navbar';
@@ -48,7 +48,7 @@ class TitleScreen extends Component {
             <label>
               <input
                 className="fadeIn"
-                placeholder=" Nickname"
+                placeholder="Nickname"
                 type="text"
                 value={this.state.value}
                 onChange={this.onChange}
