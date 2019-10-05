@@ -1,7 +1,7 @@
 import React from "react";
 
 function Chat(props) {
-  console.log(props);
+  console.log("hhhhh", props);
   return (
     <div>
       {/* In Styling this element should include the property list-style-type: none */}

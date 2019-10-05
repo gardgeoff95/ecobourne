@@ -22,7 +22,7 @@ if (process.env.NODE_ENV === "dev") {
 var users = [];
 //Connects
 io.on("connection", function(socket) {
-  console.log("a user connected");
+  // console.log("a user connected");
 
   //Sends a chat message
   socket.on("chat message", function(msg) {
@@ -31,15 +31,17 @@ io.on("connection", function(socket) {
     io.emit("chat message", msg);
   });
   //Deals with user name
-  socket.on("send-nickname", function(nickname) {
+  socket.on("user listener", function(nickname) {
     socket.nickname = nickname;
     users.push(socket.nickname);
-    console.log(users);
+
+    console.log("Users", users);
+    io.emit("user listener", users);
   });
   //Shows that user disconnects
-  socket.on("disconnect", function() {
-    console.log("user disconnected");
-  });
+  // socket.on("disconnect", function() {
+  //   console.log("user disconnected");
+  // });
 });
 
 http.listen(PORT, function() {

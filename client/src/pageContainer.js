@@ -10,8 +10,8 @@ class PageContainer extends Component {
   constructor() {
     super();
     this.state = {
-      lobbyMembers: 0,
       playerNames: [],
+      lobbyMembers: 0,
       page: "TitleScreen",
       userMessage: "",
       currentUser: ""
@@ -19,29 +19,34 @@ class PageContainer extends Component {
     //THIS NEEDS HELP
     this.socket = io("http://localhost:3000");
   }
+  componentDidMount() {
+    let lobby = this.state.playerNames.length;
+    this.socket.on("user listener", users => {
+      console.log("NOW LISTENING");
+      this.setState({ playerNames: users });
+    });
+  }
 
   //This function will handle the page being changed and passing that to the state
   handlePageChange = page => {
     this.setState({ currentPage: page });
   };
-  goToGame = event => {
-    console.log("goToGame");
-    event.preventDefault();
-    this.setState({
-      page: "InGame"
-    });
-  };
+
+  //This function adds players to the game
   addPlayer = playerName => {
     let newPlayers = this.state.playerNames;
     newPlayers.push(playerName);
+    let newLength = newPlayers.length;
+
     this.setState({
-      lobbyMembers: this.state.lobbyMembers + 1,
+      lobbyMembers: newLength,
       playerNames: newPlayers,
       page: "LobbySelection",
       currentUser: playerName
     });
+    this.socket.emit("user listener", playerName);
   };
-
+  //These are just place holder functions for now
   goToLocalScore = () => {
     this.setState({
       page: "LocalScoreScreen"
@@ -52,13 +57,20 @@ class PageContainer extends Component {
       page: "GlobalScoreScreen"
     });
   };
+  goToGame = event => {
+    event.preventDefault();
+    this.setState({
+      page: "InGame"
+    });
+  };
+
   //Tracking the user message
   onMessageChange = event => {
     this.setState({
       userMessage: event.target.value
     });
   };
-  //this will submit the message to the server and load it to the page
+  //This will submit the message to the server and load it to the page
   chatBtnClick = event => {
     console.log(this.state.currentUser, this.state.userMessage);
     event.preventDefault();
@@ -67,7 +79,7 @@ class PageContainer extends Component {
 
   //This function will actually change the page
   renderPage = () => {
-    console.log(this.page);
+    console.log(this.state);
     if (this.state.page === "TitleScreen") {
       return <TitleScreen addPlayer={this.addPlayer} />;
     } else if (this.state.page === "LobbySelection") {
@@ -78,8 +90,8 @@ class PageContainer extends Component {
           goToGame={this.goToGame}
           chatBtnClick={this.chatBtnClick}
           onMessageChange={this.onMessageChange}
-          userMessage={this.userMessage}
-          currentUser={this.currentUser}
+          userMessage={this.state.userMessage}
+          currentUser={this.state.currentUser}
         />
       );
     } else if (this.state.page === "InGame") {
