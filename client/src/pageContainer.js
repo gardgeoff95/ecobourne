@@ -17,7 +17,19 @@ class PageContainer extends Component {
       finalMessage: "",
       currentUser: "",
       chatLog: [],
-      fireBase: {}
+      bunnyStats: {
+        pop: 0,
+        starvation: 0,
+        preditor: 0
+      },
+      foxStats: {
+        pop: 0,
+        starvation: 0
+      },
+      bearStats: {
+        pop: 0,
+        starvation: 0
+      }
     };
     //THIS NEEDS HELP, andy required
     this.socket = io("http://localhost:3000");
@@ -121,6 +133,9 @@ class PageContainer extends Component {
           lobbyMembers={this.state.lobbyMembers}
           playerNames={this.state.playerNames}
           goToLocalScore={this.goToLocalScore}
+          bunnyStats={this.state.bunnyStats}
+          bearStats={this.state.bearStats}
+          foxStats={this.state.foxStats}
         />
       );
     } else if (this.state.page === "LocalScoreScreen") {

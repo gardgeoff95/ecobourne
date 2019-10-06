@@ -17,7 +17,11 @@ class InGame extends Component {
           playerNames={this.props.playerNames}
           lobbyMembers={this.props.lobbyMembers}
         />
-        <AnimalStats />
+        <AnimalStats
+          bunnyStats={this.props.bunnyStats}
+          foxStats={this.props.foxStats}
+          bearStats={this.props.bearStats}
+        />
       </div>
     );
   }
