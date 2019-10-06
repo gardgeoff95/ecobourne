@@ -2,7 +2,7 @@ import React from 'react';
 
 function Logo2() {
     return (
-        <svg class="fadeInUp" id="text2" width="455" height="46" viewBox="0 0 455 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <svg id="logoBourne" class="fadeInUp" id="text2" width="455" height="46" viewBox="0 0 455 46" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M25.16 36H29L16.28 2.4H13.112L0.440002 36H4.28L7.928 26.256H21.512L25.16 36ZM9.224 22.8L14.696 7.92L20.216 22.8H9.224Z" fill="#474B4F" />
             <path d="M50.2423 32.544V2.4H46.7863V36H66.9463V32.544H50.2423Z" fill="#474B4F" />
             <path d="M70.7383 36H74.2422V12.864H70.7383V36ZM72.4662 8.448C73.5702 8.448 74.4342 7.584 74.4342 6.528C74.4342 5.424 73.5702 4.56 72.4662 4.56C71.4102 4.56 70.5462 5.424 70.5462 6.528C70.5462 7.584 71.4102 8.448 72.4662 8.448Z" fill="#474B4F" />
