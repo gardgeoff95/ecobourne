@@ -1,7 +1,8 @@
 import React from "react";
 
 function Chat(props) {
-  console.log("hhhhh", props);
+  console.log("hhhhh", props.userMessage);
+
   return (
     <div>
       {/* In Styling this element should include the property list-style-type: none */}
@@ -23,6 +24,7 @@ function Chat(props) {
           id="message"
           autocomplete="off"
           name="userMessage"
+          value={props.userMessage}
           onChange={props.onMessageChange}
         />
         <button type="submit" onClick={props.chatBtnClick}>

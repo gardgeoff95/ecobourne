@@ -95,13 +95,17 @@ class PageContainer extends Component {
   };
   //This will submit the message to the server and load it to the page
   chatBtnClick = event => {
-    console.log(this.state.currentUser, this.state.userMessage);
+    console.log(this.state);
+
     event.preventDefault();
     let chatEntry = {
       user: this.state.currentUser,
       msg: this.state.userMessage
     };
-    console.log(chatEntry);
+    this.setState({
+      userMessage: ""
+    });
+
     this.socket.emit("chat message", chatEntry);
   };
 
@@ -120,6 +124,7 @@ class PageContainer extends Component {
           chatBtnClick={this.chatBtnClick}
           onMessageChange={this.onMessageChange}
           chatLog={this.state.chatLog}
+          userMessage={this.state.userMessage}
         />
       );
     } else if (this.state.page === "InGame") {
