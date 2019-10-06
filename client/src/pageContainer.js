@@ -16,9 +16,10 @@ class PageContainer extends Component {
       userMessage: "",
       finalMessage: "",
       currentUser: "",
-      chatLog: []
+      chatLog: [],
+      fireBase: {}
     };
-    //THIS NEEDS HELP
+    //THIS NEEDS HELP, andy required
     this.socket = io("http://localhost:3000");
   }
   componentDidMount() {
