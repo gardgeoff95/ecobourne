@@ -37,12 +37,12 @@ class TitleScreen extends Component {
     console.log("My type of props: ", this.props);
     return (
       <Container>
-        <div className="row">
+        <div>
           <div className="titleSection">
             <Logo />
           </div>
         </div>
-        <div className="row">
+        <div>
           <div>
             <Logo2 />
           </div>
