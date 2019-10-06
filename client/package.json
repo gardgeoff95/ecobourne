@@ -3,7 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@mobiscroll/cli": "^1.2.1",
     "bootstrap": "^4.3.1",
+    "mobiscroll": "^3.0.0-beta6",
     "react": "^16.9.0",
     "react-bootstrap": "^1.0.0-beta.12",
     "react-burger-menu": "^2.6.11",
