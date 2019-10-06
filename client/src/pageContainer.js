@@ -14,7 +14,6 @@ class PageContainer extends Component {
       lobbyMembers: 0,
       page: "TitleScreen",
       userMessage: "",
-      finalMessage: "",
       currentUser: "",
       chatLog: [],
       bunnyStats: {
@@ -96,10 +95,6 @@ class PageContainer extends Component {
   };
   //This will submit the message to the server and load it to the page
   chatBtnClick = event => {
-    var message = this.state.userMessage;
-    this.setState({
-      finalMessage: message
-    });
     console.log(this.state.currentUser, this.state.userMessage);
     event.preventDefault();
     let chatEntry = {
