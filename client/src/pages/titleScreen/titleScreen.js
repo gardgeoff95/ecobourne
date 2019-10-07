@@ -68,3 +68,41 @@ class TitleScreen extends Component {
 }
 
 export default TitleScreen;
+
+
+//   render() {
+//     console.log("My type of props: ", this.props);
+//     return (
+//       <Container>
+//         <Row className="justify-content-md-center">
+//           <Col xs lg='2' className="titleSection">
+//             <Logo />
+//           </Col>
+//         </Row>
+//         <Row className="justify-content-md-center">
+//           <Col xs lg='2'>
+//             <Logo2 />
+//           </Col>
+//         </Row>
+//         <Row className="userInput">
+//           <Col>
+//             <form>
+//               <label>
+//                 <input
+//                   className="fadeIn"
+//                   placeholder="Nickname"
+//                   type="text"
+//                   value={this.state.value}
+//                   onChange={this.onChange}
+//                 />
+//               </label>
+
+//               <button id="playBtn" variant="primary" type="submit" value="Submit" onClick={this.handleSubmit}>Play</button>
+//             </form>
+//           </Col>
+//         </Row>
+//       </Container>
+//     );
+//   }
+// }
+
