@@ -1,0 +1,13 @@
+.main {
+    display: grid;
+    grid-template-columns: 66%;
+    grid-template-rows: 500px;
+    justify-content: center;
+    /* border: 2px solid red; */
+}
+
+.logo {
+    justify-content: center;
+grid-row: 1/3;
+border: 3px solid orange;
+}
