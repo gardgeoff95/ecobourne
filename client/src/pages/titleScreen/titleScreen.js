@@ -36,32 +36,30 @@ class TitleScreen extends Component {
   render() {
     console.log("My type of props: ", this.props);
     return (
-      <Container>
-        <div>
-          <div className="titleSection">
-            <Logo />
-          </div>
-        </div>
-        <div>
-          <div>
-            <Logo2 />
-          </div>
-        </div>
-        <div className="userInput">
-          <form>
-            <label>
-              <input
-                className="fadeIn"
-                placeholder="Nickname"
-                type="text"
-                value={this.state.value}
-                onChange={this.onChange}
-              />
-            </label>
+      <Container fluid={true} id='1' >
+        <Row>
+          <Logo />
+        </Row>
+        <Row>
+          <Logo2 />
+        </Row>
+        <Row id='test'>
+          <div className="userInput">
+            <form>
+              <label>
+                <input
+                  className="fadeIn"
+                  placeholder="Nickname"
+                  type="text"
+                  value={this.state.value}
+                  onChange={this.onChange}
+                />
+              </label>
 
-            <button id="playBtn" variant="primary" type="submit" value="Submit" onClick={this.handleSubmit}>Play</button>
-          </form>
-        </div>
+              <button id="playBtn" variant="primary" type="submit" value="Submit" onClick={this.handleSubmit}>Play</button>
+            </form>
+          </div>
+        </Row>
       </Container>
     );
   }

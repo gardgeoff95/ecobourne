@@ -15,7 +15,7 @@ class BurgerMenu extends React.Component {
                             type="hamburger"
                         >
                             <mobiscroll.NavItem icon="user4">Create</mobiscroll.NavItem>
-                            <mobiscroll.NavItem icon="arrow-right2">Login</mobiscroll.NavItem>
+                            {/* <mobiscroll.NavItem icon="arrow-right2">Login</mobiscroll.NavItem> */}
                         </mobiscroll.HamburgerNav>
                     </div>
                 </mobiscroll.FormGroup>

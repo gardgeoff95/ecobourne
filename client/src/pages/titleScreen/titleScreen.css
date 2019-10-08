@@ -5,7 +5,7 @@
   box-sizing: border-box;
 }
 
-.row {
+#1 {
   border: 2px solid red;
 }
 
@@ -14,6 +14,11 @@ body {
   height: 100vh;
   /* background-image: url('/stripes.png'); */
   background-color: #1a1c1f;
+}
+
+#ecoCol {
+  position: absolute;
+  top: 36%;
 }
 
 .userInput {
@@ -289,5 +294,46 @@ input {
 
 
 /* media queries */
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+  /* Styles */
 
-/* change height variables to pixels on screen size change */
+  #ecoCol {
+    position: absolute;
+    top: 38%;
+  }
+
+  #text2 {
+    width: 60%;
+    position: absolute;
+    top: 42%;
+    left: 20%;
+  }
+
+  .userInput {
+    /* width: 35%; */
+    position: absolute;
+    top: 46%;
+    left: 50%;
+  }
+
+  #logoBourne {
+    width: 80%;
+    position: absolute;
+    top: 33%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* animation-name: bourne; */
+    animation: bourne 0.5s ease forwards 3.5s;
+  }
+  #logoEco {
+    width: 80%;
+    position: absolute;
+    top: 33%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* animation-name: eco; */
+    animation: eco 0.5s ease forwards 3.5s;
+}
+}  
+
+/* change height variables to pixels on screen size change  */
