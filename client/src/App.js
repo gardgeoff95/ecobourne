@@ -2,6 +2,7 @@ import React from "react";
 import PageContainer from "./pageContainer.js";
 import { BrowserRouter, Route } from "react-router-dom";
 
+<<<<<<< HEAD
 // import mobiscroll from "@mobiscroll/react";
 import "./mobiscroll/css/mobiscroll.animation.css";
 
@@ -13,6 +14,11 @@ function App() {
     <BrowserRouter>
       <BurgerMenu />
       {/* <Sidebar /> */}
+=======
+function App() {
+  return (
+    <BrowserRouter>
+>>>>>>> origin/develop
       <Route exact path="/" component={PageContainer} />
     </BrowserRouter>
   );

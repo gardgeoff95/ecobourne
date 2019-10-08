@@ -1,57 +1,57 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.0.0/journal/bootstrap.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-      crossorigin="anonymous"
-    />
-    <link
-      rel="stylesheet"
-      href="style.css"
-    />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
-    <link rel="apple-touch-icon" href="logo192.png" />
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
+<html>
+<head>
+	<title>.: Express Auth :.</title>
+	<style>
+		#konten{
+			display: grid;
+			grid-template-columns: 50% 50%;
+			max-width: 960px;
+			margin-left: 100px;
+			margin-right: 100px;
+		}
+	</style>
+</head>
+<body>
+	<center>
+	<h1>Simple Express Authentication</h1>
+	<hr>
+	<div id="konten">
 
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
-    <title>React App</title>
-  </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
-
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
-
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
-  </body>
+		<div class="signup">
+			<div>
+				<h3>Sign Up</h3>
+				<div>
+					<form action="/" method="post">
+						<input type="text" name="login" placeholder="Login..." required="">
+						<br><br>
+						<input type="text" name="username" placeholder="Username..." required="">
+						<br><br>
+						<input type="password" name="password" placeholder="Password..." required="">
+						<br><br>
+						<input type="password" name="passwordConf" placeholder="Confirm Password..." required="">
+						<br><br>
+						<input type="submit" value="Register Here!">
+					</form>
+				</div>
+			</div>
+		</div>
+		
+		<div class="login">
+			<div>
+				<h3>Login</h3>
+				<div>
+					<form action="/" method="post">
+						<input type="text" name="login" placeholder="Login..." required="">
+						<br><br>
+						<input type="password" name="logpassword" placeholder="Password..." required="">
+						<br><br>
+						<input type="submit" value="Login Now!">
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</center>				
+</body>
 </html>
