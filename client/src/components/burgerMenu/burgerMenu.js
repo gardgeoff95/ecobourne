@@ -1,5 +1,5 @@
 import React from 'react';
-import mobiscroll from '@mobiscroll/react';
+import mobiscroll from "@mobiscroll/react";
 import '@mobiscroll/react/dist/css/mobiscroll.min.css';
 
 import './burgerMenu.css';
