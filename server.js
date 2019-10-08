@@ -2,6 +2,9 @@ const express = require("express");
 const mongoose = require("mongoose");
 const mongodb = require("mongodb");
 const routes = require("./routes");
+const bodyParser = require("body-parser");
+const session = require("express-session");
+const MongoStore = require("connect-mongo")(session);
 
 var PORT = process.env.PORT || 3000;
 var app = express();
@@ -18,14 +21,30 @@ if(process.env.NODE_ENV === "production"){
 
 // Connect to the Mongo DB
 mongoose.connect(
-    process.env.MONGODB_URI || "mongodb://localhost:27017/ecobourne",
-    {
-        useNewUrlParser: true,
-        useCreateIndex: true
-    }
-    );
+  process.env.MONGODB_URI || "mongodb://localhost:27017/ecobourne",
+  {
+      useNewUrlParser: true,
+      useCreateIndex: true
+  }
+);
+
+var db = mongoose.connection;
+db.on('erro', console.error.bind(console, 'connection error'));
+db.once('open', function(){});
     
-app.use(routes);
+app.use(session({
+  secret: 'work hard',
+  resave: true,
+  saveUninitialized: false,
+  store: new MongoStore({
+    mongooseConnection: db
+  })
+}));
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: false}));
+
+app.use('/', routes);
 
 ///////////////////////////////////////////
 //Socket Stuff
