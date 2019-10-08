@@ -1,3 +1,4 @@
+const request = require("request");
 const path = require("path");
 const router = require("express").Router();
 const apiRoutes = require("./api/");
@@ -10,17 +11,26 @@ router.use("/api", apiRoutes);
 router.post('/', function (req, res, next) {
   
     if (req.body.password !== req.body.passwordConf) {
-      var err = new Error('Password doesn\'t match!');
-      err.status = 400;
-      res.send('Password doesn\'t match!');
-      return next(err);
+        var errorMessage = {
+            Error: "This aint workin"
+        }
+        return console.log(errorMessage);
+    //   var err = new Error('Password doesn\'t match!');
+    //   err.status = 400;
+    //   console.log('Password doesn\'t match!');
+    //   return next(err);
     }
   
     if (req.body.username &&
         req.body.login &&
         req.body.password &&
         req.body.passwordConf) {
-
+            
+            router.get('/', function(req, res){
+                for(var i = 0; i < 10; i++){
+                    console.log(`this is the req${req}`);
+                }
+            })
     var userData = {
         login: req.body.login,
         username: req.body.username,
@@ -60,18 +70,18 @@ router.get('/profile', function (req, res, next) {
     User.findById(req.session.userId)
       .exec(function (error, user) {
         if (error) {
-          return next(error);
+            return next(error);
         } else {
-          if (user === null) {
+            if (user === null) {
             var err = new Error('Not authorized! Go back!');
             err.status = 400;
             return next(err);
-          } else {
+            } else {
             return res.send(`<h2>Your name: </h2> ${user.username}\n<h2>Your login: </h2> ${user.login}\n<a type="button" href="/logout">Logout</a>`)
-          }
+            }
         }
-      });
-  });
+    });
+});
 
 // GET for logout
 router.get('/logout', function (req, res, next) {
@@ -85,7 +95,7 @@ router.get('/logout', function (req, res, next) {
         }
       });
     }
-  });
+});
 
 // If no API routes are hit, send the React app
 router.use((req, res) =>
