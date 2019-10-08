@@ -2,33 +2,40 @@
   "name": "project-3",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/gardgeoff95/Project-3.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/gardgeoff95/Project-3/issues"
-  },
-  "homepage": "https://github.com/gardgeoff95/Project-3#readme",
+  "main": "main",
   "dependencies": {
+    "bcrypt": "^3.0.6",
+    "body-parser": "^1.19.0",
+    "connect-mongo": "^3.0.0",
     "debug": "^4.1.1",
     "express": "^4.17.1",
+    "express-session": "^1.16.2",
     "isarray": "^2.0.5",
     "mongo": "^0.1.0",
     "mongodb": "^3.3.2",
     "mongoose": "^5.7.3",
+    "nodemon": "^1.19.3",
+    "parseurl": "^1.3.3",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
     "react-router-dom": "^5.1.2",
+    "request": "^2.88.0",
     "safe-buffer": "^5.2.0",
-    "semver": "^6.3.0",
     "socket.io": "^2.3.0"
-  }
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \\ \"Error: no test specified\\\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gardgeoff95/ecobourne.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gardgeoff95/ecobourne/issues"
+  },
+  "homepage": "https://github.com/gardgeoff95/ecobourne#readme"
 }
