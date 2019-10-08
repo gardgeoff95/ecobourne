@@ -38,6 +38,7 @@ class TitleScreen extends Component {
           onMessageChange={this.props.onMessageChange}
           userMessage={this.props.userMessage}
           currentUser={this.props.currentUser}
+          chatLog={this.props.chatLog}
         />
       </div>
     );

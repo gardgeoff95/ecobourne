@@ -12,7 +12,7 @@ function GameStats(props) {
           </p>
         </div>
         <div className="lobbyMembers col">
-          <p>There are {props.lobbyMembers} lobby members</p>
+          <p>There are {props.playerNames.length} lobby members</p>
         </div>
       </div>
     </div>

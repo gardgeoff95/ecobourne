@@ -70,9 +70,9 @@ io.on("connection", function(socket) {
     io.emit("user listener", users);
   });
   //Shows that user disconnects
-  // socket.on("disconnect", function() {
-  //   console.log("user disconnected");
-  // });
+  socket.on("disconnect", function() {
+    console.log("user disconnected");
+  });
 });
 
 http.listen(PORT, function() {
