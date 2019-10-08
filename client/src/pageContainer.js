@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import firebase from "firebase";
 import io from "socket.io-client";
 import TitleScreen from "./pages/titleScreen/titleScreen";
 import InGame from "./pages/inGame/inGame";
@@ -6,6 +7,27 @@ import LocalScoreScreen from "./pages/localScoreScreen/localScoreScreen";
 import LobbySelection from "./pages/lobbySelection/lobbySelection";
 import GlobalScoreScreen from "./pages/globalScoreScreen/globalScoreScreen";
 
+//Declaring the Firebase config used for transporting data back and forth from electron
+const firebaseConfig = {
+  apiKey: "AIzaSyAaktd7xWg2F92a5py9ZBB5fdsySImFOGQ",
+  authDomain: "ecobourne-fb892.firebaseapp.com",
+  databaseURL: "https://ecobourne-fb892.firebaseio.com",
+  projectId: "ecobourne-fb892",
+  storageBucket: "",
+  messagingSenderId: "342132988603",
+  appId: "1:342132988603:web:59feab64b679748217279e"
+};
+firebase.initializeApp(firebaseConfig);
+
+// database.ref("foxes").on("value", function(snap) {
+//   console.log(snap.val().deaths.starvation);
+// });
+
+// database.ref("bears").on("value", function(snap) {
+//   console.log(snap.val().deaths.starvation);
+// });
+
+//Class that will route for the client side
 class PageContainer extends Component {
   constructor() {
     super();
@@ -19,26 +41,29 @@ class PageContainer extends Component {
       bunnyStats: {
         pop: 0,
         starvation: 0,
-        preditor: 0
+        preditor: 0,
+        oldAge: 0
       },
       foxStats: {
         pop: 0,
-        starvation: 0
+        starvation: 0,
+        oldAge: 0
       },
       bearStats: {
         pop: 0,
-        starvation: 0
+        starvation: 0,
+        oldAge: 0
       }
     };
     //THIS NEEDS HELP, andy required
     this.socket = io("http://localhost:3000");
+    this.database = firebase.database();
   }
   componentDidMount() {
     this.socket.on("user listener", users => {
       console.log("NOW LISTENING");
       this.setState({ playerNames: users });
     });
-
     this.socket.on("chat message", data => {
       console.log(data);
       let newLog = this.state.chatLog;
@@ -47,6 +72,29 @@ class PageContainer extends Component {
       this.setState({
         chatLog: newLog
       });
+    });
+    this.database.ref("rabbits").on("value", snap => {
+      if (snap != null) {
+        let bunnyObj = {
+          starvation: snap.val().deaths.starvation,
+          oldAge: snap.val().deaths.oldAge
+        };
+        this.setState({
+          bunnyStats: bunnyObj
+        });
+      }
+    });
+    this.database.ref("foxes").on("value", snap => {
+      if (snap != null) {
+        let foxObj = {
+          starvation: snap.val().deaths.starvation,
+          predator: snap.val().deaths.predator,
+          oldAge: snap.val().deaths.oldAge
+        };
+        this.setState({
+          foxStats: foxObj
+        });
+      }
     });
   }
 
