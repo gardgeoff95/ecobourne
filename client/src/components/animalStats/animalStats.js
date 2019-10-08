@@ -18,7 +18,7 @@ function AnimalStats(props) {
               Death by Starvation: {props.bunnyStats.starvation}
             </p>
             <p className="deathByPreditor">
-              Death by Preditor: {props.bunnyStats.preditor}
+              Death by Predator: {props.bunnyStats.predator}
             </p>
             <p className="deathByOldAge">
               Death by Old Age: {props.bunnyStats.oldAge}
@@ -34,7 +34,7 @@ function AnimalStats(props) {
               Death by Starvation: {props.foxStats.starvation}
             </p>
             <p className="deathByOldAge">
-              Death by Old Age: {props.bunnyStats.oldAge}
+              Death by Old Age: {props.foxStats.oldAge}
             </p>
           </div>
         </div>
@@ -47,7 +47,7 @@ function AnimalStats(props) {
               Death by Starvation: {props.bearStats.starvation}
             </p>
             <p className="deathByOldAge">
-              Death by Old Age: {props.bunnyStats.oldAge}
+              Death by Old Age: {props.bearStats.oldAge}
             </p>
           </div>
         </div>
