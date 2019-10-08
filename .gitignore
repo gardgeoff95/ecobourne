@@ -1,2 +1,7 @@
 node_modules
+<<<<<<< HEAD
+client\node_modules
+=======
+src/node_modules
 client/node_modules
+>>>>>>> origin/develop
