@@ -10,60 +10,51 @@ router.use("/api", apiRoutes);
 //POST route for updating data
 router.post('/', function (req, res, next) {
   
-    if (req.body.password !== req.body.passwordConf) {
-        var errorMessage = {
-            Error: "This aint workin"
-        }
-        return console.log(errorMessage);
-    //   var err = new Error('Password doesn\'t match!');
-    //   err.status = 400;
-    //   console.log('Password doesn\'t match!');
-    //   return next(err);
-    }
-  
     if (req.body.username &&
         req.body.login &&
         req.body.password &&
         req.body.passwordConf) {
-            
-            router.get('/', function(req, res){
-                for(var i = 0; i < 10; i++){
-                    console.log(`this is the req${req}`);
+        
+        if (req.body.password !== req.body.passwordConf) {
+            var err = new Error('Password doesn\'t match!');
+            err.status = 400;
+            console.log('Password doesn\'t match!');
+            return next(res.json("hi"), setTimeout(function(){res.redirect('/')}, 3000));
+            // return next(res.redirect('/'));
+        } else if (req.body.login && req.body.logpassword) {
+            User.authenticate(req.body.login, req.body.logpassword, function (error, user) {
+                if (error || !user) {
+                var err = new Error('Wrong login or password!');
+                err.status = 401;
+                return next(err);
+                } else {
+                req.session.userId = user._id;
+                return res.redirect('/profile');
                 }
-            })
-    var userData = {
-        login: req.body.login,
-        username: req.body.username,
-        password: req.body.password,
-        passwordConf: req.body.passwordConf,
-    }
-  
-      User.create(userData, function (error, user) {
-        if (error) {
-          return next(error);
+            });
+        } else if (req.body.password === req.body.passwordConf) {
+            var userData = {
+            login: req.body.login,
+            username: req.body.username,
+            password: req.body.password,
+            passwordConf: req.body.passwordConf,
+            }
+
+            User.create(userData, function (error, user) {
+                if (error) {
+                return next(error);
+            } else {
+                req.session.userId = user._id;
+                return res.redirect('/profile');
+            }
+        });
         } else {
-          req.session.userId = user._id;
-          return res.redirect('/profile');
+            var err = new Error('All fields are required!');
+            err.status = 400;
+            return next(err);
         }
-      });
-  
-    } else if (req.body.login && req.body.logpassword) {
-      User.authenticate(req.body.login, req.body.logpassword, function (error, user) {
-        if (error || !user) {
-          var err = new Error('Wrong login or password!');
-          err.status = 401;
-          return next(err);
-        } else {
-          req.session.userId = user._id;
-          return res.redirect('/profile');
-        }
-      });
-    } else {
-      var err = new Error('All fields are required!');
-      err.status = 400;
-      return next(err);
     }
-  })
+});
 
 // GET route to redirect to '/profile' page after registering
 router.get('/profile', function (req, res, next) {
@@ -77,7 +68,7 @@ router.get('/profile', function (req, res, next) {
             err.status = 400;
             return next(err);
             } else {
-            return res.send(`<h2>Your name: </h2> ${user.username}\n<h2>Your login: </h2> ${user.login}\n<a type="button" href="/logout">Logout</a>`)
+            return res.send(`<h2>Your name: </h2> ${user.username}\n<h2>Your login: </h2> ${user.login}\n <br><hr><a type="button" href="/logout">Logout</a>`)
             }
         }
     });

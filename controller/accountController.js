@@ -4,7 +4,7 @@ module.exports = {
     findAll: function(req, res){
         // res.send('hello')
         db.account.find(req.query)
-        .then(dbAnimal => res.json(dbAnimal))
+        .then(dbAccount => res.json(dbAccount))
         .catch(err => res.status(422).json(err));
     },
     findById: function(req, res){
