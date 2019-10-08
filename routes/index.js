@@ -19,19 +19,8 @@ router.post('/', function (req, res, next) {
             var err = new Error('Password doesn\'t match!');
             err.status = 400;
             console.log('Password doesn\'t match!');
-            return next(res.json("hi"), setTimeout(function(){res.redirect('/')}, 3000));
+            return next(setTimeout(function(){res.redirect('/')}, 3000));
             // return next(res.redirect('/'));
-        } else if (req.body.login && req.body.logpassword) {
-            User.authenticate(req.body.login, req.body.logpassword, function (error, user) {
-                if (error || !user) {
-                var err = new Error('Wrong login or password!');
-                err.status = 401;
-                return next(err);
-                } else {
-                req.session.userId = user._id;
-                return res.redirect('/profile');
-                }
-            });
         } else if (req.body.password === req.body.passwordConf) {
             var userData = {
             login: req.body.login,
@@ -53,6 +42,17 @@ router.post('/', function (req, res, next) {
             err.status = 400;
             return next(err);
         }
+    } else if (req.body.login && req.body.logpassword) {
+        User.authenticate(req.body.login, req.body.logpassword, function (error, user) {
+            if (error || !user) {
+            var err = new Error('Wrong login or password!');
+            err.status = 401;
+            return next(err);
+            } else {
+            req.session.userId = user._id;
+            return res.redirect('/profile');
+            }
+        });
     }
 });
 
