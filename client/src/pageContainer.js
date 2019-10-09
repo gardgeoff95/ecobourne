@@ -4,12 +4,14 @@ import InGame from "./pages/inGame/inGame";
 import LocalScoreScreen from "./pages/localScoreScreen/localScoreScreen";
 import LobbySelection from "./pages/lobbySelection/lobbySelection";
 import GlobalScoreScreen from "./pages/globalScoreScreen/globalScoreScreen";
+import Login from './pages/login/login';
+import Signup from './pages/signup/signup';
 
 class PageContainer extends Component {
   state = {
     lobbyMembers: 0,
     playerNames: [],
-    page: "InGame"
+    page: ""
   };
 
   //This function will handle the page being changed and passing that to the state
@@ -41,6 +43,16 @@ class PageContainer extends Component {
   goToGlobalScore = () => {
     this.setState({
       page: "GlobalScoreScreen"
+    });
+  };
+  goToLogin = () => {
+    this.setState({
+      page: "login"
+    });
+  };
+  goToSignup = () => {
+    this.setState({
+      page: "signup"
     });
   };
   //This function will actually change the page
@@ -80,6 +92,14 @@ class PageContainer extends Component {
           goToLocalScore={this.goToLocalScore}
         />
       );
+    } else if (this.state.page === "signup") {
+      return (
+        <Signup />
+      )
+    } else if (this.state.page === "login") {
+      return (
+        <Login />
+      )
     } else {
       return <TitleScreen />;
     }
