@@ -18,20 +18,9 @@ router.post('/', function (req, res, next) {
         if (req.body.password !== req.body.passwordConf) {
             var err = new Error('Password doesn\'t match!');
             err.status = 400;
-            console.log('Password doesn\'t match!');
-            return next(res.json("hi"), setTimeout(function(){res.redirect('/')}, 3000));
+            return next(console.log(err));
+            // return next(setTimeout(function(){res.redirect('/')}, 3000));
             // return next(res.redirect('/'));
-        } else if (req.body.login && req.body.logpassword) {
-            User.authenticate(req.body.login, req.body.logpassword, function (error, user) {
-                if (error || !user) {
-                var err = new Error('Wrong login or password!');
-                err.status = 401;
-                return next(err);
-                } else {
-                req.session.userId = user._id;
-                return res.redirect('/profile');
-                }
-            });
         } else if (req.body.password === req.body.passwordConf) {
             var userData = {
             login: req.body.login,
@@ -53,6 +42,18 @@ router.post('/', function (req, res, next) {
             err.status = 400;
             return next(err);
         }
+    } else if (req.body.login && req.body.logpassword) {
+        User.authenticate(req.body.login, req.body.logpassword, function (error, user) {
+            if (error || !user) {
+            var err = new Error('Wrong login or password!');
+            err.status = 401;
+            // return next(err);
+            return next(console.log(err))
+            } else {
+            req.session.userId = user._id;
+            return res.redirect('/profile');
+            }
+        });
     }
 });
 
@@ -68,7 +69,16 @@ router.get('/profile', function (req, res, next) {
             err.status = 400;
             return next(err);
             } else {
-            return res.send(`<h2>Your name: </h2> ${user.username}\n<h2>Your login: </h2> ${user.login}\n <br><hr><a type="button" href="/logout">Logout</a>`)
+            return res.send(
+                `<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+                <div class="jumbotron">
+                    <h2>Your name: </h2> ${user.username}\n
+                    <h2>Your login: </h2> ${user.login}\n
+                    <br>
+                    <hr>
+                    <a type="button" href="/logout">Logout</a>
+                </div>`
+                )
             }
         }
     });
