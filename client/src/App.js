@@ -8,7 +8,7 @@ import '@mobiscroll/react/dist/css/mobiscroll.min.css';
 // import "./mobiscroll/css/mobiscroll.animation.css";
 
 import BurgerMenu from './components/burgerMenu/burgerMenu';
-import Login from './pages/login/login';
+// import Login from './pages/login/login';
 
 
 function App() {
