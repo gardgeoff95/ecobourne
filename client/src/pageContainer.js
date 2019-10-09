@@ -9,7 +9,7 @@ class PageContainer extends Component {
   state = {
     lobbyMembers: 0,
     playerNames: [],
-    page: "TitleScreen"
+    page: "InGame"
   };
 
   //This function will handle the page being changed and passing that to the state
