@@ -11,7 +11,7 @@
 
 body {
   width: 100;
-  height: 100vh;
+  /* height: 100vh; */
   /* background-image: url('/stripes.png'); */
   background-color: #1a1c1f;
 }
