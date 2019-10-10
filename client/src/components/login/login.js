@@ -1,7 +1,7 @@
 import React from 'react';
 import mobiscroll from '@mobiscroll/react';
 import '@mobiscroll/react/dist/css/mobiscroll.min.css';
-
+import {withRouter} from 'react-router-dom';
 import './login.css';
 
 class LoginForm extends React.Component {
@@ -79,8 +79,11 @@ class LoginForm extends React.Component {
     }
 
     submit = (event) => {
+        // event.preventDefault();
+        console.log('click')
+        this.setState({page: "TitleScreen"});
         const state = this.state;
-        event.preventDefault();
+        console.log(state)
         if (state.submitted && state.emailValid && state.passValid) {
             mobiscroll.toast({ message: (state.isLogin ? 'Login' : 'Signup') + ' success!' });
         } else {
@@ -105,7 +108,7 @@ class LoginForm extends React.Component {
                 method='POST'
                 onSubmit={this.submit}
                 novalidate
-            >
+            > 
                 <div className="md-logo micons icon-mbsc-logo"></div>
                 <mobiscroll.FormGroup inset>
                     <mobiscroll.Input type="text" name="login" placeholder="Login" value={this.state.login} />
@@ -115,10 +118,10 @@ class LoginForm extends React.Component {
                     <a href="#" onClick={this.signUp}>{this.state.signup}</a>
                 </mobiscroll.FormGroup>
                 <mobiscroll.FormGroup inset className="mbsc-padding">
-                    <mobiscroll.Button type="submit" onClick={} block={true}>{this.state.btnText}</mobiscroll.Button>
+                    <mobiscroll.Button type="submit" block={true}>{this.state.btnText}</mobiscroll.Button>
                 </mobiscroll.FormGroup>
             </mobiscroll.Form>
         );
     }
 }
-export default LoginForm;
+export default withRouter(LoginForm);

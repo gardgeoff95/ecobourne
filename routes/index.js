@@ -51,8 +51,11 @@ router.post('/', function (req, res, next) {
                 return next(console.log(err))
             } else {
                 req.session.userId = user._id;
-                return console.log("logged in");
-                ;
+                return (
+                    console.log("this is user", user),
+                    console.log("logged in")
+                    // res.json(user)
+                );
             }
         });
     }
