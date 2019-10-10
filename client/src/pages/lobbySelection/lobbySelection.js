@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import GameStats from "./../../components/gameStats/gameStats";
+import Chat from '../../components/chat/chat';
+
 
 class LobbySelection extends Component {
   state = {};
@@ -15,7 +17,7 @@ class LobbySelection extends Component {
   };
 
   render() {
-    console.log("My type of props: ", this.props);
+    console.log(<Chat />);
     return (
       <div className="container-fluid">
         <div className="titleSection">
@@ -32,6 +34,13 @@ class LobbySelection extends Component {
             onClick={this.props.goToGame}
           />
         </form>
+        <Chat
+          chatBtnClick={this.props.chatBtnClick}
+          onMessageChange={this.props.onMessageChange}
+          userMessage={this.props.userMessage}
+          currentUser={this.props.currentUser}
+          chatLog={this.props.chatLog}
+        />
       </div>
     );
   }
