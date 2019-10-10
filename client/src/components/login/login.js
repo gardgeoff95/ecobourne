@@ -115,7 +115,7 @@ class LoginForm extends React.Component {
                     <a href="#" onClick={this.signUp}>{this.state.signup}</a>
                 </mobiscroll.FormGroup>
                 <mobiscroll.FormGroup inset className="mbsc-padding">
-                    <mobiscroll.Button type="submit" block={true}>{this.state.btnText}</mobiscroll.Button>
+                    <mobiscroll.Button type="submit" onClick={} block={true}>{this.state.btnText}</mobiscroll.Button>
                 </mobiscroll.FormGroup>
             </mobiscroll.Form>
         );
