@@ -4,6 +4,18 @@ import InGame from "./pages/inGame/inGame";
 import LocalScoreScreen from "./pages/localScoreScreen/localScoreScreen";
 import LobbySelection from "./pages/lobbySelection/lobbySelection";
 import GlobalScoreScreen from "./pages/globalScoreScreen/globalScoreScreen";
+import io from "socket.io-client"
+import firebase from "firebase"
+const firebaseConfig = {
+  apiKey: "AIzaSyAaktd7xWg2F92a5py9ZBB5fdsySImFOGQ",
+  authDomain: "ecobourne-fb892.firebaseapp.com",
+  databaseURL: "https://ecobourne-fb892.firebaseio.com",
+  projectId: "ecobourne-fb892",
+  storageBucket: "",
+  messagingSenderId: "342132988603",
+  appId: "1:342132988603:web:59feab64b679748217279e"
+ };
+ firebase.initializeApp(firebaseConfig);  
 
 class PageContainer extends Component {
   constructor() {
