@@ -5,7 +5,8 @@ import LocalScoreScreen from "./pages/localScoreScreen/localScoreScreen";
 import LobbySelection from "./pages/lobbySelection/lobbySelection";
 import GlobalScoreScreen from "./pages/globalScoreScreen/globalScoreScreen";
 import Login from './pages/login/login';
-import Signup from './pages/signup/signup';
+import Signup from './components/signup/signup';
+import BurgerMenu from "./components/burgerMenu/burgerMenu";
 
 class PageContainer extends Component {
   state = {
@@ -55,9 +56,14 @@ class PageContainer extends Component {
       page: "signup"
     });
   };
+  goToTitleScreen = () => {
+    this.setState({
+      page: "TitleScreen"
+    });
+  };
   //This function will actually change the page
   renderPage = () => {
-    console.log(this.page);
+    console.log('CURRENT PAGE', this.state.page);
     if (this.state.page === "TitleScreen") {
       return <TitleScreen addPlayer={this.addPlayer} />;
     } else if (this.state.page === "LobbySelection") {
@@ -93,6 +99,7 @@ class PageContainer extends Component {
         />
       );
     } else if (this.state.page === "signup") {
+      console.log('OVER HERE')
       return (
         <Signup />
       )
@@ -108,7 +115,14 @@ class PageContainer extends Component {
   render() {
     return (
       //This will be shifted into a chosing page function
-      <div>{this.renderPage()}</div>
+      <div>
+        <BurgerMenu
+          goToHome={this.goToTitleScreen}
+          goToLogin={this.goToLogin}
+          goToSignUp={this.goToSignup}
+        />
+        {this.renderPage()}
+      </div>
     );
   }
 }

@@ -7,15 +7,17 @@ import '@mobiscroll/react/dist/css/mobiscroll.min.css';
 
 // import "./mobiscroll/css/mobiscroll.animation.css";
 
-import BurgerMenu from './components/burgerMenu/burgerMenu';
+// import BurgerMenu from './components/burgerMenu/burgerMenu';
+import TitleScreen from "./pages/titleScreen/titleScreen.js";
+
 // import Login from './pages/login/login';
 
 
 function App() {
   return (
     <BrowserRouter>
-      <BurgerMenu />
       <Route exact path="/" component={PageContainer} />
+      <Route exact path="/landing" component={TitleScreen} />
     </BrowserRouter>
   );
 }

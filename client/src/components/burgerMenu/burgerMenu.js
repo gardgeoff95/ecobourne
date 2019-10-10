@@ -15,16 +15,13 @@ class BurgerMenu extends React.Component {
                     <div className="md-hamb mbsc-padding">
                         <mobiscroll.HamburgerNav theme="ios" type="hamburger">
                             <mobiscroll.NavItem
-                                to="/"
-                                type="submit"
-                                value="Go to Title Screen"
-                                onClick={this.props.titleScreen}
+                                onClick={this.props.goToHome}
                                 icon="home">Home</mobiscroll.NavItem>
                             <mobiscroll.NavItem
-                                to="signup"
+                                onClick={this.props.goToSignUp}
                                 icon="user4">Create</mobiscroll.NavItem>
                             <mobiscroll.NavItem
-                                to="login"
+                                onClick={this.props.goToLogin}
                                 icon="arrow-right2">Login</mobiscroll.NavItem>
                         </mobiscroll.HamburgerNav>
                     </div>
