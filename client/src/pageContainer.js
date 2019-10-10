@@ -8,12 +8,50 @@ import Login from './pages/login/login';
 import Signup from './components/signup/signup';
 import BurgerMenu from "./components/burgerMenu/burgerMenu";
 
+import io from "socket.io-client"
+import firebase from "firebase"
+const firebaseConfig = {
+  apiKey: "AIzaSyAaktd7xWg2F92a5py9ZBB5fdsySImFOGQ",
+  authDomain: "ecobourne-fb892.firebaseapp.com",
+  databaseURL: "https://ecobourne-fb892.firebaseio.com",
+  projectId: "ecobourne-fb892",
+  storageBucket: "",
+  messagingSenderId: "342132988603",
+  appId: "1:342132988603:web:59feab64b679748217279e"
+};
+firebase.initializeApp(firebaseConfig);
+
 class PageContainer extends Component {
-  state = {
-    lobbyMembers: 0,
-    playerNames: [],
-    page: ""
-  };
+  constructor() {
+    super();
+    this.state = {
+      playerNames: [],
+      lobbyMembers: 0,
+      page: "TitleScreen",
+      userMessage: "",
+      currentUser: "",
+      chatLog: [],
+      bunnyStats: {
+        pop: 0,
+        starvation: 0,
+        predator: 0,
+        oldAge: 0
+      },
+      foxStats: {
+        pop: 0,
+        starvation: 0,
+        oldAge: 0
+      },
+      bearStats: {
+        pop: 0,
+        starvation: 0,
+        oldAge: 0
+      }
+    };
+    //THIS NEEDS HELP, andy required
+    this.socket = io("window.location.hostname");
+    this.database = firebase.database();
+  }
 
   //This function will handle the page being changed and passing that to the state
   handlePageChange = page => {

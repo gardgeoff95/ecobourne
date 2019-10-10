@@ -2,10 +2,11 @@
   "name": "project-3",
   "version": "1.0.0",
   "description": "",
-  "main": "main",
+  "main": "server.js",
   "dependencies": {
     "bcrypt": "^3.0.6",
     "body-parser": "^1.19.0",
+    "concurrently": "^5.0.0",
     "connect-mongo": "^3.0.0",
     "debug": "^4.1.1",
     "express": "^4.17.1",

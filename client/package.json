@@ -6,6 +6,7 @@
     "dependencies": {
         "@mobiscroll/react": "https://npm.mobiscroll.com/@mobiscroll/react-trial/-/react-trial-4.8.3.tgz",
         "bootstrap": "^4.3.1",
+        "firebase": "^7.1.0",
         "mobiscroll": "^3.0.0-beta6",
         "react": "^16.9.0",
         "react-bootstrap": "^1.0.0-beta.12",

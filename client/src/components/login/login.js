@@ -101,20 +101,18 @@ class LoginForm extends React.Component {
             <mobiscroll.Form
                 theme="ios"
                 className="md-login-form"
-                action="/login"
+                action="/"
                 method='POST'
                 onSubmit={this.submit}
                 novalidate
             >
                 <div className="md-logo micons icon-mbsc-logo"></div>
                 <mobiscroll.FormGroup inset>
-                    <mobiscroll.Input type="email" name="Email" placeholder="Email" value={this.state.email} onChange={this.emailChange} valid={this.state.emailValid} errorMessage={this.state.emailError} />
-                    <mobiscroll.Input type="password" name="Password" placeholder="Password" passwordToggle={true} icon="none" iconAlign="right" value={this.state.pass} onChange={this.passChange} valid={this.state.passValid} errorMessage={this.state.passError} />
+                    <mobiscroll.Input type="text" name="login" placeholder="Login" value={this.state.login} />
+                    <mobiscroll.Input type="password" name="logpassword" placeholder="Password" passwordToggle={true} icon="none" iconAlign="right" value={this.state.pass} onChange={this.passChange} />
                 </mobiscroll.FormGroup>
                 <mobiscroll.FormGroup inset className="mbsc-padding mbsc-align-center">
                     <a href="#" onClick={this.signUp}>{this.state.signup}</a>
-                    <br /><br />
-                    <a href="#" onClick={this.password}>Forgot password?</a>
                 </mobiscroll.FormGroup>
                 <mobiscroll.FormGroup inset className="mbsc-padding">
                     <mobiscroll.Button type="submit" block={true}>{this.state.btnText}</mobiscroll.Button>
