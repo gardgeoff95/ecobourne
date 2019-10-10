@@ -20,7 +20,7 @@ class PageContainer extends Component {
     console.log("goToGame");
     event.preventDefault();
     this.setState({
-      page: "InGame"
+      page: "TitleScreen"
     });
   };
   addPlayer = playerName => {
