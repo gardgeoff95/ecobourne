@@ -6,7 +6,7 @@ const bodyParser = require("body-parser");
 const session = require("express-session");
 const MongoStore = require("connect-mongo")(session);
 
-var PORT = process.env.PORT || 3000;
+var PORT = process.env.PORT || 3001;
 var app = express();
 const http = require("http").createServer(app);
 const io = require("socket.io")(http);
