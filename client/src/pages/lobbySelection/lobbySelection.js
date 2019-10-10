@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import GameStats from "./../../components/gameStats/gameStats";
 
-class TitleScreen extends Component {
+class LobbySelection extends Component {
   state = {};
 
   handleSubmit = event => {
@@ -37,4 +37,4 @@ class TitleScreen extends Component {
   }
 }
 
-export default TitleScreen;
+export default LobbySelection;

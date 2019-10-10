@@ -4,6 +4,10 @@ import InGame from "./pages/inGame/inGame";
 import LocalScoreScreen from "./pages/localScoreScreen/localScoreScreen";
 import LobbySelection from "./pages/lobbySelection/lobbySelection";
 import GlobalScoreScreen from "./pages/globalScoreScreen/globalScoreScreen";
+import Login from './pages/login/login';
+import Signup from './components/signup/signup';
+import BurgerMenu from "./components/burgerMenu/burgerMenu";
+
 import io from "socket.io-client"
 import firebase from "firebase"
 const firebaseConfig = {
@@ -14,9 +18,8 @@ const firebaseConfig = {
   storageBucket: "",
   messagingSenderId: "342132988603",
   appId: "1:342132988603:web:59feab64b679748217279e"
- };
- firebase.initializeApp(firebaseConfig);  
-
+};
+firebase.initializeApp(firebaseConfig);
 class PageContainer extends Component {
   constructor() {
     super();
@@ -118,9 +121,24 @@ class PageContainer extends Component {
       page: "GlobalScoreScreen"
     });
   };
+  goToLogin = () => {
+    this.setState({
+      page: "login"
+    });
+  };
+  goToSignup = () => {
+    this.setState({
+      page: "signup"
+    });
+  };
+  goToTitleScreen = () => {
+    this.setState({
+      page: "TitleScreen"
+    });
+  };
   //This function will actually change the page
   renderPage = () => {
-    console.log(this.page);
+    console.log('CURRENT PAGE', this.state.page);
     if (this.state.page === "TitleScreen") {
       return <TitleScreen addPlayer={this.addPlayer} />;
     } else if (this.state.page === "LobbySelection") {
@@ -155,6 +173,15 @@ class PageContainer extends Component {
           goToLocalScore={this.goToLocalScore}
         />
       );
+    } else if (this.state.page === "signup") {
+      console.log('OVER HERE')
+      return (
+        <Signup />
+      )
+    } else if (this.state.page === "login") {
+      return (
+        <Login />
+      )
     } else {
       return <TitleScreen />;
     }
@@ -163,7 +190,14 @@ class PageContainer extends Component {
   render() {
     return (
       //This will be shifted into a chosing page function
-      <div>{this.renderPage()}</div>
+      <div>
+        <BurgerMenu
+          goToHome={this.goToTitleScreen}
+          goToLogin={this.goToLogin}
+          goToSignUp={this.goToSignup}
+        />
+        {this.renderPage()}
+      </div>
     );
   }
 }
