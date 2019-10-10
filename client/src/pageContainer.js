@@ -6,11 +6,74 @@ import LobbySelection from "./pages/lobbySelection/lobbySelection";
 import GlobalScoreScreen from "./pages/globalScoreScreen/globalScoreScreen";
 
 class PageContainer extends Component {
-  state = {
-    lobbyMembers: 0,
-    playerNames: [],
-    page: "InGame"
-  };
+  constructor() {
+    super();
+    this.state = {
+      playerNames: [],
+      lobbyMembers: 0,
+      page: "TitleScreen",
+      userMessage: "",
+      currentUser: "",
+      chatLog: [],
+      bunnyStats: {
+        pop: 0,
+        starvation: 0,
+        predator: 0,
+        oldAge: 0
+      },
+      foxStats: {
+        pop: 0,
+        starvation: 0,
+        oldAge: 0
+      },
+      bearStats: {
+        pop: 0,
+        starvation: 0,
+        oldAge: 0
+      }
+    };
+    //THIS NEEDS HELP, andy required
+    this.socket = io("http://localhost:3000");
+    this.database = firebase.database();
+  }
+  componentDidMount() {
+    this.socket.on("user listener", users => {
+      console.log("NOW LISTENING");
+      this.setState({ playerNames: users });
+    });
+    this.socket.on("chat message", data => {
+      console.log(data);
+      let newLog = this.state.chatLog;
+      newLog.push(data);
+      console.log(newLog);
+      this.setState({
+        chatLog: newLog
+      });
+    });
+    this.database.ref("rabbits").on("value", snap => {
+      if (snap.val() != null) {
+        let bunnyObj = {
+          starvation: snap.val().deaths.starvation,
+          predator: snap.val().deaths.predator,
+          oldAge: snap.val().deaths.oldAge
+        };
+        this.setState({
+          bunnyStats: bunnyObj
+        });
+      }
+    });
+    this.database.ref("foxes").on("value", snap => {
+      if (snap.val() != null) {
+        let foxObj = {
+          starvation: snap.val().deaths.starvation,
+          oldAge: snap.val().deaths.oldAge
+        };
+        this.setState({
+          foxStats: foxObj
+        });
+      }
+    });
+  }
 
   //This function will handle the page being changed and passing that to the state
   handlePageChange = page => {
