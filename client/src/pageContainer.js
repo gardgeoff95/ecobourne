@@ -20,7 +20,6 @@ const firebaseConfig = {
   appId: "1:342132988603:web:59feab64b679748217279e"
 };
 firebase.initializeApp(firebaseConfig);
-
 class PageContainer extends Component {
   constructor() {
     super();
@@ -52,6 +51,44 @@ class PageContainer extends Component {
     this.socket = io("window.location.hostname");
     this.database = firebase.database();
   }
+  componentDidMount() {
+    this.socket.on("user listener", users => {
+      console.log("NOW LISTENING");
+      this.setState({ playerNames: users });
+    });
+    this.socket.on("chat message", data => {
+      console.log(data);
+      let newLog = this.state.chatLog;
+      newLog.push(data);
+      console.log(newLog);
+      this.setState({
+        chatLog: newLog
+      });
+    });
+    this.database.ref("rabbits").on("value", snap => {
+      if (snap.val() != null) {
+        let bunnyObj = {
+          starvation: snap.val().deaths.starvation,
+          predator: snap.val().deaths.predator,
+          oldAge: snap.val().deaths.oldAge
+        };
+        this.setState({
+          bunnyStats: bunnyObj
+        });
+      }
+    });
+    this.database.ref("foxes").on("value", snap => {
+      if (snap.val() != null) {
+        let foxObj = {
+          starvation: snap.val().deaths.starvation,
+          oldAge: snap.val().deaths.oldAge
+        };
+        this.setState({
+          foxStats: foxObj
+        });
+      }
+    });
+  }
 
   //This function will handle the page being changed and passing that to the state
   handlePageChange = page => {
@@ -61,7 +98,7 @@ class PageContainer extends Component {
     console.log("goToGame");
     event.preventDefault();
     this.setState({
-      page: "InGame"
+      page: "TitleScreen"
     });
   };
   addPlayer = playerName => {
