@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import GameStats from "./../../components/gameStats/gameStats";
-import Chat from "./../../components/chat/chat";
 
 class TitleScreen extends Component {
   state = {};
@@ -33,13 +32,6 @@ class TitleScreen extends Component {
             onClick={this.props.goToGame}
           />
         </form>
-        <Chat
-          chatBtnClick={this.props.chatBtnClick}
-          onMessageChange={this.props.onMessageChange}
-          userMessage={this.props.userMessage}
-          currentUser={this.props.currentUser}
-          chatLog={this.props.chatLog}
-        />
       </div>
     );
   }

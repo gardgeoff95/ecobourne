@@ -1,33 +1,10 @@
 import React, { Component } from "react";
-import firebase from "firebase";
-import io from "socket.io-client";
 import TitleScreen from "./pages/titleScreen/titleScreen";
 import InGame from "./pages/inGame/inGame";
 import LocalScoreScreen from "./pages/localScoreScreen/localScoreScreen";
 import LobbySelection from "./pages/lobbySelection/lobbySelection";
 import GlobalScoreScreen from "./pages/globalScoreScreen/globalScoreScreen";
 
-//Declaring the Firebase config used for transporting data back and forth from electron
-const firebaseConfig = {
-  apiKey: "AIzaSyAaktd7xWg2F92a5py9ZBB5fdsySImFOGQ",
-  authDomain: "ecobourne-fb892.firebaseapp.com",
-  databaseURL: "https://ecobourne-fb892.firebaseio.com",
-  projectId: "ecobourne-fb892",
-  storageBucket: "",
-  messagingSenderId: "342132988603",
-  appId: "1:342132988603:web:59feab64b679748217279e"
-};
-firebase.initializeApp(firebaseConfig);
-
-// database.ref("foxes").on("value", function(snap) {
-//   console.log(snap.val().deaths.starvation);
-// });
-
-// database.ref("bears").on("value", function(snap) {
-//   console.log(snap.val().deaths.starvation);
-// });
-
-//Class that will route for the client side
 class PageContainer extends Component {
   constructor() {
     super();
@@ -102,22 +79,23 @@ class PageContainer extends Component {
   handlePageChange = page => {
     this.setState({ currentPage: page });
   };
-
-  //This function adds players to the game
+  goToGame = event => {
+    console.log("goToGame");
+    event.preventDefault();
+    this.setState({
+      page: "InGame"
+    });
+  };
   addPlayer = playerName => {
     let newPlayers = this.state.playerNames;
     newPlayers.push(playerName);
-    let newLength = newPlayers.length;
-
     this.setState({
-      lobbyMembers: newLength,
+      lobbyMembers: this.state.lobbyMembers + 1,
       playerNames: newPlayers,
-      page: "LobbySelection",
-      currentUser: playerName
+      page: "LobbySelection"
     });
-    this.socket.emit("user listener", playerName);
   };
-  //These are just place holder functions for now
+
   goToLocalScore = () => {
     this.setState({
       page: "LocalScoreScreen"
@@ -128,38 +106,9 @@ class PageContainer extends Component {
       page: "GlobalScoreScreen"
     });
   };
-  goToGame = event => {
-    event.preventDefault();
-    this.setState({
-      page: "InGame"
-    });
-  };
-
-  //Tracking the user message
-  onMessageChange = event => {
-    this.setState({
-      userMessage: event.target.value
-    });
-  };
-  //This will submit the message to the server and load it to the page
-  chatBtnClick = event => {
-    console.log(this.state);
-
-    event.preventDefault();
-    let chatEntry = {
-      user: this.state.currentUser,
-      msg: this.state.userMessage
-    };
-    this.setState({
-      userMessage: ""
-    });
-
-    this.socket.emit("chat message", chatEntry);
-  };
-
   //This function will actually change the page
   renderPage = () => {
-    console.log(this.state.chatLog);
+    console.log(this.page);
     if (this.state.page === "TitleScreen") {
       return <TitleScreen addPlayer={this.addPlayer} />;
     } else if (this.state.page === "LobbySelection") {
@@ -168,11 +117,6 @@ class PageContainer extends Component {
           lobbyMembers={this.state.lobbyMembers}
           playerNames={this.state.playerNames}
           goToGame={this.goToGame}
-          // The params bellow are what the chat requires
-          chatBtnClick={this.chatBtnClick}
-          onMessageChange={this.onMessageChange}
-          chatLog={this.state.chatLog}
-          userMessage={this.state.userMessage}
         />
       );
     } else if (this.state.page === "InGame") {
@@ -181,9 +125,6 @@ class PageContainer extends Component {
           lobbyMembers={this.state.lobbyMembers}
           playerNames={this.state.playerNames}
           goToLocalScore={this.goToLocalScore}
-          bunnyStats={this.state.bunnyStats}
-          bearStats={this.state.bearStats}
-          foxStats={this.state.foxStats}
         />
       );
     } else if (this.state.page === "LocalScoreScreen") {

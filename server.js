@@ -1,19 +1,50 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const mongodb = require("mongodb");
-const app = express();
+const routes = require("./routes");
+const bodyParser = require("body-parser");
+const session = require("express-session");
+const MongoStore = require("connect-mongo")(session);
+
+var PORT = process.env.PORT || 3000;
+var app = express();
 const http = require("http").createServer(app);
-const PORT = process.env.PORT || 3000;
 const io = require("socket.io")(http);
 
-//Middleware things?
-app.use(express.urlencoded({ extended: true }));
+// Parse request body as JSON
+app.use(express.urlencoded({ extended: true}));
 app.use(express.json());
 
-//I think this is the stuff that should render react? --Jamie
-if (process.env.NODE_ENV === "dev") {
-  app.use(express.static("client/build"));
+if(process.env.NODE_ENV === "production"){
+    app.use(express.static("client/build"));
 }
+
+// Connect to the Mongo DB
+mongoose.connect(
+  process.env.MONGODB_URI || "mongodb://localhost:27017/ecobourne",
+  {
+      useNewUrlParser: true,
+      useCreateIndex: true
+  }
+);
+
+var db = mongoose.connection;
+db.on('erro', console.error.bind(console, 'connection error'));
+db.once('open', function(){});
+    
+app.use(session({
+  secret: 'work hard',
+  resave: true,
+  saveUninitialized: false,
+  store: new MongoStore({
+    mongooseConnection: db
+  })
+}));
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: false}));
+
+app.use('/', routes);
 
 ///////////////////////////////////////////
 //Socket Stuff
