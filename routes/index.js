@@ -11,7 +11,7 @@ router.use("/api", apiRoutes);
 router.post('/', function (req, res, next) {
 
     if (req.body.username &&
-        req.body.login &&
+        req.body.email &&
         req.body.password &&
         req.body.passwordConf) {
 
@@ -23,7 +23,7 @@ router.post('/', function (req, res, next) {
             // return next(res.redirect('/'));
         } else if (req.body.password === req.body.passwordConf) {
             var userData = {
-                login: req.body.login,
+                email: req.body.email,
                 username: req.body.username,
                 password: req.body.password,
                 passwordConf: req.body.passwordConf,
@@ -42,10 +42,10 @@ router.post('/', function (req, res, next) {
             err.status = 400;
             return next(err);
         }
-    } else if (req.body.login && req.body.logpassword) {
-        User.authenticate(req.body.login, req.body.logpassword, function (error, user) {
+    } else if (req.body.email && req.body.pword) {
+        User.authenticate(req.body.email, req.body.pword, function (error, user) {
             if (error || !user) {
-                var err = new Error('Wrong login or password!');
+                var err = new Error('Wrong email or password!');
                 err.status = 401;
                 // return next(err);
                 return next(console.log(err))
@@ -53,7 +53,8 @@ router.post('/', function (req, res, next) {
                 req.session.userId = user._id;
                 return (
                     console.log("this is user", user),
-                    console.log("logged in")
+                    console.log("logged in"),
+                    true
                     // res.json(user)
                 );
             }
@@ -73,7 +74,7 @@ router.get('/', function (req, res, next) {
                     err.status = 400;
                     return next(err);
                 } else {
-                    return res.json(user.username, user.login)
+                    return res.json(user.username, user.email)
                 }
             }
         });

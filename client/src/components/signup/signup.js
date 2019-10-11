@@ -18,8 +18,8 @@ class SignupForm extends React.Component {
                 </div>
                 <div className="md-cac-cont">
                     <mobiscroll.FormGroup inset>
-                        <mobiscroll.Input name="username" placeholder="Name" />
-                        <mobiscroll.Input name="login" type="text" placeholder="Login" />
+                        <mobiscroll.Input name="username" placeholder="Username" />
+                        <mobiscroll.Input name="email" type="email" placeholder="Email" />
                         <mobiscroll.Input name="password" type="password" placeholder="Password" passwordToggle={true} />
                         <mobiscroll.Input name="passwordConf" type="password" placeholder="confirmPassword" passwordToggle={true} />
                     </mobiscroll.FormGroup>

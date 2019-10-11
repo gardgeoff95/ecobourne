@@ -1,7 +1,7 @@
 import React from 'react';
 import mobiscroll from '@mobiscroll/react';
 import '@mobiscroll/react/dist/css/mobiscroll.min.css';
-import {withRouter} from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import './login.css';
 
 class LoginForm extends React.Component {
@@ -13,10 +13,10 @@ class LoginForm extends React.Component {
             btnText: 'Sign in',
             signup: "Don't have an account yet? Sign up.",
             email: '',
-            emailValid: true,
+            emailValid: false,
             emailError: '',
             pass: '',
-            passValid: true,
+            passValid: false,
             passError: '',
             submitted: false
         };
@@ -54,8 +54,8 @@ class LoginForm extends React.Component {
 
     validatePass = (pass) => {
         if (pass) {
-            if (pass.length < 6) {
-                return 'At least 6 characters required';
+            if (pass.length < 1) {
+                return 'At least 1 character required';
             } else {
                 return null;
             }
@@ -79,14 +79,18 @@ class LoginForm extends React.Component {
     }
 
     submit = (event) => {
-        // event.preventDefault();
+        event.preventDefault();
         console.log('click')
-        this.setState({page: "TitleScreen"});
+        this.setState({ page: "TitleScreen" });
         const state = this.state;
-        console.log(state)
+        console.log("Email",this.state.email);
+        console.log("Pass",this.state.pass);
+   
         if (state.submitted && state.emailValid && state.passValid) {
             mobiscroll.toast({ message: (state.isLogin ? 'Login' : 'Signup') + ' success!' });
+            console.log("everything was valid")
         } else {
+            console.log("everything was salad")
             const emailInvalid = this.validateEmail(state.email);
             const passInvalid = this.validatePass(state.pass);
             this.setState({
@@ -106,19 +110,19 @@ class LoginForm extends React.Component {
                 className="md-login-form"
                 action="/"
                 method='POST'
-                onSubmit={this.submit}
+            
                 novalidate
-            > 
+            >
                 <div className="md-logo micons icon-mbsc-logo"></div>
                 <mobiscroll.FormGroup inset>
-                    <mobiscroll.Input type="text" name="login" placeholder="Login" value={this.state.login} />
-                    <mobiscroll.Input type="password" name="logpassword" placeholder="Password" passwordToggle={true} icon="none" iconAlign="right" value={this.state.pass} onChange={this.passChange} />
+                    <mobiscroll.Input type="email" name="email" placeholder="Email" value={this.state.email} onChange={this.emailChange} valid={this.state.emailValid} errorMessage={this.state.emailError} />
+                    <mobiscroll.Input type="password" name="pword" placeholder="Password" passwordToggle={true} icon="none" iconAlign="right" value={this.state.pass} onChange={this.passChange} valid={this.state.passValid} errorMessage={this.state.passError} />
                 </mobiscroll.FormGroup>
                 <mobiscroll.FormGroup inset className="mbsc-padding mbsc-align-center">
                     <a href="#" onClick={this.signUp}>{this.state.signup}</a>
                 </mobiscroll.FormGroup>
                 <mobiscroll.FormGroup inset className="mbsc-padding">
-                    <mobiscroll.Button type="submit" block={true}>{this.state.btnText}</mobiscroll.Button>
+                    <mobiscroll.Button onClick={this.submit} type="submit" block={true}>{this.state.btnText}</mobiscroll.Button>
                 </mobiscroll.FormGroup>
             </mobiscroll.Form>
         );
