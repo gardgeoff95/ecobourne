@@ -106,25 +106,26 @@ class LoginForm extends React.Component {
     render() {
         return (
             <mobiscroll.Form
-                theme="ios"
-                className="md-login-form"
-                action="/"
-                method='POST'
-            
-                novalidate
-            >
-                <div className="md-logo micons icon-mbsc-logo"></div>
+            action='/'
+            method='post'
+            theme="ios"
+            className="md-login-form"
+        >
+            <div className="md-chart-pic"></div>
+
+            <div className="md-cac-title mbsc-padding">
+                <h4>Log Into Your Account</h4>
+            </div>
+            <div className="md-cac-cont">
                 <mobiscroll.FormGroup inset>
-                    <mobiscroll.Input type="email" name="email" placeholder="Email" value={this.state.email} onChange={this.emailChange} valid={this.state.emailValid} errorMessage={this.state.emailError} />
-                    <mobiscroll.Input type="password" name="pword" placeholder="Password" passwordToggle={true} icon="none" iconAlign="right" value={this.state.pass} onChange={this.passChange} valid={this.state.passValid} errorMessage={this.state.passError} />
+                    <mobiscroll.Input name="logEmail" type="email" placeholder="Email" />
+                    <mobiscroll.Input name="pword" type="password" placeholder="Password" passwordToggle={true} />
                 </mobiscroll.FormGroup>
-                <mobiscroll.FormGroup inset className="mbsc-padding mbsc-align-center">
-                    <a href="#" onClick={this.signUp}>{this.state.signup}</a>
+                <mobiscroll.FormGroup inset className="md-cac-btn">
+                    <mobiscroll.Button type='submit' block={true}>Log In</mobiscroll.Button>
                 </mobiscroll.FormGroup>
-                <mobiscroll.FormGroup inset className="mbsc-padding">
-                    <mobiscroll.Button onClick={this.submit} type="submit" block={true}>{this.state.btnText}</mobiscroll.Button>
-                </mobiscroll.FormGroup>
-            </mobiscroll.Form>
+            </div>
+        </mobiscroll.Form>
         );
     }
 }
