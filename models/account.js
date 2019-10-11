@@ -5,7 +5,7 @@ const bcrypt = require("bcrypt");
 const accountSchema = new Schema({
     username: { type: String, required: true, index: { unique: true } },
     password: { type: String, required: true },
-    login: { type: String, required: true },
+    email: { type: String, required: true, index: { unique: true } },
     created: {
         type: Date,
         default: Date.now
@@ -13,8 +13,8 @@ const accountSchema = new Schema({
 });
 
 // Authenticate input on database
-accountSchema.statics.authenticate = function(username, password, cb){
-    account.findOne({ username : username })
+accountSchema.statics.authenticate = function(email, password, cb){
+    account.findOne({ email : email })
     .exec(function(err, user){
         if(err){
             return cb(err)
