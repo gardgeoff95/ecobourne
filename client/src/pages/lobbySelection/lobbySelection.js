@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import GameStats from "./../../components/gameStats/gameStats";
-import Chat from '../../components/chat/chat';
-
+import Chat from "../../components/chat/chat";
 
 class LobbySelection extends Component {
   state = {};
@@ -27,13 +26,9 @@ class LobbySelection extends Component {
             lobbyMembers={this.props.lobbyMembers}
           />
         </div>
-        <form>
-          <input
-            type="submit"
-            value="Go to game"
-            onClick={this.props.goToGame}
-          />
-        </form>
+        <button type="button" onClick={this.props.goToGame}>
+          GoOOOOOOO
+        </button>
         <Chat
           chatBtnClick={this.props.chatBtnClick}
           onMessageChange={this.props.onMessageChange}

@@ -1,15 +1,14 @@
 import React, { Component } from "react";
 import TitleScreen from "./pages/titleScreen/titleScreen";
 import InGame from "./pages/inGame/inGame";
-import LocalScoreScreen from "./pages/localScoreScreen/localScoreScreen";
 import LobbySelection from "./pages/lobbySelection/lobbySelection";
-import GlobalScoreScreen from "./pages/globalScoreScreen/globalScoreScreen";
-import Login from './pages/login/login';
-import Signup from './components/signup/signup';
+import Login from "./pages/login/login";
+import Signup from "./components/signup/signup";
 import BurgerMenu from "./components/burgerMenu/burgerMenu";
+import io from "socket.io-client";
+import firebase from "firebase";
+import { runInThisContext } from "vm";
 
-import io from "socket.io-client"
-import firebase from "firebase"
 const firebaseConfig = {
   apiKey: "AIzaSyAaktd7xWg2F92a5py9ZBB5fdsySImFOGQ",
   authDomain: "ecobourne-fb892.firebaseapp.com",
@@ -20,6 +19,7 @@ const firebaseConfig = {
   appId: "1:342132988603:web:59feab64b679748217279e"
 };
 firebase.initializeApp(firebaseConfig);
+
 class PageContainer extends Component {
   constructor() {
     super();
@@ -48,46 +48,9 @@ class PageContainer extends Component {
       }
     };
     //THIS NEEDS HELP, andy required
-    this.socket = io("window.location.hostname");
+    //window.location.hostname
+    this.socket = io("http://localhost:3001");
     this.database = firebase.database();
-  }
-  componentDidMount() {
-    this.socket.on("user listener", users => {
-      console.log("NOW LISTENING");
-      this.setState({ playerNames: users });
-    });
-    this.socket.on("chat message", data => {
-      console.log(data);
-      let newLog = this.state.chatLog;
-      newLog.push(data);
-      console.log(newLog);
-      this.setState({
-        chatLog: newLog
-      });
-    });
-    this.database.ref("rabbits").on("value", snap => {
-      if (snap.val() != null) {
-        let bunnyObj = {
-          starvation: snap.val().deaths.starvation,
-          predator: snap.val().deaths.predator,
-          oldAge: snap.val().deaths.oldAge
-        };
-        this.setState({
-          bunnyStats: bunnyObj
-        });
-      }
-    });
-    this.database.ref("foxes").on("value", snap => {
-      if (snap.val() != null) {
-        let foxObj = {
-          starvation: snap.val().deaths.starvation,
-          oldAge: snap.val().deaths.oldAge
-        };
-        this.setState({
-          foxStats: foxObj
-        });
-      }
-    });
   }
 
   componentDidMount() {
@@ -116,6 +79,7 @@ class PageContainer extends Component {
         });
       }
     });
+
     this.database.ref("foxes").on("value", snap => {
       if (snap.val() != null) {
         let foxObj = {
@@ -137,7 +101,7 @@ class PageContainer extends Component {
     console.log("goToGame");
     event.preventDefault();
     this.setState({
-      page: "TitleScreen"
+      page: "InGame"
     });
   };
   addPlayer = playerName => {
@@ -189,10 +153,9 @@ class PageContainer extends Component {
     this.socket.emit("chat message", chatEntry);
   };
 
-
   //This function will actually change the page
   renderPage = () => {
-    console.log('CURRENT PAGE', this.state.page);
+    console.log("CURRENT PAGE", this.state.page);
     if (this.state.page === "TitleScreen") {
       return <TitleScreen addPlayer={this.addPlayer} />;
     } else if (this.state.page === "LobbySelection") {
@@ -225,20 +188,17 @@ class PageContainer extends Component {
         />
       );
     } else if (this.state.page === "signup") {
-      console.log('OVER HERE')
-      return (
-        <Signup />
-      )
+      console.log("OVER HERE");
+      return <Signup />;
     } else if (this.state.page === "login") {
-      return (
-        <Login />
-      )
+      return <Login />;
     } else {
       return <TitleScreen />;
     }
   };
 
   render() {
+    console.log(this.state.currentUser);
     return (
       //This will be shifted into a chosing page function
       <div>
