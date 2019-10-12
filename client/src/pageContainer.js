@@ -220,7 +220,7 @@ class PageContainer extends Component {
       return (
         <Login
           goToLobby={this.goToLobby}
-          setAccountName={this.state.setAccountName}
+          setAccountName={this.setAccountName}
           addPlayer={this.addPlayer}
           accountName={this.state.accountName}
         />

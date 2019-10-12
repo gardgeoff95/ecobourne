@@ -4,6 +4,7 @@ import axios from "axios";
 
 import mobiscroll from "@mobiscroll/react";
 import "@mobiscroll/react/dist/css/mobiscroll.min.css";
+import { startSession } from "mongoose";
 
 class Login extends Component {
   state = {
@@ -36,12 +37,14 @@ class Login extends Component {
         .then(res => {
           console.log(res);
           if (res.data.id && res.data.username && res.data.message === "success"){
-            // this.props.set({AccountName : res.data.username})
-            this.props.setAccountName(sessionStorage.getItem("username"));
+            sessionStorage.setItem("username" , res.data.username)
+            let name = res.data.username
+            this.props.setAccountName(name)
             this.props.addPlayer(this.props.accountName);
             this.props.goToLobbyScreen();
           } else {
             console.log("MODAL HERE")
+          }
         })
         .catch(e => {
           console.log(e);

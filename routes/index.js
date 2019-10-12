@@ -10,6 +10,7 @@ router.use("/api", apiRoutes);
 //POST route for updating data
 router.post('/', function (req, res, next) {
 
+
     if (req.body.username &&
         req.body.email &&
         req.body.password &&
@@ -23,7 +24,7 @@ router.post('/', function (req, res, next) {
             // return next(res.redirect('/'));
         } else if (req.body.password === req.body.passwordConf) {
             var userData = {
-                login: req.body.login,
+                email: req.body.email,
                 username: req.body.username,
                 password: req.body.password,
                 passwordConf: req.body.passwordConf,
@@ -58,22 +59,22 @@ router.post('/', function (req, res, next) {
 });
 
 // GET route to redirect to '/profile' page after registering
-router.get('/', function (req, res, next) {
-    User.findById(req.session.userId)
-        .exec(function (error, user) {
-            if (error) {
-                return next(error);
-            } else {
-                if (user === null) {
-                    var err = new Error('Not authorized! Go back!');
-                    err.status = 400;
-                    return next(err);
-                } else {
-                    return res.json(user.username, user.login)
-                }
-            }
-        });
-});
+// router.get('/', function (req, res, next) {
+//     User.findById(req.session.userId)
+//         .exec(function (error, user) {
+//             if (error) {
+//                 return next(error);
+//             } else {
+//                 if (user === null) {
+//                     var err = new Error('Not authorized! Go back!');
+//                     err.status = 400;
+//                     return next(err);
+//                 } else {
+//                     return res.json(user.username, user.loginlogin)
+//                 }
+//             }
+//         });
+// });
 
 // GET for logout
 router.get('/logout', function (req, res, next) {
