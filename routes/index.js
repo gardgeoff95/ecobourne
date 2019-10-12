@@ -9,6 +9,8 @@ router.use("/api", apiRoutes);
 
 //POST route for updating data
 router.post('/', function (req, res, next) {
+    console.log("GETTING CALLED")
+   
 
 
     if (req.body.username &&
@@ -49,16 +51,17 @@ router.post('/', function (req, res, next) {
             return next(err);
         }
     } else if (req.body.logEmail && req.body.pword) {
+        console.log(req.body.logEmail)
+        console.log(req.body.pword)
         User.authenticate(req.body.logEmail, req.body.pword, function (error, user) {
             if (error || !user) {
-                var err = new Error('Wrong login or password!');
+                var err = new Error('Wrong email or password!');
                 err.status = 401;
                 // return next(err);
                 return next(console.log(err))
             } else {
                 req.session.userId = user._id;
                 return res.json({id: user._id, username: user.username, message: "success"})
-                
             }
         });
     }
