@@ -54,7 +54,7 @@ class SignUp extends Component {
           //NEEDS WORK
           console.log(res);
           if (res.data.correct) {
-            this.props.goToHomeScreen();
+            this.props.goToSignIn();
           } else {
             console.log("WRONG");
           }

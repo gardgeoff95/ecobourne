@@ -145,6 +145,11 @@ class PageContainer extends Component {
       page: "TitleScreen"
     });
   };
+  goToLobby = () => {
+    this.setState({
+      page: "LobbySelection"
+    });
+  };
 
   //Tracking the user message
   onMessageChange = event => {
@@ -206,15 +211,18 @@ class PageContainer extends Component {
       console.log("OVER HERE");
       return (
         <Signup
-          goToTitleScreen={this.goToTitleScreen}
+          goToSignIn={this.goToLogin}
           setAccountName={this.setAccountName}
+          addPlayer={this.addPlayer}
         />
       );
     } else if (this.state.page === "login") {
       return (
         <Login
-          goToTitleScreen={this.goToTitleScreen}
+          goToLobby={this.goToLobby}
           setAccountName={this.state.setAccountName}
+          addPlayer={this.addPlayer}
+          accountName={this.state.accountName}
         />
       );
     } else {

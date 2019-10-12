@@ -35,7 +35,8 @@ class Login extends Component {
           console.log(res);
           if (res.data.message === "success") {
             this.props.setAccountName(sessionStorage.getItem("username"));
-            this.props.goToTitleScreen();
+            this.props.addPlayer(this.props.accountName);
+            this.props.goToLobbyScreen();
           } else {
             console.log("WRONG");
           }
