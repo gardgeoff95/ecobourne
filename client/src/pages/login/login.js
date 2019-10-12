@@ -34,9 +34,12 @@ class Login extends Component {
       axios
         .post("/", { logEmail: this.state.email, pword: this.state.password })
         .then(res => {
+          console.log(res);
           if (res.data.id && res.data.username && res.data.message === "success"){
-            this.props.set({AccountName : res.data.username})
-            this.props.goToTitleScreen();
+            // this.props.set({AccountName : res.data.username})
+            this.props.setAccountName(sessionStorage.getItem("username"));
+            this.props.addPlayer(this.props.accountName);
+            this.props.goToLobbyScreen();
           } else {
             console.log("MODAL HERE")
         })
