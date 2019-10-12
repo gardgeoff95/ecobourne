@@ -25,16 +25,23 @@ class Login extends Component {
 
   handleSubmit = event => {
     event.preventDefault();
+    console.log("HERE");
     //More name verification should go on here.
     if (!(this.state.email === "") && !(this.state.password === "")) {
+      console.log(this.state.email, this.state.password);
       axios
         .post("/", { logEmail: this.state.email, pword: this.state.password })
         .then(res => {
-          if (res.data.correct) {
-            this.props.goToTitleScreen;
+          console.log(res);
+          if (res.data.message === "success") {
+            this.props.setAccountName(sessionStorage.getItem("username"));
+            this.props.goToTitleScreen();
           } else {
             console.log("WRONG");
           }
+        })
+        .catch(e => {
+          console.log(e);
         });
     }
   };
@@ -44,10 +51,11 @@ class Login extends Component {
       <div className="container-fluid">
         <div>
           <div>
+            <h1>LOG IN</h1>
             <form>
               <label>
                 <input
-                  className="fadeIn"
+                  className=""
                   placeholder="Email"
                   type="text"
                   value={this.state.email}
@@ -57,7 +65,7 @@ class Login extends Component {
 
               <label>
                 <input
-                  className="fadeIn"
+                  className=""
                   placeholder="Password"
                   type="text"
                   value={this.state.password}
@@ -66,7 +74,7 @@ class Login extends Component {
               </label>
 
               <button
-                id="playBtn"
+                id=""
                 variant="primary"
                 type="submit"
                 value="Submit"

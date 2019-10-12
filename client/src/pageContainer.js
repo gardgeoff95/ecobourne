@@ -24,6 +24,7 @@ class PageContainer extends Component {
   constructor() {
     super();
     this.state = {
+      accountName: "",
       playerNames: [],
       lobbyMembers: 0,
       page: "TitleScreen",
@@ -52,6 +53,12 @@ class PageContainer extends Component {
     this.socket = io("http://localhost:3001");
     this.database = firebase.database();
   }
+
+  setAccountName = name => {
+    this.setState({
+      accountName: name
+    });
+  };
 
   componentDidMount() {
     this.socket.on("user listener", users => {
@@ -117,7 +124,7 @@ class PageContainer extends Component {
     });
     this.socket.emit("user listener", playerName);
   };
-  logIn = (email, password) => {};
+
   goToLogin = () => {
     this.setState({
       page: "login"
@@ -170,6 +177,7 @@ class PageContainer extends Component {
           lobbyMembers={this.state.lobbyMembers}
           playerNames={this.state.playerNames}
           goToGame={this.goToGame}
+          accountName={this.state.accountName}
           // The params bellow are what the chat requires
           chatBtnClick={this.chatBtnClick}
           onMessageChange={this.onMessageChange}
@@ -182,6 +190,7 @@ class PageContainer extends Component {
         <InGame
           lobbyMembers={this.state.lobbyMembers}
           playerNames={this.state.playerNames}
+          accountName={this.state.accountName}
           goToLocalScore={this.goToLocalScore}
           bunnyStats={this.state.bunnyStats}
           bearStats={this.state.bearStats}
@@ -195,9 +204,19 @@ class PageContainer extends Component {
       );
     } else if (this.state.page === "signup") {
       console.log("OVER HERE");
-      return <Signup goToHomeScreen={this.goToTitleScreen} />;
+      return (
+        <Signup
+          goToTitleScreen={this.goToTitleScreen}
+          setAccountName={this.setAccountName}
+        />
+      );
     } else if (this.state.page === "login") {
-      return <Login goToHomeScreen={this.goToTitleScreen} />;
+      return (
+        <Login
+          goToTitleScreen={this.goToTitleScreen}
+          setAccountName={this.state.setAccountName}
+        />
+      );
     } else {
       return <TitleScreen />;
     }
