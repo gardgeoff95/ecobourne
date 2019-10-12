@@ -13,8 +13,8 @@ const accountSchema = new Schema({
 });
 
 // Authenticate input on database
-accountSchema.statics.authenticate = function(username, password, cb){
-    account.findOne({ username : username })
+accountSchema.statics.authenticate = function(email, password, cb){
+    account.findOne({ email : email })
     .exec(function(err, user){
         if(err){
             return cb(err)

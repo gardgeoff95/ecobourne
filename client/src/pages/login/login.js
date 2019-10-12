@@ -27,13 +27,14 @@ class Login extends Component {
     event.preventDefault();
     //More name verification should go on here.
     if (!(this.state.email === "") && !(this.state.password === "")) {
+      console.log(this.state.email) 
+      console.log(this.state.password)
       axios
         .post("/", { logEmail: this.state.email, pword: this.state.password })
         .then(res => {
-          if (res.data.correct) {
-            this.props.goToTitleScreen;
-          } else {
-            console.log("WRONG");
+          if (res.data.id && res.data.username && res.data.message === "success"){
+            sessionStorage.setItem("username", res.data.username);
+            this.props.goToTitleScreen();
           }
         });
     }

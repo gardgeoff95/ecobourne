@@ -195,9 +195,9 @@ class PageContainer extends Component {
       );
     } else if (this.state.page === "signup") {
       console.log("OVER HERE");
-      return <Signup goToHomeScreen={this.goToTitleScreen} />;
+      return <Signup goToTitleScreen={this.goToTitleScreen} />;
     } else if (this.state.page === "login") {
-      return <Login goToHomeScreen={this.goToTitleScreen} />;
+      return <Login goToTitleScreen={this.goToTitleScreen} />;
     } else {
       return <TitleScreen />;
     }
