@@ -11,7 +11,7 @@ router.use("/api", apiRoutes);
 router.post('/', function (req, res, next) {
 
     if (req.body.username &&
-        req.body.login &&
+        req.body.email &&
         req.body.password &&
         req.body.passwordConf) {
 
@@ -28,7 +28,6 @@ router.post('/', function (req, res, next) {
                 password: req.body.password,
                 passwordConf: req.body.passwordConf,
             }
-
             User.create(userData, function (error, user) {
                 if (error) {
                     return next(error);
@@ -42,8 +41,8 @@ router.post('/', function (req, res, next) {
             err.status = 400;
             return next(err);
         }
-    } else if (req.body.login && req.body.logpassword) {
-        User.authenticate(req.body.login, req.body.logpassword, function (error, user) {
+    } else if (req.body.logEmail && req.body.pword) {
+        User.authenticate(req.body.logEmail, req.body.pword, function (error, user) {
             if (error || !user) {
                 var err = new Error('Wrong login or password!');
                 err.status = 401;
@@ -51,8 +50,8 @@ router.post('/', function (req, res, next) {
                 return next(console.log(err))
             } else {
                 req.session.userId = user._id;
-                return console.log("logged in");
-                ;
+                return res.json({id: user._id, username: user.username, message: "success"})
+                
             }
         });
     }

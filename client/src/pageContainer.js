@@ -217,6 +217,7 @@ class PageContainer extends Component {
           setAccountName={this.state.setAccountName}
         />
       );
+
     } else {
       return <TitleScreen />;
     }

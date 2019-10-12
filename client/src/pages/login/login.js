@@ -28,17 +28,17 @@ class Login extends Component {
     console.log("HERE");
     //More name verification should go on here.
     if (!(this.state.email === "") && !(this.state.password === "")) {
-      console.log(this.state.email, this.state.password);
+
+      console.log(this.state.email) 
+      console.log(this.state.password)
       axios
         .post("/", { logEmail: this.state.email, pword: this.state.password })
         .then(res => {
-          console.log(res);
-          if (res.data.message === "success") {
-            this.props.setAccountName(sessionStorage.getItem("username"));
+          if (res.data.id && res.data.username && res.data.message === "success"){
+            this.props.set({AccountName : res.data.username})
             this.props.goToTitleScreen();
           } else {
-            console.log("WRONG");
-          }
+            console.log("MODAL HERE")
         })
         .catch(e => {
           console.log(e);
