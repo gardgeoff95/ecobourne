@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import GameStats from "./../../components/gameStats/gameStats";
-import Col from 'react-bootstrap/Col';
-import Row from 'react-bootstrap/Row';
-import Container from 'react-bootstrap/Container';
-import '../inGame/inGame.css'
+import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
+import Container from "react-bootstrap/Container";
+import "../inGame/inGame.css";
+import AnimalStats from "../../components/animalStats/animalStats";
 
 class InGame extends Component {
   //Different values will go here for what needs to be displayed during the game... I think
@@ -20,25 +21,13 @@ class InGame extends Component {
           <GameStats
             playerNames={this.props.playerNames}
             lobbyMembers={this.props.lobbyMembers}
+            accountName={this.props.accountName}
           />
-        </Row>
-        <Row className="inGameStats">
-          {/* Reactive in game stats will be here, with D3 */}
-          <Col className="animalsLeft">
-            <svg></svg>
-          </Col>
-          <Col className="timeSpent">
-            <svg></svg>
-          </Col>
-          <Row>
-            <Col className="scoreScreenBtn">
-              <input
-                type="submit"
-                value="Go to Local Score"
-                onClick={this.props.goToLocalScore}
-              />
-            </Col>
-          </Row>
+          <AnimalStats
+            bunnyStats={this.props.bunnyStats}
+            foxStats={this.props.foxStats}
+            bearStats={this.props.bearStats}
+          />
         </Row>
       </Container>
     );

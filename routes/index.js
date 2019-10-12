@@ -12,6 +12,7 @@ router.post('/', function (req, res, next) {
     console.log("GETTING CALLED")
    
 
+
     if (req.body.username &&
         req.body.email &&
         req.body.password &&
@@ -30,7 +31,6 @@ router.post('/', function (req, res, next) {
                 password: req.body.password,
                 passwordConf: req.body.passwordConf,
             }
-
             User.create(userData, function (error, user) {
                 if (error) {
                     return next(error);
@@ -55,34 +55,29 @@ router.post('/', function (req, res, next) {
                 return next(console.log(err))
             } else {
                 req.session.userId = user._id;
-                return (
-                    console.log("this is user", user),
-                    console.log("logged in"),
-                    true
-                    // res.json(user)
-                );
+                return res.json({id: user._id, username: user.username, message: "success"})
             }
         });
     }
 });
 
 // GET route to redirect to '/profile' page after registering
-router.get('/', function (req, res, next) {
-    User.findById(req.session.userId)
-        .exec(function (error, user) {
-            if (error) {
-                return next(error);
-            } else {
-                if (user === null) {
-                    var err = new Error('Not authorized! Go back!');
-                    err.status = 400;
-                    return next(err);
-                } else {
-                    return res.json(user.username, user.email)
-                }
-            }
-        });
-});
+// router.get('/', function (req, res, next) {
+//     User.findById(req.session.userId)
+//         .exec(function (error, user) {
+//             if (error) {
+//                 return next(error);
+//             } else {
+//                 if (user === null) {
+//                     var err = new Error('Not authorized! Go back!');
+//                     err.status = 400;
+//                     return next(err);
+//                 } else {
+//                     return res.json(user.username, user.loginlogin)
+//                 }
+//             }
+//         });
+// });
 
 // GET for logout
 router.get('/logout', function (req, res, next) {

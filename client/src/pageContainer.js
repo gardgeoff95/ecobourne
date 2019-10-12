@@ -1,15 +1,14 @@
 import React, { Component } from "react";
 import TitleScreen from "./pages/titleScreen/titleScreen";
 import InGame from "./pages/inGame/inGame";
-import LocalScoreScreen from "./pages/localScoreScreen/localScoreScreen";
 import LobbySelection from "./pages/lobbySelection/lobbySelection";
-import GlobalScoreScreen from "./pages/globalScoreScreen/globalScoreScreen";
-import Login from './pages/login/login';
-import Signup from './components/signup/signup';
+import Login from "./pages/login/login";
+import Signup from "./components/signup/signup";
 import BurgerMenu from "./components/burgerMenu/burgerMenu";
+import io from "socket.io-client";
+import firebase from "firebase";
+import { runInThisContext } from "vm";
 
-import io from "socket.io-client"
-import firebase from "firebase"
 const firebaseConfig = {
   apiKey: "AIzaSyAaktd7xWg2F92a5py9ZBB5fdsySImFOGQ",
   authDomain: "ecobourne-fb892.firebaseapp.com",
@@ -20,10 +19,12 @@ const firebaseConfig = {
   appId: "1:342132988603:web:59feab64b679748217279e"
 };
 firebase.initializeApp(firebaseConfig);
+
 class PageContainer extends Component {
   constructor() {
     super();
     this.state = {
+      accountName: "",
       playerNames: [],
       lobbyMembers: 0,
       page: "TitleScreen",
@@ -48,9 +49,17 @@ class PageContainer extends Component {
       }
     };
     //THIS NEEDS HELP, andy required
-    this.socket = io("window.location.hostname");
+    //window.location.hostname
+    this.socket = io("http://localhost:3001");
     this.database = firebase.database();
   }
+
+  setAccountName = name => {
+    this.setState({
+      accountName: name
+    });
+  };
+
   componentDidMount() {
     this.socket.on("user listener", users => {
       console.log("NOW LISTENING");
@@ -77,6 +86,7 @@ class PageContainer extends Component {
         });
       }
     });
+
     this.database.ref("foxes").on("value", snap => {
       if (snap.val() != null) {
         let foxObj = {
@@ -98,29 +108,23 @@ class PageContainer extends Component {
     console.log("goToGame");
     event.preventDefault();
     this.setState({
-      page: "TitleScreen"
+      page: "InGame"
     });
   };
   addPlayer = playerName => {
     let newPlayers = this.state.playerNames;
     newPlayers.push(playerName);
+    let newLength = newPlayers.length;
+
     this.setState({
-      lobbyMembers: this.state.lobbyMembers + 1,
+      lobbyMembers: newLength,
       playerNames: newPlayers,
-      page: "LobbySelection"
+      page: "LobbySelection",
+      currentUser: playerName
     });
+    this.socket.emit("user listener", playerName);
   };
 
-  goToLocalScore = () => {
-    this.setState({
-      page: "LocalScoreScreen"
-    });
-  };
-  goToGlobalScore = () => {
-    this.setState({
-      page: "GlobalScoreScreen"
-    });
-  };
   goToLogin = () => {
     this.setState({
       page: "login"
@@ -136,9 +140,40 @@ class PageContainer extends Component {
       page: "TitleScreen"
     });
   };
+  goToHomeScreen = () => {
+    this.setState({
+      page: "TitleScreen"
+    });
+  };
+  goToLobby = () => {
+    this.setState({
+      page: "LobbySelection"
+    });
+  };
+
+  //Tracking the user message
+  onMessageChange = event => {
+    this.setState({
+      userMessage: event.target.value
+    });
+  };
+  //This will submit the message to the server and load it to the page
+  chatBtnClick = event => {
+    console.log(this.state);
+    event.preventDefault();
+    let chatEntry = {
+      user: this.state.currentUser,
+      msg: this.state.userMessage
+    };
+    this.setState({
+      userMessage: ""
+    });
+    this.socket.emit("chat message", chatEntry);
+  };
+
   //This function will actually change the page
   renderPage = () => {
-    console.log('CURRENT PAGE', this.state.page);
+    console.log("CURRENT PAGE", this.state.page);
     if (this.state.page === "TitleScreen") {
       return <TitleScreen addPlayer={this.addPlayer} />;
     } else if (this.state.page === "LobbySelection") {
@@ -147,6 +182,12 @@ class PageContainer extends Component {
           lobbyMembers={this.state.lobbyMembers}
           playerNames={this.state.playerNames}
           goToGame={this.goToGame}
+          accountName={this.state.accountName}
+          // The params bellow are what the chat requires
+          chatBtnClick={this.chatBtnClick}
+          onMessageChange={this.onMessageChange}
+          chatLog={this.state.chatLog}
+          userMessage={this.state.userMessage}
         />
       );
     } else if (this.state.page === "InGame") {
@@ -154,40 +195,44 @@ class PageContainer extends Component {
         <InGame
           lobbyMembers={this.state.lobbyMembers}
           playerNames={this.state.playerNames}
+          accountName={this.state.accountName}
           goToLocalScore={this.goToLocalScore}
-        />
-      );
-    } else if (this.state.page === "LocalScoreScreen") {
-      return (
-        <LocalScoreScreen
-          lobbyMembers={this.state.lobbyMembers}
-          playerNames={this.state.playerNames}
-          goToGlobalScore={this.goToGlobalScore}
-        />
-      );
-    } else if (this.state.page === "GlobalScoreScreen") {
-      return (
-        <GlobalScoreScreen
-          lobbyMembers={this.state.lobbyMembers}
-          playerNames={this.state.playerNames}
-          goToLocalScore={this.goToLocalScore}
+          bunnyStats={this.state.bunnyStats}
+          bearStats={this.state.bearStats}
+          foxStats={this.state.foxStats}
+          // The params bellow are what the chat requires
+          chatBtnClick={this.chatBtnClick}
+          onMessageChange={this.onMessageChange}
+          chatLog={this.state.chatLog}
+          userMessage={this.state.userMessage}
         />
       );
     } else if (this.state.page === "signup") {
-      console.log('OVER HERE')
+      console.log("OVER HERE");
       return (
-        <Signup />
-      )
+        <Signup
+          goToSignIn={this.goToLogin}
+          setAccountName={this.setAccountName}
+          addPlayer={this.addPlayer}
+        />
+      );
     } else if (this.state.page === "login") {
       return (
-        <Login />
-      )
+        <Login
+          goToLobby={this.goToLobby}
+          setAccountName={this.setAccountName}
+          addPlayer={this.addPlayer}
+          accountName={this.state.accountName}
+        />
+      );
+
     } else {
       return <TitleScreen />;
     }
   };
 
   render() {
+    console.log(this.state.currentUser);
     return (
       //This will be shifted into a chosing page function
       <div>

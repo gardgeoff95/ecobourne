@@ -121,8 +121,8 @@ class LoginForm extends React.Component {
                     <mobiscroll.Input name="logEmail" type="email" placeholder="Email" />
                     <mobiscroll.Input name="pword" type="password" placeholder="Password" passwordToggle={true} />
                 </mobiscroll.FormGroup>
-                <mobiscroll.FormGroup inset className="md-cac-btn">
-                    <mobiscroll.Button type='submit' block={true}>Log In</mobiscroll.Button>
+                <mobiscroll.FormGroup inset className="mbsc-padding">
+                    <mobiscroll.Button type="submit" block={true}>{this.state.btnText}</mobiscroll.Button>
                 </mobiscroll.FormGroup>
             </div>
         </mobiscroll.Form>
