@@ -117,6 +117,7 @@ class PageContainer extends Component {
     });
     this.socket.emit("user listener", playerName);
   };
+  logIn = (email, password) => {};
   goToLogin = () => {
     this.setState({
       page: "login"
@@ -128,6 +129,11 @@ class PageContainer extends Component {
     });
   };
   goToTitleScreen = () => {
+    this.setState({
+      page: "TitleScreen"
+    });
+  };
+  goToHomeScreen = () => {
     this.setState({
       page: "TitleScreen"
     });
@@ -189,9 +195,9 @@ class PageContainer extends Component {
       );
     } else if (this.state.page === "signup") {
       console.log("OVER HERE");
-      return <Signup />;
+      return <Signup goToHomeScreen={this.goToTitleScreen} />;
     } else if (this.state.page === "login") {
-      return <Login />;
+      return <Login goToHomeScreen={this.goToTitleScreen} />;
     } else {
       return <TitleScreen />;
     }
