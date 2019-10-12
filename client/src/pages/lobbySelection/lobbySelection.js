@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import GameStats from "./../../components/gameStats/gameStats";
+import Chat from "../../components/chat/chat";
 
-class TitleScreen extends Component {
+class LobbySelection extends Component {
   state = {};
 
   handleSubmit = event => {
@@ -15,7 +16,7 @@ class TitleScreen extends Component {
   };
 
   render() {
-    console.log("My type of props: ", this.props);
+    console.log(<Chat />);
     return (
       <div className="container-fluid">
         <div className="titleSection">
@@ -23,18 +24,22 @@ class TitleScreen extends Component {
           <GameStats
             playerNames={this.props.playerNames}
             lobbyMembers={this.props.lobbyMembers}
+            accountName={this.props.accountName}
           />
         </div>
-        <form>
-          <input
-            type="submit"
-            value="Go to game"
-            onClick={this.props.goToGame}
-          />
-        </form>
+        <button type="button" onClick={this.props.goToGame}>
+          GoOOOOOOO
+        </button>
+        <Chat
+          chatBtnClick={this.props.chatBtnClick}
+          onMessageChange={this.props.onMessageChange}
+          userMessage={this.props.userMessage}
+          currentUser={this.props.currentUser}
+          chatLog={this.props.chatLog}
+        />
       </div>
     );
   }
 }
 
-export default TitleScreen;
+export default LobbySelection;

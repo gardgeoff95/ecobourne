@@ -1,11 +1,23 @@
 import React, { Component } from "react";
+import Button from 'react-bootstrap/Button';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
+import Container from 'react-bootstrap/Container';
 import Logo from "../../components/Logo/logo";
+import Logo2 from "./../../components/Logo2/logo2";
+import Modal from 'react-bootstrap/Modal';
+import Navbar from 'react-bootstrap/Navbar';
+import Nav from 'react-bootstrap/Nav';
+import { slide as Menu } from 'react-burger-menu'
+import './titleScreen.css';
+
 
 class TitleScreen extends Component {
   state = {
     name: "",
     value: ""
   };
+
 
   handleSubmit = event => {
     event.preventDefault();
@@ -24,26 +36,31 @@ class TitleScreen extends Component {
   render() {
     console.log("My type of props: ", this.props);
     return (
-      <div className="container-fluid">
-        <div className="titleSection">
-          {/* <p>EcoBourne</p> */}
+      <Container fluid={true} id='1' >
+        <Row>
           <Logo />
-        </div>
-        <div className="userInput">
-          <form>
-            <label>
-              Name:
-              <input
-                type="text"
-                value={this.state.value}
-                onChange={this.onChange}
-              />
-            </label>
+        </Row>
+        <Row>
+          <Logo2 />
+        </Row>
+        <Row id='test'>
+          <div className="userInput">
+            <form>
+              <label>
+                <input
+                  className="fadeIn"
+                  placeholder="Nickname"
+                  type="text"
+                  value={this.state.value}
+                  onChange={this.onChange}
+                />
+              </label>
 
-            <input type="submit" value="Submit" onClick={this.handleSubmit} />
-          </form>
-        </div>
-      </div>
+              <button id="playBtn" variant="primary" type="submit" value="Submit" onClick={this.handleSubmit}>Play</button>
+            </form>
+          </div>
+        </Row>
+      </Container>
     );
   }
 }
