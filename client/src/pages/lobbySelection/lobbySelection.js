@@ -24,6 +24,7 @@ class LobbySelection extends Component {
           <GameStats
             playerNames={this.props.playerNames}
             lobbyMembers={this.props.lobbyMembers}
+            accountName={this.props.accountName}
           />
         </div>
         <button type="button" onClick={this.props.goToGame}>

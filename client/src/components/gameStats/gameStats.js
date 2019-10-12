@@ -10,6 +10,7 @@ function GameStats(props) {
   return (
     <Container fluid={true} id="lobbyContainer">
       <Row>
+        <p>Current Account: {this.props.accountName}</p>
         <Col className="currentLobbyMembers">
           <p>
             Current Lobby Members:{" "}
