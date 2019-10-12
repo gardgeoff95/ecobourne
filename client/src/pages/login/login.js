@@ -30,14 +30,14 @@ class Login extends Component {
     //More name verification should go on here.
     if (!(this.state.email === "") && !(this.state.password === "")) {
 
-      console.log(this.state.email) 
+      console.log(this.state.email)
       console.log(this.state.password)
       axios
         .post("/", { logEmail: this.state.email, pword: this.state.password })
         .then(res => {
           console.log(res);
-          if (res.data.id && res.data.username && res.data.message === "success"){
-            sessionStorage.setItem("username" , res.data.username)
+          if (res.data.id && res.data.username && res.data.message === "success") {
+            sessionStorage.setItem("username", res.data.username)
             let name = res.data.username
             this.props.setAccountName(name)
             this.props.addPlayer(this.props.accountName);
@@ -55,7 +55,7 @@ class Login extends Component {
   render() {
     return (
       <div className="container-fluid">
-        <div>
+        <div id="one">
           <div>
             <h1>LOG IN</h1>
             <form>
