@@ -2,6 +2,13 @@ import React, { Component } from "react";
 import axios from "axios";
 import mobiscroll from "@mobiscroll/react";
 import "@mobiscroll/react/dist/css/mobiscroll.min.css";
+
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
+import Container from 'react-bootstrap/Container';
+
+import './signup.css';
+
 class SignUp extends Component {
   state = {
     username: "",
@@ -39,7 +46,7 @@ class SignUp extends Component {
       !(this.state.username === "") &&
       !(this.state.passwordC === "")
     ) {
-    //   this.props.setAccountName(username);
+      //   this.props.setAccountName(username);
       axios
         .post("/", {
           email: this.state.email,
@@ -63,14 +70,14 @@ class SignUp extends Component {
   };
   render() {
     return (
-      <div className="container-fluid">
-        <div>
-          <div>
+      <Container fluid={true}>
+        <Row id="one">
+          <Col>
             <h1>SIGN UP</h1>
-            <form>
+            <form className="createForm">
               <label>
                 <input
-                  className=""
+                  className="email"
                   placeholder="Email"
                   type="text"
                   value={this.state.email}
@@ -79,16 +86,18 @@ class SignUp extends Component {
               </label>
               <label>
                 <input
-                  className=""
+                  className="username"
                   placeholder="User Name"
                   type="text"
                   value={this.state.username}
                   onChange={this.onChangeUsername}
                 />
               </label>
-              <label>
+            </form>
+            <form>
+              <label className="pwordForm">
                 <input
-                  className=""
+                  className="pword"
                   placeholder="Password"
                   type="text"
                   value={this.state.password}
@@ -97,26 +106,28 @@ class SignUp extends Component {
               </label>
               <label>
                 <input
-                  className=""
-                  placeholder="Enter your password again"
+                  className="pwordConf"
+                  placeholder="Confirm Password"
                   type="text"
                   value={this.state.passwordC}
                   onChange={this.onChangePasswordC}
                 />
               </label>
-              <button
-                id=""
-                variant="primary"
-                type="submit"
-                value="Submit"
-                onClick={this.handleSubmit}
-              >
-                Play
+              <Row>
+                <button
+                  id="playButton"
+                  variant="primary"
+                  type="submit"
+                  value="Submit"
+                  onClick={this.handleSubmit}
+                >
+                  Play
               </button>
+              </Row>
             </form>
-          </div>
-        </div>
-      </div>
+          </Col>
+        </Row>
+      </Container>
     );
   }
 }

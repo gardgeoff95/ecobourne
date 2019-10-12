@@ -1,0 +1,27 @@
+#one {
+    border: 2px solid red;
+}
+
+form {
+    position: unset;
+    transform: none;
+}
+
+label {
+    margin: 0;
+    padding: 5px;
+    border: 2px solid red;
+}
+
+.createForm {
+    margin-left: 30%;
+
+}
+
+.pwordForm {
+    margin-left: 30%;
+}
+
+#playBtn {
+    margin-left: 33%;
+}
