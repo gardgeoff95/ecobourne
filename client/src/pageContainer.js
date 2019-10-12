@@ -50,7 +50,7 @@ class PageContainer extends Component {
     };
     //THIS NEEDS HELP, andy required
     //window.location.hostname
-    this.socket = io("http://localhost:3001");
+    this.socket = io(window.location.hostname);
     this.database = firebase.database();
   }
 
