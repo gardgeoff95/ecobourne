@@ -22,12 +22,16 @@ Once the simulation has completed, you will be able to view all game data from t
 
 * With these technologies:
     * React.js
+    * Socket.io
     * Electron
     * JavaScript
+    * HTML
+    * CSS
     * Node.js
     * MongoDB
-    * MySQL
+    * Firebase
     * D3.js
     * Photoshop
+    * GIMP
 
 ![](https://media.giphy.com/media/yfg2toFH8r1a8/giphy.gif)
