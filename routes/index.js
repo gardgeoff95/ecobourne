@@ -16,7 +16,10 @@ router.post('/', function (req, res, next) {
         req.body.password &&
         req.body.passwordConf) {
 
+            console.log('Hello world 1')
+
         if (req.body.password !== req.body.passwordConf) {
+            console.log('error hello world 1')
             var err = new Error('Password doesn\'t match!');
             err.status = 400;
             return next(console.log(err));
@@ -29,12 +32,15 @@ router.post('/', function (req, res, next) {
                 password: req.body.password,
                 passwordConf: req.body.passwordConf,
             }
+
+            console.log('USER DATA', userData)
             User.create(userData, function (error, user) {
                 if (error) {
+                    console.log('EERRORRR', error)
                     return next(error);
                 } else {
                     req.session.userId = user._id;
-                    return res.redirect('/');
+                    return res.json({correct: true})
                 }
             });
         } else {
