@@ -29,9 +29,9 @@ function AnimalStats(props) {
           <Col id="animCol1">
             <div className="animal">
               <p className="animalTitle">Bunny Stats</p>
-
+              <hr></hr>
               <p>Population: {props.bunnyStats.pop}</p>
-              <p className="deathTxt">Deaths:</p>
+
               <p className="deathByStarvation">
                 Starvation: {props.bunnyStats.starvation}
               </p>
@@ -46,7 +46,7 @@ function AnimalStats(props) {
           <Col id="animCol2">
             <div className="animal">
               <p className="animalTitle">Fox Stats</p>
-
+              <hr></hr>
               <p className="pop">Population: {props.foxStats.pop}</p>
               <p className="deathByStarvation">
                 Starvation: {props.foxStats.starvation}
@@ -61,9 +61,9 @@ function AnimalStats(props) {
           <Col id="col3">
             <div className="animal">
               <p className="animalTitle">Bear Stats</p>
-
+              <hr></hr>
               <p className="pop">Population: {props.bearStats.pop}</p>
-              <p className="deathTxt">Deaths:</p>
+
               <p className="deathByStarvation">
                 Starvation: {props.bearStats.starvation}
               </p>
