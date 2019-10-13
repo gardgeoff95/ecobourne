@@ -1,5 +1,19 @@
 import React from "react";
 
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
+import Container from 'react-bootstrap/Container';
+
+import Bear from '../../img/bear.png';
+import Cheetah from '../../img/cheetah.png';
+import Deer from '../../img/deer.png';
+import Fox from '../../img/fox.png';
+import Rabbit from '../../img/rabbit.png';
+import Snake from '../../img/snake.png';
+import Squirrel from '../../img/squirrel.png';
+import Wolf from '../../img/wolf.png';
+
+
 function AnimalStats(props) {
   console.log(props);
   return (

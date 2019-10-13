@@ -3,6 +3,8 @@ import axios from "axios";
 // import LoginForm from '../../components/login/login';
 import { startSession } from "mongoose";
 
+import './login.css';
+
 class Login extends Component {
   state = {
     email: "",
@@ -58,7 +60,7 @@ class Login extends Component {
             <form>
               <label>
                 <input
-                  className=""
+                  className="emailLogin"
                   placeholder="Email"
                   type="text"
                   value={this.state.email}
@@ -68,7 +70,7 @@ class Login extends Component {
 
               <label>
                 <input
-                  className=""
+                  className="loginPW"
                   placeholder="Password"
                   type="text"
                   value={this.state.password}
@@ -77,7 +79,7 @@ class Login extends Component {
               </label>
 
               <button
-                id=""
+                id="loginBtn"
                 variant="primary"
                 type="submit"
                 value="Submit"

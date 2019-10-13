@@ -93,10 +93,14 @@
         margin-left: 20%;
     }
     
-    #signupHeader, input {
-        filter: drop-shadow(0 0 0.5rem #61892F);
+    #signupHeader{
+        filter: drop-shadow(0 0 0.25rem #61892F);
         font-size: 1.5rem;
         margin-left: 25%;
+    }
+
+    .email, .username, .inputText, .pword, .pwordConf{
+        filter: drop-shadow(0 0 0.4rem #61892F);
     }
   }  
 

@@ -272,7 +272,9 @@ input[type=text]:focus {
     }
     }
 
-
+.fadeInNickname{
+  filter: drop-shadow(0 0 0.4rem #61892F);
+}
 .fadeInNickname, #fadeInNickname {
       -webkit-animation-name: fadeIn;
       animation-name: fadeIn;
