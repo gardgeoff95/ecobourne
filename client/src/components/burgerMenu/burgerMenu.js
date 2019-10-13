@@ -3,7 +3,6 @@ import { Route, withRouter } from "react-router-dom";
 
 import { slide as Menu } from "react-burger-menu";
 import "./burgerMenu.css";
-
 class BurgerMenu extends React.Component {
     constructor(props) {
         super(props);
