@@ -39,6 +39,7 @@ form {
 
 #playBtn {
   /* width: 25%; */
+  filter: drop-shadow(0 0 0.5rem #61892F);
   border-radius: 25px;
   position: absolute;
   top: 25px;

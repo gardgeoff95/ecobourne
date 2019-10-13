@@ -1,9 +1,10 @@
 /* login/play button  */
 #loginPlaybtn {
     /* width: 25%; */
+    filter: drop-shadow(0 0 0.5rem #61892F);
     border-radius: 25px;
     position: absolute;
-    top: 25px;
+    top: 40px;
     left: 50%;
     transform: translate(-50%, -50%);
   }
@@ -45,6 +46,9 @@
     transform: scale(1.75);
     opacity: 0;
   }
+
+/* email animation */
+  
 
   @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
     /* Styles */
@@ -94,3 +98,130 @@
         margin-left: 25%;
     }
   }  
+
+  
+  /* animations */
+  @keyframes fadein {
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-moz-keyframes fadein { /* Firefox */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-webkit-keyframes fadein { /* Safari and Chrome */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
+}
+@-o-keyframes fadein { /* Opera */
+    from {
+        opacity:0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+.fadeInBtn, #loginPlaybtn {
+    -webkit-animation-name: fadeIn;
+    animation-name: fadeIn;
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    animation-delay: 3.5s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+    }
+    @-webkit-keyframes fadeIn {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+    }
+    @keyframes fadeIn {
+    0% {opacity: 0;}
+    100% {opacity: 1;}
+    }
+
+.fadeInEmail, #fadeInEmail{
+        -webkit-animation-name: fadeIn;
+        animation-name: fadeIn;
+        -webkit-animation-duration: 1s;
+        animation-duration: 1.2s;
+        animation-delay: 0.4s;
+        -webkit-animation-fill-mode: both;
+        animation-fill-mode: both;
+        }
+        @-webkit-keyframes fadeIn {
+        0% {opacity: 0;}
+        100% {opacity: 1;}
+        }
+        @keyframes fadeIn {
+        0% {opacity: 0;}
+        100% {opacity: 1;}
+        }
+
+.fadeInUsername, #fadeInUsername{
+            -webkit-animation-name: fadeIn;
+            animation-name: fadeIn;
+            -webkit-animation-duration: 1s;
+            animation-duration: 1.4s;
+            animation-delay: 0.9s;
+            -webkit-animation-fill-mode: both;
+            animation-fill-mode: both;
+            }
+            @-webkit-keyframes fadeIn {
+            0% {opacity: 0;}
+            100% {opacity: 1;}
+            }
+            @keyframes fadeIn {
+            0% {opacity: 0;}
+            100% {opacity: 1;}
+            }
+
+
+.fadeInPW, #fadeInPW{
+                -webkit-animation-name: fadeIn;
+                animation-name: fadeIn;
+                -webkit-animation-duration: 1s;
+                animation-duration: 1.6s;
+                animation-delay: 1.5s;
+                -webkit-animation-fill-mode: both;
+                animation-fill-mode: both;
+                }
+                @-webkit-keyframes fadeIn {
+                0% {opacity: 0;}
+                100% {opacity: 1;}
+                }
+                @keyframes fadeIn {
+                0% {opacity: 0;}
+                100% {opacity: 1;}
+                }
+        
+
+.fadeInPWConf, #fadeInPWConf{
+                    -webkit-animation-name: fadeIn;
+                    animation-name: fadeIn;
+                    -webkit-animation-duration: 1s;
+                    animation-duration: 1.8s;
+                    animation-delay: 2s;
+                    -webkit-animation-fill-mode: both;
+                    animation-fill-mode: both;
+                    }
+                    @-webkit-keyframes fadeIn {
+                    0% {opacity: 0;}
+                    100% {opacity: 1;}
+                    }
+                    @keyframes fadeIn {
+                    0% {opacity: 0;}
+                    100% {opacity: 1;}
+                    }

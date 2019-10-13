@@ -73,8 +73,8 @@ class SignUp extends Component {
           <Col id="one">
             <div className="signUpDiv">
               <form className="createForm">
-                <h1 id="signupHeader">SIGN UP</h1>
-                <label>
+                <div id="fadeInEmail">
+                  <h1 id="signupHeader">SIGN UP</h1>
                   <p className="inputText">Enter your email</p>
                   <input
                     className="email"
@@ -83,6 +83,9 @@ class SignUp extends Component {
                     value={this.state.email}
                     onChange={this.onChangeEmail}
                   />
+                </div>
+
+                <div id="fadeInUsername">
                   <p className="inputText">Choose a username</p>
                   <input
                     className="username"
@@ -91,6 +94,9 @@ class SignUp extends Component {
                     value={this.state.username}
                     onChange={this.onChangeUsername}
                   />
+                </div>
+
+                <div id="fadeInPW">
                   <p className="inputText">Set your Password</p>
                   <input
                     className="pword"
@@ -99,6 +105,9 @@ class SignUp extends Component {
                     value={this.state.password}
                     onChange={this.onChangePassword}
                   />
+                </div>
+
+                <div id="fadeInPWConf">
                   <p className="inputText">Confirmation</p>
                   <input
                     className="pwordConf"
@@ -107,13 +116,14 @@ class SignUp extends Component {
                     value={this.state.passwordC}
                     onChange={this.onChangePasswordC}
                   />
-                </label>
+                </div>
               </form>
             </div>
           </Col>
         </Row>
         <Row>
           <button
+            className="fadeinBtn"
             id="loginPlaybtn"
             variant="primary"
             type="submit"

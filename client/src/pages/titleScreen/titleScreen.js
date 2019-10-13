@@ -56,7 +56,15 @@ class TitleScreen extends Component {
                 />
               </label>
 
-              <button id="playBtn" variant="primary" type="submit" value="Submit" onClick={this.handleSubmit}>Play</button>
+              <button
+                id="playBtn"
+                variant="primary"
+                type="submit"
+                value="Submit"
+                onClick={this.handleSubmit}
+              >
+                Play
+              </button>
             </form>
           </div>
         </Row>
