@@ -24,7 +24,6 @@ class LobbySelection extends Component {
     return (
       <Container>
         <div className="titleSection">
-          <p>EcoBourne</p>
           <GameStats
             playerNames={this.props.playerNames}
             lobbyMembers={this.props.lobbyMembers}
