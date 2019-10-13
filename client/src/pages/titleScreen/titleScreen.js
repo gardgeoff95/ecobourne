@@ -48,7 +48,8 @@ class TitleScreen extends Component {
             <form>
               <label>
                 <input
-                  className="fadeIn"
+                  id="fadeInNickname"
+                  className="fadeInNickname"
                   placeholder="Nickname"
                   type="text"
                   value={this.state.value}

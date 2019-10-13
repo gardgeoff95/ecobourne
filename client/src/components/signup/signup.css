@@ -93,7 +93,8 @@
         margin-left: 20%;
     }
     
-    #signupHeader {
+    #signupHeader, input {
+        filter: drop-shadow(0 0 0.2rem #61892F);
         font-size: 1.5rem;
         margin-left: 25%;
     }
@@ -152,7 +153,7 @@
     100% {opacity: 1;}
     }
 
-.fadeInEmail, #fadeInEmail{
+.signupTitle, #signupTitle{
         -webkit-animation-name: fadeIn;
         animation-name: fadeIn;
         -webkit-animation-duration: 1s;
@@ -170,12 +171,31 @@
         100% {opacity: 1;}
         }
 
+
+.fadeInEmail, #fadeInEmail{
+        -webkit-animation-name: fadeIn;
+        animation-name: fadeIn;
+        -webkit-animation-duration: 1s;
+        animation-duration: 1.4s;
+        animation-delay: 0.9s;
+        -webkit-animation-fill-mode: both;
+        animation-fill-mode: both;
+        }
+        @-webkit-keyframes fadeIn {
+        0% {opacity: 0;}
+        100% {opacity: 1;}
+        }
+        @keyframes fadeIn {
+        0% {opacity: 0;}
+        100% {opacity: 1;}
+        }
+
 .fadeInUsername, #fadeInUsername{
             -webkit-animation-name: fadeIn;
             animation-name: fadeIn;
             -webkit-animation-duration: 1s;
-            animation-duration: 1.4s;
-            animation-delay: 0.9s;
+            animation-duration: 1.6s;
+            animation-delay: 1.5s;
             -webkit-animation-fill-mode: both;
             animation-fill-mode: both;
             }
@@ -193,8 +213,8 @@
                 -webkit-animation-name: fadeIn;
                 animation-name: fadeIn;
                 -webkit-animation-duration: 1s;
-                animation-duration: 1.6s;
-                animation-delay: 1.5s;
+                animation-duration: 1.8s;
+                animation-delay: 2s;
                 -webkit-animation-fill-mode: both;
                 animation-fill-mode: both;
                 }
@@ -212,8 +232,8 @@
                     -webkit-animation-name: fadeIn;
                     animation-name: fadeIn;
                     -webkit-animation-duration: 1s;
-                    animation-duration: 1.8s;
-                    animation-delay: 2s;
+                    animation-duration: 2s;
+                    animation-delay: 2.6s;
                     -webkit-animation-fill-mode: both;
                     animation-fill-mode: both;
                     }

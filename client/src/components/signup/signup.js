@@ -73,8 +73,10 @@ class SignUp extends Component {
           <Col id="one">
             <div className="signUpDiv">
               <form className="createForm">
-                <div id="fadeInEmail">
+                <div id="signupTitle">
                   <h1 id="signupHeader">SIGN UP</h1>
+                </div>
+                <div id="fadeInEmail">
                   <p className="inputText">Enter your email</p>
                   <input
                     className="email"
