@@ -1,3 +1,51 @@
-/* #one {
-    border: 2px solid red;
-} */
+.loginBtn, .loginPW {
+    filter: drop-shadow(0 0 0.4rem #61892F);
+}
+/* login email  */
+#loginBtn {
+    /* width: 25%; */
+    filter: drop-shadow(0 0 0.5rem #61892F);
+    border-radius: 25px;
+    position: absolute;
+    top: 50px;
+    left: 0;
+    transform: translate(-50%, -50%);
+  }
+  
+  #loginBtn {
+    border-radius: 25px;
+    z-index: 1;
+    position: relative;
+    font-size: inherit;
+    font-family: inherit;
+    color: white;
+    padding: 0.5em 1em;
+    outline: none;
+    border: none;
+    background-color: #86c232;
+  }
+  
+  #loginBtn:hover {
+    cursor: pointer;
+  }
+  
+  #loginBtn::before {
+    border-radius: 25px;
+    content: "";
+    z-index: -1;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border: 4px solid #86c232;
+    transform-origin: center;
+    transform: scale(1);
+  }
+  
+  #loginBtn:hover::before {
+    transition: all 0.75s ease-in-out;
+    transform-origin: center;
+    transform: scale(1.75);
+    opacity: 0;
+  }
