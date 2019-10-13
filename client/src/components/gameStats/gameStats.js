@@ -8,16 +8,16 @@ import "../gameStats/gameStats.css";
 function GameStats(props) {
   console.log(props);
   return (
-    <Container fluid={true} id="lobbyContainer">
-      <Row>
+    <Container fluid={true}>
+      <Row id="lobbyContainer">
         {/* <p>Current Account: {this.props.accountName}</p> */}
-        <Col className="currentLobbyMembers">
+        {/* <Col className="lobbyMembers">
           <p>
             Current Lobby Members:{" "}
             {props.playerNames.map(player => player + " ")}
           </p>
-        </Col>
-        <Col className="lobbyMembers">
+        </Col> */}
+        <Col className="lobbyCount">
           <p>There are {props.playerNames.length} lobby members</p>
         </Col>
       </Row>

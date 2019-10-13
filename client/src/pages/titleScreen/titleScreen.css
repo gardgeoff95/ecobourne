@@ -47,12 +47,16 @@ form {
   transform: translate(-50%, -50%);
 }
 
-#playBtnDiv {
+/* #playBtnDiv {
   filter: drop-shadow(0 0 0.5rem #61892F);
   -webkit-filter: drop-shadow(0 0 0.5rem #61892F);
-}
+} */
 
 #playBtn {
+  filter: drop-shadow(0 0 0.5rem #61892F);
+  -webkit-filter: drop-shadow(0 0 0.5rem #61892F);
+box-shadow: 0px 0px 5px green inset;
+
   border-radius: 25px;
   z-index: 1;
   position: relative;
@@ -366,4 +370,16 @@ input[type=text]:focus {
 }
 }  
 
+
+/* iPads (portrait and landscape) ----------- */
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+/* Styles */
+
+}
+
+/* Large screens ----------- */
+@media only screen  and (min-width : 1824px) {
+/* Styles */
+
+}
 /* change height variables to pixels on screen size change  */
