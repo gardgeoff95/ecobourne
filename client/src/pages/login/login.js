@@ -2,8 +2,6 @@ import React, { Component } from "react";
 import axios from "axios";
 // import LoginForm from '../../components/login/login';
 
-import mobiscroll from "@mobiscroll/react";
-import "@mobiscroll/react/dist/css/mobiscroll.min.css";
 import { startSession } from "mongoose";
 
 class Login extends Component {
