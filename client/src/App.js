@@ -2,7 +2,6 @@ import React from "react";
 import PageContainer from "./pageContainer.js";
 import { BrowserRouter, Route } from "react-router-dom";
 
-
 // import BurgerMenu from './components/burgerMenu/burgerMenu';
 import TitleScreen from "./pages/titleScreen/titleScreen.js";
 
