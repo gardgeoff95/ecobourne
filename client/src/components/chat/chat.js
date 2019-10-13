@@ -11,39 +11,45 @@ function Chat(props) {
 
   return (
     <Container>
-      <li className="chat page">
-        {/* In Styling this element should include the property list-style-type: none 
+      <ul className="pages">
+        <li className="chat page">
+          {/* In Styling this element should include the property list-style-type: none 
             also in order to make it work like a chat I think it needs overflow auto or overflow scroll*/}
-        <div className="chatArea">
-          <ul className="messageLog">
-            {props.chatLog.map(user => {
-              var name = user.user;
-              var message = user.msg;
-              return (
-                <li>
-                  <p>
-                    {name} : {message}
-                  </p>
-                </li>
-              );
-            })}
-          </ul>
-        </div>
-        <form action="">
-          <input
-            id="message"
-            autocomplete="off"
-            name="userMessage"
-            value={props.userMessage}
-            onChange={props.onMessageChange}
-          />
-          <div id="chatSendBtn">
-            <button type="submit" onClick={props.chatBtnClick}>
-              Send
-        </button>
+          <div className="chatArea">
+            <ul className="messageLog">
+              {props.chatLog.map(user => {
+                var name = user.user;
+                var message = user.msg;
+                return (
+                  <li id="message">
+                    <span id="username">
+                      {name} :
+                      </span>
+                    <span id="userMessage">
+                      {message}
+                    </span>
+
+                  </li>
+                );
+              })}
+            </ul>
           </div>
-        </form>
-      </li>
+          <form action="">
+            <input
+              id="message"
+              autocomplete="off"
+              name="userMessage"
+              value={props.userMessage}
+              onChange={props.onMessageChange}
+            />
+            <div id="chatSendBtn">
+              <button type="submit" onClick={props.chatBtnClick}>
+                Send
+        </button>
+            </div>
+          </form>
+        </li>
+      </ul>
     </Container>
   );
 }

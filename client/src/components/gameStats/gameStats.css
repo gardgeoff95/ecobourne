@@ -1,3 +1,21 @@
-#lobbyContainer {
-    border: 2px solid red;
+
+/* media queries */
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+    /* Styles */    
+    .lobbyCount {
+        border: 2px solid red;
+        margin-top: 140px;
+    }
+}
+
+  /* iPads (portrait and landscape) ----------- */
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+  /* Styles */
+ 
+}
+
+/* Large screens ----------- */
+@media only screen  and (min-width : 1824px) {
+/* Styles */
+
 }

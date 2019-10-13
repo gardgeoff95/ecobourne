@@ -4,6 +4,7 @@ import { BrowserRouter, Route } from "react-router-dom";
 
 // import BurgerMenu from './components/burgerMenu/burgerMenu';
 import TitleScreen from "./pages/titleScreen/titleScreen.js";
+import AnimalStats from "./components/animalStats/animalStats.js";
 
 // import Login from './pages/login/login';
 

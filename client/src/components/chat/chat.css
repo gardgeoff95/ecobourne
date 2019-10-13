@@ -1,44 +1,73 @@
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
-
 /* media queries */
-@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
-    /* Styles */
-    #chatBox {
-        list-style: none;
-        overflow: scroll;
-        border: 2px red solid;
-    }
-    
-    #message {
-        color: white;
-        margin-left: 15%;
-    
-    }
-    
-    #message {
-        margin-top: 0% !important;
-    }
-    
-    #chatSendBtn {
-        border: 2px solid red;
-    }
-    
-    .chat, .page {
-        display: list-item;
-    }
-    
-    .chatArea {
-        height: 100%;
-        padding-bottom: 60px;
-    }
-    
-    .messageLog {
-        height: 100%;
-        margin: 0;
-        overflow-y: scroll;
-        padding: 10px 20px 10px 20px;
-    }
-  }  
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+  /* Styles */
+  #chatBox {
+    list-style: none;
+    overflow: scroll;
+    border: 2px red solid;
+  }
+
+  #message {
+    color: white;
+    margin-left: 15%;
+  }
+
+  #message {
+    margin-top: 0% !important;
+  }
+
+  #chatSendBtn {
+    border: 2px solid red;
+  }
+
+  .pages {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+  }
+
+  .chat,
+  .page {
+    display: none;
+  }
+
+  .chatArea {
+    height: 100%;
+    padding-bottom: 60px;
+  }
+
+  .messageLog {
+    height: 100%;
+    margin: 0;
+    overflow-y: scroll;
+    padding: 10px 20px 10px 20px;
+  }
+
+  #message {
+    display: list-item;
+  }
+  #username {
+    font-weight: 700;
+    overflow: hidden;
+    padding-right: 15px;
+    text-align: right;
+    color: rgb(74, 232, 196);
+  }
+}
+
+/* iPads (portrait and landscape) ----------- */
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+/* Styles */
+
+}
+
+/* Large screens ----------- */
+@media only screen  and (min-width : 1824px) {
+/* Styles */
+
+}
