@@ -91,6 +91,10 @@ input {
   padding-left: 10px;
 }
 
+input[type=text]:focus {
+  color: #222629;
+}
+
 /* Logo Load and animation */
 
 #logoEco {

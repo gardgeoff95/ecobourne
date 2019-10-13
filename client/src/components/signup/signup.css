@@ -94,7 +94,7 @@
     }
     
     #signupHeader, input {
-        filter: drop-shadow(0 0 0.2rem #61892F);
+        filter: drop-shadow(0 0 0.5rem #61892F);
         font-size: 1.5rem;
         margin-left: 25%;
     }
