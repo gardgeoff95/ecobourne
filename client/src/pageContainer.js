@@ -50,9 +50,14 @@ class PageContainer extends Component {
     };
     //THIS NEEDS HELP, andy required
     //window.location.hostname
-    this.socket = io(window.location.hostname);
+    if (process.env.NODE_ENV === "production") {
+      this.socket = io(window.location.hostname);
+    } else {
+      this.socket = io("http://localhost:3001");
+    }
     this.database = firebase.database();
   }
+  
 
   setAccountName = name => {
     this.setState({
