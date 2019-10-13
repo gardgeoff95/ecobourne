@@ -39,6 +39,7 @@ form {
 
 #playBtn {
   /* width: 25%; */
+  filter: drop-shadow(0 0 0.5rem #61892F);
   border-radius: 25px;
   position: absolute;
   top: 25px;
@@ -88,6 +89,10 @@ input {
   margin-top: 60% !important;
   border-radius: 25px;
   padding-left: 10px;
+}
+
+input[type=text]:focus {
+  color: #222629;
 }
 
 /* Logo Load and animation */
@@ -267,12 +272,33 @@ input {
     }
     }
 
+
+.fadeInNickname, #fadeInNickname {
+      -webkit-animation-name: fadeIn;
+      animation-name: fadeIn;
+      -webkit-animation-duration: 1s;
+      animation-duration: 1s;
+      animation-delay: 5s;
+      -webkit-animation-fill-mode: both;
+      animation-fill-mode: both;
+      }
+      @-webkit-keyframes fadeIn {
+      0% {opacity: 0;}
+      100% {opacity: 1;}
+      }
+      @keyframes fadeIn {
+      0% {opacity: 0;}
+      100% {opacity: 1;}
+      }
+    
+
+
     .fadeIn, #playBtn {
         -webkit-animation-name: fadeIn;
         animation-name: fadeIn;
         -webkit-animation-duration: 1s;
         animation-duration: 1s;
-        animation-delay: 5s;
+        animation-delay: 5.3s;
         -webkit-animation-fill-mode: both;
         animation-fill-mode: both;
         }
@@ -284,8 +310,6 @@ input {
         0% {opacity: 0;}
         100% {opacity: 1;}
         }
-
-        
 
 /* end Logo Load  */
 .bm-menu{

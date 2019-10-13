@@ -48,7 +48,8 @@ class TitleScreen extends Component {
             <form>
               <label>
                 <input
-                  className="fadeIn"
+                  id="fadeInNickname"
+                  className="fadeInNickname"
                   placeholder="Nickname"
                   type="text"
                   value={this.state.value}
@@ -56,7 +57,15 @@ class TitleScreen extends Component {
                 />
               </label>
 
-              <button id="playBtn" variant="primary" type="submit" value="Submit" onClick={this.handleSubmit}>Play</button>
+              <button
+                id="playBtn"
+                variant="primary"
+                type="submit"
+                value="Submit"
+                onClick={this.handleSubmit}
+              >
+                Play
+              </button>
             </form>
           </div>
         </Row>

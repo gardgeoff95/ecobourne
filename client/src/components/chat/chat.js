@@ -1,10 +1,16 @@
 import React from "react";
 
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
+import Container from 'react-bootstrap/Container';
+
+import './chat.css';
+
 function Chat(props) {
   console.log("hhhhh", props.userMessage);
 
   return (
-    <div>
+    <Container>
       {/* In Styling this element should include the property list-style-type: none 
             also in order to make it work like a chat I think it needs overflow auto or overflow scroll*/}
       <ul className="messageLog">
@@ -28,11 +34,13 @@ function Chat(props) {
           value={props.userMessage}
           onChange={props.onMessageChange}
         />
-        <button type="submit" onClick={props.chatBtnClick}>
-          Send
+        <div id="chatSendBtn">
+          <button type="submit" onClick={props.chatBtnClick}>
+            Send
         </button>
+        </div>
       </form>
-    </div>
+    </Container>
   );
 }
 

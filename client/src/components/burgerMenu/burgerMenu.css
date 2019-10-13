@@ -1,31 +1,27 @@
-* {
-    outline: none;
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-    color: #222629;
-    font-family: Arial, Helvetica, sans-serif;
-}
-
-.md-hamb {
-    display: inline-block;
-    margin-left: 80%;
-}
-
-.mbsc-ios .mbsc-fr-arr {
-    background: #222629;
-}
-
-.mbsc-ios .mbsc-fr-w {
-    background: #222629;
-    color: #000;
-}
-
-.mbsc-ios.mbsc-ms-nosel .mbsc-ms-item, .mbsc-ios .mbsc-ms .mbsc-ms-item-sel {
-    color: #86c232;
-}
-
-.mbsc-ios.mbsc-ms-more .mbsc-ms-item:after {
-    border-top: 1px solid #ccc;
-    margin-right: 10px;
-}
+  /* media queries */
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+    /* Styles */
+    .bm-burger-button {
+        position: fixed;
+        width: 36px;
+        height: 30px;
+        left: 305px;
+        top: 36px;
+      }
+    
+      .bm-burger-bars {
+        background: #373a47;
+      }
+    
+      /* Color/shape of burger icon bars on hover*/
+    .bm-burger-bars-hover {
+        background: #86C232;
+      }
+    
+      .bm-item {
+          color: rgb(107, 110, 112);
+      }
+      .bm-item:hover {
+          color: #86C232;
+      }
+  } 
