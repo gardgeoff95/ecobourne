@@ -39,12 +39,17 @@ form {
 
 #playBtn {
   /* width: 25%; */
-  filter: drop-shadow(0 0 0.5rem #61892F);
+  /* filter: drop-shadow(0 0 0.5rem #61892F); */
   border-radius: 25px;
   position: absolute;
   top: 25px;
   left: 50%;
   transform: translate(-50%, -50%);
+}
+
+#playBtnDiv {
+  filter: drop-shadow(0 0 0.5rem #61892F);
+  -webkit-filter: drop-shadow(0 0 0.5rem #61892F);
 }
 
 #playBtn {
