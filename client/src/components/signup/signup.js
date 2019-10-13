@@ -1,7 +1,5 @@
 import React, { Component } from "react";
 import axios from "axios";
-import mobiscroll from "@mobiscroll/react";
-import "@mobiscroll/react/dist/css/mobiscroll.min.css";
 
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';

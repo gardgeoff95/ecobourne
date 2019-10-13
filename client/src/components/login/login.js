@@ -1,6 +1,4 @@
 // import React from 'react';
-// import mobiscroll from '@mobiscroll/react';
-// import '@mobiscroll/react/dist/css/mobiscroll.min.css';
 // import { withRouter } from 'react-router-dom';
 // import './login.css';
 
