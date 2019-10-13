@@ -98,6 +98,7 @@ input[type=text]:focus {
 /* Logo Load and animation */
 
 #logoEco {
+  filter: drop-shadow(0 0 0.4rem #6B6E70);
   width: 50%;
   position: absolute;
   top: 33%;
@@ -108,6 +109,7 @@ input[type=text]:focus {
 }
 
 #logoBourne {
+  filter: drop-shadow(0 0 0.4rem #61892F);
   width: 50%;
   position: absolute;
   top: 33%;
@@ -118,6 +120,7 @@ input[type=text]:focus {
 }
 
 #text2 {
+  filter: drop-shadow(1px 3px 1px #0d0e0f);
   width: 40%;
   position: absolute;
   top: 43%;
@@ -314,10 +317,6 @@ input[type=text]:focus {
         }
 
 /* end Logo Load  */
-.bm-menu{
-    background: #222629;
-}
-
 
 /* media queries */
 @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
