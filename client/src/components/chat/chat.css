@@ -4,12 +4,6 @@
     border: 2px red solid;
 }
 
-.messageLog {
-    border: 2px solid blue;
-    padding: 200px;
-    padding: 50%;
-}
-
 #message {
     color: white;
     margin-left: 15%;
@@ -22,4 +16,20 @@
 
 #chatSendBtn {
     border: 2px solid red;
+}
+
+.chat, .page {
+    display: list-item;
+}
+
+.chatArea {
+    height: 100%;
+    padding-bottom: 60px;
+}
+
+.messageLog {
+    height: 100%;
+    margin: 0;
+    overflow-y: scroll;
+    padding: 10px 20px 10px 20px;
 }
