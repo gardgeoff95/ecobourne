@@ -2,6 +2,10 @@ import React, { Component } from "react";
 import GameStats from "./../../components/gameStats/gameStats";
 import Chat from "../../components/chat/chat";
 
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
+import Container from 'react-bootstrap/Container';
+
 class LobbySelection extends Component {
   state = {};
 
@@ -18,7 +22,7 @@ class LobbySelection extends Component {
   render() {
     console.log(<Chat />);
     return (
-      <div className="container-fluid">
+      <Container>
         <div className="titleSection">
           <p>EcoBourne</p>
           <GameStats
@@ -37,7 +41,7 @@ class LobbySelection extends Component {
           currentUser={this.props.currentUser}
           chatLog={this.props.chatLog}
         />
-      </div>
+      </Container>
     );
   }
 }

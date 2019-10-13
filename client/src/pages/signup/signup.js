@@ -1,7 +1,11 @@
 import React, { Component } from "react";
 import axios from "axios";
-import mobiscroll from "@mobiscroll/react";
-import "@mobiscroll/react/dist/css/mobiscroll.min.css";
+
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
+import Container from 'react-bootstrap/Container';
+
+import './signup.css';
 
 class SignUp extends Component {
   state = {
@@ -67,9 +71,9 @@ class SignUp extends Component {
 
   render() {
     return (
-      <div className="container-fluid">
-        <div>
-          <div>
+      <Container fluid={true}>
+        <Row id="one">
+          <Col>
             <h1>SIGN UP</h1>
 
             <form>
@@ -122,9 +126,9 @@ class SignUp extends Component {
                 Play
               </button>
             </form>
-          </div>
-        </div>
-      </div>
+          </Col>
+        </Row>
+      </Container>
     );
   }
 }

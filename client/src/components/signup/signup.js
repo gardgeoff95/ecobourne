@@ -1,7 +1,12 @@
 import React, { Component } from "react";
 import axios from "axios";
-import mobiscroll from "@mobiscroll/react";
-import "@mobiscroll/react/dist/css/mobiscroll.min.css";
+
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
+import Container from 'react-bootstrap/Container';
+
+import './signup.css';
+
 class SignUp extends Component {
   state = {
     username: "",
@@ -39,7 +44,7 @@ class SignUp extends Component {
       !(this.state.username === "") &&
       !(this.state.passwordC === "")
     ) {
-    //   this.props.setAccountName(username);
+      //   this.props.setAccountName(username);
       axios
         .post("/", {
           email: this.state.email,
@@ -63,60 +68,74 @@ class SignUp extends Component {
   };
   render() {
     return (
-      <div className="container-fluid">
-        <div>
-          <div>
-            <h1>SIGN UP</h1>
-            <form>
-              <label>
-                <input
-                  className=""
-                  placeholder="Email"
-                  type="text"
-                  value={this.state.email}
-                  onChange={this.onChangeEmail}
-                />
-              </label>
-              <label>
-                <input
-                  className=""
-                  placeholder="User Name"
-                  type="text"
-                  value={this.state.username}
-                  onChange={this.onChangeUsername}
-                />
-              </label>
-              <label>
-                <input
-                  className=""
-                  placeholder="Password"
-                  type="text"
-                  value={this.state.password}
-                  onChange={this.onChangePassword}
-                />
-              </label>
-              <label>
-                <input
-                  className=""
-                  placeholder="Enter your password again"
-                  type="text"
-                  value={this.state.passwordC}
-                  onChange={this.onChangePasswordC}
-                />
-              </label>
-              <button
-                id=""
-                variant="primary"
-                type="submit"
-                value="Submit"
-                onClick={this.handleSubmit}
-              >
-                Play
-              </button>
-            </form>
-          </div>
-        </div>
-      </div>
+      <Container fluid={true}>
+        <Row>
+          <Col id="one">
+            <div className="signUpDiv">
+              <form className="createForm">
+                <div id="signupTitle">
+                  <h1 id="signupHeader">SIGN UP</h1>
+                </div>
+                <div id="fadeInEmail">
+                  <p className="inputText">Email</p>
+                  <input
+                    className="email"
+                    placeholder="Email"
+                    type="text"
+                    value={this.state.email}
+                    onChange={this.onChangeEmail}
+                  />
+                </div>
+
+                <div id="fadeInUsername">
+                  <p className="inputText">Username</p>
+                  <input
+                    className="username"
+                    placeholder="Username"
+                    type="text"
+                    value={this.state.username}
+                    onChange={this.onChangeUsername}
+                  />
+                </div>
+
+                <div id="fadeInPW">
+                  <p className="inputText">Password</p>
+                  <input
+                    className="pword"
+                    placeholder="Password"
+                    type="text"
+                    value={this.state.password}
+                    onChange={this.onChangePassword}
+                  />
+                </div>
+
+                <div id="fadeInPWConf">
+                  <p className="inputText">Confirm</p>
+                  <input
+                    className="pwordConf"
+                    placeholder="Confirm Password"
+                    type="text"
+                    value={this.state.passwordC}
+                    onChange={this.onChangePasswordC}
+                  />
+                </div>
+              </form>
+            </div>
+          </Col>
+        </Row>
+        <Row>
+          <button
+            className="fadeinBtn"
+            id="loginPlaybtn"
+            variant="primary"
+            type="submit"
+            value="Submit"
+            onClick={this.handleSubmit}
+          >
+            Login
+                  </button>
+        </Row>
+      </Container>
     );
   }
 }

@@ -1,0 +1,25 @@
+#chatBox {
+    list-style: none;
+    overflow: scroll;
+    border: 2px red solid;
+}
+
+.messageLog {
+    border: 2px solid blue;
+    padding: 200px;
+    padding: 50%;
+}
+
+#message {
+    color: white;
+    margin-left: 15%;
+
+}
+
+#message {
+    margin-top: 0% !important;
+}
+
+#chatSendBtn {
+    border: 2px solid red;
+}
