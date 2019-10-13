@@ -69,61 +69,59 @@ class SignUp extends Component {
   render() {
     return (
       <Container fluid={true}>
-        <Row id="one">
-          <Col>
-            <h1>SIGN UP</h1>
-            <form className="createForm">
-              <label>
-                <input
-                  className="email"
-                  placeholder="Email"
-                  type="text"
-                  value={this.state.email}
-                  onChange={this.onChangeEmail}
-                />
-              </label>
-              <label>
-                <input
-                  className="username"
-                  placeholder="User Name"
-                  type="text"
-                  value={this.state.username}
-                  onChange={this.onChangeUsername}
-                />
-              </label>
-            </form>
-            <form>
-              <label className="pwordForm">
-                <input
-                  className="pword"
-                  placeholder="Password"
-                  type="text"
-                  value={this.state.password}
-                  onChange={this.onChangePassword}
-                />
-              </label>
-              <label>
-                <input
-                  className="pwordConf"
-                  placeholder="Confirm Password"
-                  type="text"
-                  value={this.state.passwordC}
-                  onChange={this.onChangePasswordC}
-                />
-              </label>
-              <Row>
-                <button
-                  id="playButton"
-                  variant="primary"
-                  type="submit"
-                  value="Submit"
-                  onClick={this.handleSubmit}
-                >
-                  Play
-              </button>
-              </Row>
-            </form>
+        <Row>
+          <Col id="one">
+            <div className="signUpDiv">
+              <form className="createForm">
+                <h1 id="signupHeader">SIGN UP</h1>
+                <label>
+                  <p className="inputText">Enter your email</p>
+                  <input
+                    className="email"
+                    placeholder="Email"
+                    type="text"
+                    value={this.state.email}
+                    onChange={this.onChangeEmail}
+                  />
+                  <p className="inputText">Choose a username</p>
+                  <input
+                    className="username"
+                    placeholder="Username"
+                    type="text"
+                    value={this.state.username}
+                    onChange={this.onChangeUsername}
+                  />
+                  <p className="inputText">Set your Password</p>
+                  <input
+                    className="pword"
+                    placeholder="Password"
+                    type="text"
+                    value={this.state.password}
+                    onChange={this.onChangePassword}
+                  />
+                  <p className="inputText">Confirmation</p>
+                  <input
+                    className="pwordConf"
+                    placeholder="Confirm Password"
+                    type="text"
+                    value={this.state.passwordC}
+                    onChange={this.onChangePasswordC}
+                  />
+                </label>
+              </form>
+            </div>
           </Col>
+        </Row>
+        <Row>
+          <button
+            id="loginPlaybtn"
+            variant="primary"
+            type="submit"
+            value="Submit"
+            onClick={this.handleSubmit}
+          >
+            Login
+                  </button>
         </Row>
       </Container>
     );
