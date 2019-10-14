@@ -1,35 +1,39 @@
 #chatBox {
-    list-style: none;
-    overflow: scroll;
-    border: 2px red solid;
+  list-style: none;
+  overflow: scroll;
+  border: 2px red solid;
 }
 
 #message {
-    color: white;
-    margin-left: 15%;
-
+  color: white;
+  margin-left: 15%;
 }
 
 #message {
-    margin-top: 0% !important;
+  margin-top: 0% !important;
 }
 
 #chatSendBtn {
-    border: 2px solid red;
+  border: 2px solid red;
 }
 
-.chat, .page {
-    display: list-item;
+.chat,
+.page {
+  display: list-item;
 }
 
 .chatArea {
-    height: 100%;
-    padding-bottom: 60px;
+  height: 100%;
+  padding-bottom: 60px;
 }
 
 .messageLog {
-    height: 100%;
-    margin: 0;
-    overflow-y: scroll;
-    padding: 10px 20px 10px 20px;
+  list-style: none;
+  width: 50%;
+  margin: 0;
+  overflow-y: scroll;
+  padding: 10px 20px 10px 20px;
+  border: 2px blue solid;
+  /* This is needed */
+  max-height: 200px;
 }

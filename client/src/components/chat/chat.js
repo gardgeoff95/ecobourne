@@ -1,10 +1,10 @@
 import React from "react";
 
-import Col from 'react-bootstrap/Col';
-import Row from 'react-bootstrap/Row';
-import Container from 'react-bootstrap/Container';
+import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
+import Container from "react-bootstrap/Container";
 
-import './chat.css';
+import "./chat.css";
 
 function Chat(props) {
   console.log("hhhhh", props.userMessage);
@@ -28,8 +28,7 @@ function Chat(props) {
               );
             })}
           </ul>
-        </div>
-        <form action="">
+
           <input
             id="message"
             autocomplete="off"
@@ -40,9 +39,9 @@ function Chat(props) {
           <div id="chatSendBtn">
             <button type="submit" onClick={props.chatBtnClick}>
               Send
-        </button>
+            </button>
           </div>
-        </form>
+        </div>
       </li>
     </Container>
   );
