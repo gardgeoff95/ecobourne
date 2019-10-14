@@ -39,8 +39,6 @@ form {
 }
 
 #playBtn {
-  /* width: 25%; */
-  /* filter: drop-shadow(0 0 0.5rem #61892F); */
   border-radius: 25px;
   position: absolute;
   top: 25px;
@@ -65,6 +63,7 @@ box-shadow: 0px 0px 5px green inset;
   position: relative;
   font-size: inherit;
   font-family: inherit;
+  font-weight: bold;
   color: white;
   padding: 0.5em 1em;
   outline: none;

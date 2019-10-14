@@ -57,7 +57,6 @@ class PageContainer extends Component {
     }
     this.database = firebase.database();
   }
-  
 
   setAccountName = name => {
     this.setState({
@@ -230,7 +229,6 @@ class PageContainer extends Component {
           accountName={this.state.accountName}
         />
       );
-
     } else {
       return <TitleScreen />;
     }
