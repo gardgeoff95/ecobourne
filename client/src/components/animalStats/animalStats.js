@@ -30,7 +30,7 @@ function AnimalStats(props) {
             <div className="animal">
               <p className="animalTitle">Bunny Stats</p>
               <hr></hr>
-              <p>Population: {props.bunnyStats.pop}</p>
+              <p className="pop">Population: {props.bunnyStats.pop}</p>
 
               <p className="deathByStarvation">
                 Starvation: {props.bunnyStats.starvation}
