@@ -382,7 +382,7 @@ input[type=text]:focus {
 /* Styles */
 
 #text2{
-  top: 40%;
+  top: 42%;
 }
 
 .fadeInUp {
@@ -394,7 +394,7 @@ left: 20%;
 
 .userInput {
 position: absolute;
-top: 43%;
+top: 46%;
 left: 50%;
 }
 
@@ -424,5 +424,21 @@ left: 50%;
   /* Large screens ----------- */
   @media only screen  and (min-width : 1824px) {
   /* Styles */
+  #text2{
+    top: 41%;
+  }
+  
+  .fadeInUp {
+  width: 60%;
+  position: absolute;
+  top: 36%;
+  left: 20%;
+  }
+  
+  .userInput {
+  position: absolute;
+  top: 44%;
+  left: 50%;
+  }
   }
 /* change height variables to pixels on screen size change  */
