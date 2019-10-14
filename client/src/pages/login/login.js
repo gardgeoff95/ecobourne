@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
+//lknnl
 // import LoginForm from '../../components/login/login';
+
 
 import { startSession } from "mongoose";
 
@@ -56,10 +58,17 @@ class Login extends Component {
     return (
       <div className="container-fluid">
         <div id="one">
-          <div>
-            <h1>LOG IN</h1>
-            <form>
+          <div class="loginDiv">
+            <form  className="loginForm">
+            <div id="loginSec" className="fadeInLogin">
+            <h1 id="loginTxt" >LOG IN</h1>
+            </div>
+
+            
               <label>
+                <div id="fadeInEm">
+                <p id=
+                "empw">Email</p>
                 <input
                   className="emailLogin"
                   placeholder="Email"
@@ -67,9 +76,13 @@ class Login extends Component {
                   value={this.state.email}
                   onChange={this.onChangeEmail}
                 />
+                </div>
               </label>
 
               <label>
+              <div id="fadeInPw">
+                <p id=
+                "empw">Password</p>
                 <input
                   className="loginPW"
                   placeholder="Password"
@@ -77,9 +90,12 @@ class Login extends Component {
                   value={this.state.password}
                   onChange={this.onChangePassword}
                 />
+              </div>
               </label>
 
+            <div id="butt"> 
               <button
+                className="fadeInBtn"
                 id="loginBtn"
                 variant="primary"
                 type="submit"
@@ -88,6 +104,7 @@ class Login extends Component {
               >
                 Play
               </button>
+            </div>
             </form>
           </div>
         </div>
