@@ -1,4 +1,12 @@
-  /* =========== media queries ============= */
+.bm-burger-button {
+  position: fixed;
+  width: 36px;
+  height: 30px;
+  left: 90%;
+  top: 50px;
+}
+
+ /* =========== media queries ============= */
   /* Smartphones (portrait and landscape) ----------- */
 @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
     /* Styles */

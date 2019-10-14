@@ -425,7 +425,7 @@ left: 50%;
   @media only screen  and (min-width : 1824px) {
   /* Styles */
   #text2{
-    top: 41%;
+    top: 45%;
   }
   
   .fadeInUp {
@@ -437,7 +437,7 @@ left: 50%;
   
   .userInput {
   position: absolute;
-  top: 44%;
+  top: 50%;
   left: 50%;
   }
   }
