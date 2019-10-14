@@ -81,6 +81,7 @@ class PageContainer extends Component {
     this.database.ref("rabbits").on("value", snap => {
       if (snap.val() != null) {
         let bunnyObj = {
+          pop: snap.val().population.size,
           starvation: snap.val().deaths.starvation,
           predator: snap.val().deaths.predator,
           oldAge: snap.val().deaths.oldAge
@@ -94,11 +95,24 @@ class PageContainer extends Component {
     this.database.ref("foxes").on("value", snap => {
       if (snap.val() != null) {
         let foxObj = {
+          pop: snap.val().population.size,
           starvation: snap.val().deaths.starvation,
           oldAge: snap.val().deaths.oldAge
         };
         this.setState({
           foxStats: foxObj
+        });
+      }
+    });
+    this.database.ref("bears").on("value", snap => {
+      if (snap.val() != null) {
+        let bearObj = {
+          pop: snap.val().population.size,
+          starvation: snap.val().deaths.starvation,
+          oldAge: snap.val().deaths.oldAge
+        };
+        this.setState({
+          bearStats: bearObj
         });
       }
     });
