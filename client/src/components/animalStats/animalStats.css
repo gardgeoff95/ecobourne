@@ -1,16 +1,3 @@
-.stats {
-    background: #b5b5b7;
-    border-radius: 25px;
-    padding: 25px;
-    border: 2px solid #6B6E70;
-    filter: drop-shadow(0 0 0.5rem #6B6E70);
-    -webkit-filter: drop-shadow(0 0 0.5rem #6B6E70);
-  box-shadow: 0px 0px 5px #6B6E70 inset;
-}
-.statsContainer {
-    margin-top: 2%;
-}
-
 .animalTitle {
     font-weight: bold;
     font-size: 15px;
@@ -34,7 +21,22 @@ hr {
 /* media queries */
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
     /* Styles */    
-
+    .stats {
+      background: #b5b5b7;
+      border-radius: 25px;
+      padding: 10px;
+      border: 2px solid #6B6E70;
+      filter: drop-shadow(0 0 0.5rem #6B6E70);
+      -webkit-filter: drop-shadow(0 0 0.5rem #6B6E70);
+    box-shadow: 0px 0px 5px #6B6E70 inset;
+  }
+  
+  .animal{
+    margin-top: 30px;
+  }
+  .statsContainer {
+      margin-top: 63%;
+  }
 }
 
   /* iPads (portrait and landscape) ----------- */
