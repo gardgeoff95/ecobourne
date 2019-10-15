@@ -1,7 +1,10 @@
+form {
+  margin-top: 150px !important;
+}
 
 #loginTxt {
     font-size: 1.5rem;
-    padding-top: 60%;
+    /* padding-top: 60%; */
     margin-left: 65px;
     filter: drop-shadow(0 0 0.25rem #61892F);
 }
@@ -76,32 +79,6 @@
   }
 
 
-  
-/* media queries */
-
-/*Smartphones*/
-@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
-  /* Styles */    
-
-}
-
-/* Desktops and laptops ----------- */
-@media only screen  and (min-width : 1224px) {
-    /* Styles */
-}
-
-/* iPads (portrait and landscape) ----------- */
-@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
-/* Styles */
-
-}
-
-/* Large screens ----------- */
-@media only screen  and (min-width : 1824px) {
-/* Styles */
-
-}
-
 .fadeInLogin {
     -webkit-animation-name: fadeIn;
     animation-name: fadeIn;
@@ -174,5 +151,137 @@
             0% {opacity: 0;}
             100% {opacity: 1;}
             }
+
+
+
+/* media queries */
+
+/*Smartphones*/
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+  /* Styles */    
+
+#loginTxt {
+  font-size: 1.5rem;
+  /* padding-top: 60%; */
+  margin-left: 55px;
+  filter: drop-shadow(0 0 0.25rem #61892F);
+}
+
+.loginDiv {
+  margin-left: 20%;
+}
+.loginForm {
+  left: 525px;
+}
+
+.emailLogin, .loginPW {
+  margin-top: 5% !important;
+  filter: drop-shadow(0 0 0.4rem #61892F);
+}
+.loginBtn, .loginPW {
+  filter: drop-shadow(0 0 0.4rem #61892F);
+}
+
+#butt {
+
+}
+
+
+
+/* login email  */
+#loginBtn {
+  /* width: 25%; */
+  filter: drop-shadow(0 0 0.5rem #61892F);
+  border-radius: 25px;
+  position: absolute;
+  top: 20px;
+  left: 40%;
+  transform: translate(-50%, -50%);
+}
+
+#loginBtn {
+  border-radius: 25px;
+  z-index: 1;
+  position: relative;
+  margin-top: 15px;
+  font-size: inherit;
+  font-family: inherit;
+  color: white;
+  padding: 0.5em 1em;
+  outline: none;
+  border: none;
+  background-color: #86c232;
+}
+
+}
+
+/* iPads (portrait and landscape) ----------- */
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+  /* Styles */
+  form {
+    top: 200px !important;
+    left: 380px;
+      /* border: 2px solid red; */
+  }
+
+  #loginBtn {
+    left: 175px;
+  }
+  
+  #loginTxt {
+    margin-left: 145px;
+  }
+  #empw {
+    margin-left: 45px;
+  }
+  #fadeInEm {
+    margin: 10px;
+  }
+  }
+
+/* Desktops and laptops ----------- */
+@media only screen  and (min-width : 1224px) {
+    /* Styles */
+    form {
+      top: 200px !important;
+      left: 380px;
+        /* border: 2px solid red; */
+    }
+  
+    #loginBtn {
+      left: 175px;
+    }
     
-    
+    #loginTxt {
+      margin-left: 145px;
+    }
+    #empw {
+      margin-left: 45px;
+    }
+
+    #fadeInEm {
+      margin: 10px;
+    }
+}
+
+/* Large screens ----------- */
+@media only screen  and (min-width : 1824px) {
+/* Styles */
+form {
+  top: 200px !important;
+  left: 380px;
+    /* border: 2px solid red; */
+}
+
+#loginBtn {
+  left: 175px;
+}
+
+#loginTxt {
+  margin-left: 145px;
+}
+#empw {
+  margin-left: 45px;
+}
+
+}
