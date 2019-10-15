@@ -4,6 +4,10 @@
   /* border: 2px red solid; */
 }
 
+html::-webkit-scrollbar {
+  display: none;
+}
+
 #message {
   color: black;
   margin-left: 5px;
@@ -12,7 +16,7 @@
 }
 
 #userMsg{
-  color: #474B4F;
+  color: #FFFAFA;
   font-weight: bold;
 }
 
@@ -76,7 +80,7 @@ input {
   margin-top: 25px;
   margin-bottom: 15px;
 
-  background: #b5b5b7;
+  background: #222629;
   border-radius: 25px;
   filter: drop-shadow(0 0 0.5rem #6B6E70);
   -webkit-filter: drop-shadow(0 0 0.5rem #6B6E70);
@@ -100,7 +104,7 @@ box-shadow: 0px 0px 5px #6B6E70 inset;
 }
 
 #userMsg{
-  color: #474B4F;
+  color: #FFFAFA;
   font-weight: bold;
 }
 
@@ -168,7 +172,7 @@ input {
     margin-top: 25px;
     margin-bottom: 15px;
   
-    background: #b5b5b7;
+    background: #222629;
     border-radius: 25px;
     filter: drop-shadow(0 0 0.5rem #6B6E70);
     -webkit-filter: drop-shadow(0 0 0.5rem #6B6E70);
@@ -237,10 +241,10 @@ input {
   margin-left: 310px;
   width: 290px;
 }
-
 #chatSendBtn {
-  top: 239px;
-  left: 745px;
+  top: 0;
+  left: 51%;
+  margin-top: 597px;
 }
 }
 

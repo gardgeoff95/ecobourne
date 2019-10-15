@@ -17,3 +17,7 @@ body {
   /* background-color: #1a1c1f; */
   background-image: url("https://www.transparenttextures.com/patterns/stardust.png");
 }
+
+html::-webkit-scrollbar {
+  display: none;
+}

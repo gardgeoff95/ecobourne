@@ -4,7 +4,7 @@
 }
 .animalTitle, .deathByStarvation, .deathByPreditor,
 .deathByOldAge, .pop {
-    color: #474B4F;
+    color: #FFFAFA;
     font-weight: bold;
 }
 hr {
@@ -16,7 +16,7 @@ hr {
 }
 
 .stats {
-  background: #b5b5b7;
+  background: #222629;
   border-radius: 25px;
   padding: 10px;
   border: 2px solid #6B6E70;
@@ -28,41 +28,57 @@ box-shadow: 0px 0px 5px #6B6E70 inset;
   margin-top: 30px;
 }
 .statsContainer {
-    margin-top: 50%;
+    margin-top: 60px;
 }
 
 /* media queries */
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
-    /* Styles */    
-  
-
+  /* Styles */
+  .statsContainer {
+    margin-top: 150px;
+    width: 95%;
+}
 }
 
   /* iPads (portrait and landscape) ----------- */
 @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
   /* Styles */
   .statsContainer {
-    margin-top: 20%;
+    margin-top: 150px;
     width: 90% !important;
 }
  
 }
 
 /* Desktops and laptops ----------- */
-@media only screen  and (min-width : 1224px) {
+@media only screen and (min-width: 1024px)  and (max-width : 1224px) {
   /* Styles */
   .statsContainer {
-    margin-top: 15%;
-    width: 80% !important;
+    margin-top: 150px;
+    width: 92% !important;
 }
 }
 
 /* Large screens ----------- */
-@media only screen  and (min-width : 1824px) {
+@media only screen and (min-width: 1224px) and (max-width : 1824px) {
 /* Styles */
 .statsContainer {
-  margin-top: 15%;
-  width: 60% !important;
+  margin-top: 150px;
+  width: 75% !important;
 }
 
+}
+
+
+@media only screen and (min-width : 1824px) {
+  /* Styles */
+  .statsContainer {
+    margin-top: 150px;
+    width: 60% !important;
+  }
+  
+  }
+
+html::-webkit-scrollbar {
+  display: none;
 }
