@@ -4,7 +4,7 @@
 }
 .animalTitle, .deathByStarvation, .deathByPreditor,
 .deathByOldAge, .pop {
-    color: #474B4F;
+    color: #FFFAFA;
     font-weight: bold;
 }
 hr {
@@ -15,38 +15,70 @@ hr {
     background-color: #333; /* Modern Browsers */
 }
 
-
-
+.stats {
+  background: #222629;
+  border-radius: 25px;
+  padding: 10px;
+  border: 2px solid #6B6E70;
+  filter: drop-shadow(0 0 0.5rem #6B6E70);
+  -webkit-filter: drop-shadow(0 0 0.5rem #6B6E70);
+box-shadow: 0px 0px 5px #6B6E70 inset;
+}
+.animal{
+  margin-top: 30px;
+}
+.statsContainer {
+    margin-top: 60px;
+}
 
 /* media queries */
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
-    /* Styles */    
-    .stats {
-      background: #b5b5b7;
-      border-radius: 25px;
-      padding: 10px;
-      border: 2px solid #6B6E70;
-      filter: drop-shadow(0 0 0.5rem #6B6E70);
-      -webkit-filter: drop-shadow(0 0 0.5rem #6B6E70);
-    box-shadow: 0px 0px 5px #6B6E70 inset;
-  }
-  
-  .animal{
-    margin-top: 30px;
-  }
+  /* Styles */
   .statsContainer {
-      margin-top: 63%;
-  }
+    margin-top: 150px;
+    width: 95%;
+}
 }
 
   /* iPads (portrait and landscape) ----------- */
 @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
   /* Styles */
+  .statsContainer {
+    margin-top: 150px;
+    width: 90% !important;
+}
  
 }
 
-/* Large screens ----------- */
-@media only screen  and (min-width : 1824px) {
-/* Styles */
+/* Desktops and laptops ----------- */
+@media only screen and (min-width: 1024px)  and (max-width : 1224px) {
+  /* Styles */
+  .statsContainer {
+    margin-top: 150px;
+    width: 92% !important;
+}
+}
 
+/* Large screens ----------- */
+@media only screen and (min-width: 1224px) and (max-width : 1824px) {
+/* Styles */
+.statsContainer {
+  margin-top: 150px;
+  width: 75% !important;
+}
+
+}
+
+
+@media only screen and (min-width : 1824px) {
+  /* Styles */
+  .statsContainer {
+    margin-top: 150px;
+    width: 60% !important;
+  }
+  
+  }
+
+html::-webkit-scrollbar {
+  display: none;
 }

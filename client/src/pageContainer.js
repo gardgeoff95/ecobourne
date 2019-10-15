@@ -215,6 +215,7 @@ class PageContainer extends Component {
           playerNames={this.state.playerNames}
           accountName={this.state.accountName}
           goToLocalScore={this.goToLocalScore}
+          gotToLobby={this.goToLobby}
           bunnyStats={this.state.bunnyStats}
           bearStats={this.state.bearStats}
           foxStats={this.state.foxStats}

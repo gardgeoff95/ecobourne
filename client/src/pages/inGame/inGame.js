@@ -18,6 +18,15 @@ class InGame extends Component {
     return (
       <Container fluid={true}>
         <Row>
+          {/* <Col></Col>
+          <Col id="chatBtnRow">
+            <div id="chatBtnDiv">
+              <button id="chatBtn" type="button" onClick={this.props.gotToLobby}>
+                Stats
+        </button>
+            </div>
+          </Col>
+          <Col></Col> */}
           <AnimalStats
             bunnyStats={this.props.bunnyStats}
             foxStats={this.props.foxStats}

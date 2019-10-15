@@ -16,36 +16,34 @@ function Chat(props) {
           {/* In Styling this element should include the property list-style-type: none 
             also in order to make it work like a chat I think it needs overflow auto or overflow scroll*/}
 
-        <div className="chatArea">
-          <ul className="messageLog">
-            {props.chatLog.map(user => {
-              var name = user.user;
-              var message = user.msg;
-              return (
-                <li>
-                  <p>
-                    {name} : {message}
-                  </p>
-                </li>
-              );
-            })}
-          </ul>
+          <div className="chatArea">
+            <ul className="messageLog">
+              {props.chatLog.map(user => {
+                var name = user.user;
+                var message = user.msg;
+                return (
+                  <li>
+                    <p id="userMsg">
+                      {name} : {message}
+                    </p>
+                  </li>
+                );
+              })}
+            </ul>
 
-          <input
-            id="message"
-            autocomplete="off"
-            name="userMessage"
-            value={props.userMessage}
-            onChange={props.onMessageChange}
-          />
-          <div id="chatSendBtn">
-            <button type="submit" onClick={props.chatBtnClick}>
+            <input
+              id="message"
+              autocomplete="off"
+              name="userMessage"
+              value={props.userMessage}
+              onChange={props.onMessageChange}
+            />
+            <button id="chatSendBtn" type="submit" onClick={props.chatBtnClick}>
               Send
             </button>
           </div>
-        </div>
-      </li>
-
+        </li>
+      </ul>
     </Container>
   );
 }
