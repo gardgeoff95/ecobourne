@@ -11,8 +11,8 @@ html::-webkit-scrollbar {
 #message {
   color: black;
   margin-left: 5px;
-  margin-top: 0% !important;
-  width: 70%;
+  padding-left: 10px;
+  border-radius: 25px;
 }
 
 #userMsg{
@@ -49,15 +49,17 @@ box-shadow: 0px 0px 5px green inset;
   font-family: inherit;
   font-weight: bold;
   color: white;
-  /* padding: 0.5em 1em; */
   outline: none;
   border: none;
   background-color: #86c232;
 }
 
-input {
-  padding-right: 10px;
-}
+/* .chatArea > ul > li {
+  clear: both;
+  border-radius: 30px;
+  margin-bottom: 2px;
+  font-family: Helvetica, Arial, sans-serif;
+} */
 
 .chat,
 .page {
@@ -72,20 +74,32 @@ input {
 .messageLog {
   list-style: none;
   word-break: break-all;
-  width: 270px;
+  width: 500px;
   margin: 0;
-  overflow-y: scroll;
+  overflow-y: auto;
   padding: 10px 20px 10px 20px;
   height: 400px;
   margin-top: 25px;
   margin-bottom: 15px;
 
+  /* background: #222629; */
+  border-radius: 25px;
+  /* filter: drop-shadow(0 0 0.5rem #6B6E70);
+  -webkit-filter: drop-shadow(0 0 0.5rem #6B6E70);
+box-shadow: 0px 0px 5px #6B6E70 inset; */
+}
+
+.messageLog > li > p{
   background: #222629;
   border-radius: 25px;
-  filter: drop-shadow(0 0 0.5rem #6B6E70);
-  -webkit-filter: drop-shadow(0 0 0.5rem #6B6E70);
-box-shadow: 0px 0px 5px #6B6E70 inset;
 }
+/* 
+====================
+toDO:
+CHANGING CHAT
+============================ */
+
+
 
 * {
   box-sizing: border-box;
@@ -96,12 +110,7 @@ box-shadow: 0px 0px 5px #6B6E70 inset;
   /* border: 2px red solid; */
 }
 
-#message {
-  color: black;
-  margin-left: 5px;
-  margin-top: 0% !important;
-  width: 70%;
-}
+
 
 #userMsg{
   color: #FFFAFA;

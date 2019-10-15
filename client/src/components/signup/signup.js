@@ -77,7 +77,7 @@ class SignUp extends Component {
                   <h1 id="signupHeader">SIGN UP</h1>
                 </div>
                 <div id="fadeInEmail">
-                  <p className="inputText">Email</p>
+                  {/* <p className="inputText">Email</p> */}
                   <input
                     className="email"
                     placeholder="Email"
@@ -88,7 +88,7 @@ class SignUp extends Component {
                 </div>
 
                 <div id="fadeInUsername">
-                  <p className="inputText">Username</p>
+                  {/* <p className="inputText">Username</p> */}
                   <input
                     className="username"
                     placeholder="Username"
@@ -99,7 +99,7 @@ class SignUp extends Component {
                 </div>
 
                 <div id="fadeInPW">
-                  <p className="inputText">Password</p>
+                  {/* <p className="inputText">Password</p> */}
                   <input
                     className="pword"
                     placeholder="Password"
@@ -110,7 +110,7 @@ class SignUp extends Component {
                 </div>
 
                 <div id="fadeInPWConf">
-                  <p className="inputText">Confirm</p>
+                  {/* <p className="inputText">Confirm</p> */}
                   <input
                     className="pwordConf"
                     placeholder="Confirm Password"
@@ -132,7 +132,7 @@ class SignUp extends Component {
             value="Submit"
             onClick={this.handleSubmit}
           >
-            Login
+            Create
                   </button>
         </Row>
       </Container>

@@ -29,7 +29,7 @@ body {
   transform: translate(-50%, -50%);
 }
 
-form {
+.titleForm {
   position: absolute;
   /* align-content: center; */
   top: 100%;
@@ -96,13 +96,13 @@ box-shadow: 0px 0px 5px green inset;
   opacity: 0;
 }
 
-input {
+#fadeInNickname {
   margin-top: 60% !important;
   border-radius: 25px;
   padding-left: 10px;
 }
 
-input[type=text]:focus {
+#fadeInNickname[type=text]:focus {
   color: #222629;
 }
 
@@ -424,7 +424,7 @@ left: 50%;
   @media only screen  and (min-width : 1824px) {
   /* Styles */
   #text2{
-    top: 45%;
+    top: 40%;
   }
   
   .fadeInUp {
@@ -436,7 +436,7 @@ left: 50%;
   
   .userInput {
   position: absolute;
-  top: 50%;
+  top: 42%;
   left: 50%;
   }
   }

@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import axios from "axios";
 // import LoginForm from '../../components/login/login';
+import Col from "react-bootstrap/Col";
+import Row from "react-bootstrap/Row";
+import Container from "react-bootstrap/Container";
 
 import { startSession } from "mongoose";
 
@@ -57,38 +60,57 @@ class Login extends Component {
       <div className="container-fluid">
         <div id="one">
           <div>
-            <h1>LOG IN</h1>
-            <form>
-              <label>
-                <input
-                  className="emailLogin"
-                  placeholder="Email"
-                  type="text"
-                  value={this.state.email}
-                  onChange={this.onChangeEmail}
-                />
-              </label>
+            <Row id="loginCont">
+              <Col></Col>
+              <Col id="loginTxt">
+                <div id="loginTitle">
+                  <h1 id="loginHeader">LOGIN</h1>
+                </div>
+              </Col>
+              <Col></Col>
+            </Row>
+            <Row id="logRow">
+              <Col>
+                <form id="loginForm">
+                  <label>
+                    <input
+                      className="emailLogin"
+                      placeholder="Email"
+                      type="text"
+                      value={this.state.email}
+                      onChange={this.onChangeEmail}
+                    />
+                  </label>
 
-              <label>
-                <input
-                  className="loginPW"
-                  placeholder="Password"
-                  type="text"
-                  value={this.state.password}
-                  onChange={this.onChangePassword}
-                />
-              </label>
-
-              <button
-                id="loginBtn"
-                variant="primary"
-                type="submit"
-                value="Submit"
-                onClick={this.handleSubmit}
-              >
-                Play
+                  <label>
+                    <input
+                      className="loginPW"
+                      placeholder="Password"
+                      type="text"
+                      value={this.state.password}
+                      onChange={this.onChangePassword}
+                    />
+                  </label>
+                </form>
+              </Col>
+              <Col></Col>
+            </Row>
+            <Row id="btnRow">
+              <Col></Col>
+              <Col id="logPlayBtnDiv">
+                <button
+                  className="loginFade"
+                  id="logPlayBtn"
+                  variant="primary"
+                  type="submit"
+                  value="Submit"
+                  onClick={this.handleSubmit}
+                >
+                  Play
               </button>
-            </form>
+              </Col>
+              <Col></Col>
+            </Row>
           </div>
         </div>
       </div>
