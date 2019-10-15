@@ -1,12 +1,21 @@
-  /* media queries */
+.bm-burger-button {
+  position: fixed;
+  width: 36px;
+  height: 30px;
+  left: 90%;
+  top: 50px;
+}
+
+ /* =========== media queries ============= */
+  /* Smartphones (portrait and landscape) ----------- */
 @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
     /* Styles */
     .bm-burger-button {
         position: fixed;
         width: 36px;
         height: 30px;
-        left: 305px;
-        top: 36px;
+        left: 80%;
+        top: 50px;
       }
     
       .bm-burger-bars {
@@ -29,3 +38,111 @@
           color: #86C232;
       }
   } 
+
+  /* iPads (portrait and landscape) ----------- */
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+  /* Styles */
+  .bm-burger-button {
+    position: fixed;
+    width: 36px;
+    height: 30px;
+    left: 80%;
+    top: 50px;
+  }
+
+  .bm-burger-bars {
+    background: #373a47;
+  }
+
+  .bm-menu {
+    background: #222629;
+  }
+
+  /* Color/shape of burger icon bars on hover*/
+.bm-burger-bars-hover {
+    background: #86C232;
+  }
+
+  .bm-menu-wrap {
+    width: 20% !important;
+  }
+
+  .bm-item {
+      color: rgb(107, 110, 112);
+  }
+  .bm-item:hover {
+      color: #86C232;
+  }
+  }
+
+  /* Desktops and laptops ----------- */
+@media only screen  and (min-width : 1224px) {
+/* Styles */
+.bm-burger-button {
+  position: fixed;
+  width: 36px;
+  height: 30px;
+  left: 90%;
+  top: 50px;
+}
+
+.bm-burger-bars {
+  background: #373a47;
+}
+
+.bm-menu {
+  background: #222629;
+}
+
+.bm-menu-wrap {
+  width: 20% !important;
+}
+
+/* Color/shape of burger icon bars on hover*/
+.bm-burger-bars-hover {
+  background: #86C232;
+}
+
+.bm-item {
+    color: rgb(107, 110, 112);
+}
+.bm-item:hover {
+    color: #86C232;
+}
+}
+
+/* Large screens ----------- */
+@media only screen  and (min-width : 1824px) {
+/* Styles */
+.bm-burger-button {
+  position: fixed;
+  width: 36px;
+  height: 30px;
+  left: 90%;
+  top: 50px;
+}
+
+.bm-burger-bars {
+  background: #373a47;
+}
+
+.bm-menu {
+  background: #222629;
+}
+
+.bm-menu-wrap {
+  width: 15% !important;
+}
+
+/* Color/shape of burger icon bars on hover*/
+.bm-burger-bars-hover {
+  background: #86C232;
+}
+
+.bm-item {
+    color: rgb(107, 110, 112);
+}
+.bm-item:hover {
+    color: #86C232;
+}
+}

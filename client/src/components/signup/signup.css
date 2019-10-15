@@ -47,63 +47,6 @@
     opacity: 0;
   }
 
-/* email animation */
-  
-
-  @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
-    /* Styles */
-    #one {
-        /* border: 2px solid red; */
-    }
-    
-    form {
-        position: unset;
-        transform: none;
-        align-items: center;
-    }
-    
-    label {
-        margin: 0;
-        padding: 5px;
-        /* border: 2px solid blue; */
-    }
-    
-    
-    .createForm {
-        margin-top: 20%;
-    
-    }
-    
-    .pwordForm {
-        margin-left: 0%;
-    }
-    
-    .inputText {
-        margin-bottom: 0rem;
-        margin-top: 10px;
-        color: white;
-    }
-    
-    .email, .username, .pword, .pwordConf {
-        margin-top: 5% !important;
-    }
-    
-    .signUpDiv {
-        margin-top: 50%;
-        margin-left: 20%;
-    }
-    
-    #signupHeader{
-        filter: drop-shadow(0 0 0.25rem #61892F);
-        font-size: 1.5rem;
-        margin-left: 25%;
-    }
-
-    .email, .username, .inputText, .pword, .pwordConf{
-        filter: drop-shadow(0 0 0.4rem #61892F);
-    }
-  }  
-
   
   /* animations */
   @keyframes fadein {
@@ -249,3 +192,294 @@
                     0% {opacity: 0;}
                     100% {opacity: 1;}
                     }
+
+
+
+/* media queries */
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+    /* Styles */
+    #one {
+        /* border: 2px solid red; */
+    }
+    
+    form {
+        position: unset;
+        transform: none;
+        align-items: center;
+    }
+    
+    label {
+        margin: 0;
+        padding: 5px;
+        /* border: 2px solid blue; */
+    }
+    
+    
+    .createForm {
+        margin-top: 20%;
+    
+    }
+    
+    .pwordForm {
+        margin-left: 0%;
+    }
+    
+    .inputText {
+        margin-bottom: 0rem;
+        margin-top: 10px;
+        color: white;
+    }
+    
+    .email, .username, .pword, .pwordConf {
+        margin-top: 5% !important;
+    }
+    
+    .signUpDiv {
+        margin-top: 50%;
+        margin-left: 40px;
+    }
+    
+    #signupHeader{
+        filter: drop-shadow(0 0 0.25rem #61892F);
+        font-size: 1.5rem;
+        margin-left: 75px;
+    }
+
+    .email, .username, .inputText, .pword, .pwordConf{
+        filter: drop-shadow(0 0 0.4rem #61892F);
+    }
+  }  
+  
+  /* iPads (portrait and landscape) ----------- */
+  @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+   /* Styles */
+   #one {
+    /* border: 2px solid red; */
+}
+
+form {
+    position: unset;
+    transform: none;
+    align-items: center;
+}
+
+label {
+    margin: 0;
+    padding: 5px;
+    /* border: 2px solid blue; */
+}
+
+
+.createForm {
+    margin-top: 20%;
+
+}
+
+.pwordForm {
+    margin-left: 0%;
+}
+
+.inputText {
+    margin-bottom: 0rem;
+    margin-top: 10px;
+    color: white;
+}
+
+.email, .username, .pword, .pwordConf {
+    margin-top: 5% !important;
+}
+
+.signUpDiv {
+    margin-top: 185px;
+    margin-left: 275px;
+}
+#loginPlaybtn {
+    left: 400px;
+}
+
+#signupHeader{
+    filter: drop-shadow(0 0 0.25rem #61892F);
+    font-size: 1.5rem;
+    margin-left: 75px;
+}
+
+.email, .username, .inputText, .pword, .pwordConf{
+    filter: drop-shadow(0 0 0.4rem #61892F);
+}
+  }
+  
+  /* Desktops and laptops ----------- */
+  @media only screen and (min-width : 1024px) and (max-width : 1224px) {
+    /* Styles */
+    #one {
+        /* border: 2px solid red; */
+    }
+    
+    form {
+        position: unset;
+        transform: none;
+        align-items: center;
+    }
+    
+    label {
+        margin: 0;
+        padding: 5px;
+        /* border: 2px solid blue; */
+    }
+    
+    
+    .createForm {
+        margin-top: 20%;
+    
+    }
+    
+    .pwordForm {
+        margin-left: 0%;
+    }
+    
+    .inputText {
+        margin-bottom: 0rem;
+        margin-top: 10px;
+        color: white;
+    }
+    
+    .email, .username, .pword, .pwordConf {
+        margin-top: 5% !important;
+    }
+    
+    .signUpDiv {
+        margin-top: 200px;
+        margin-left: 410px;
+    }
+    
+    #signupHeader{
+        filter: drop-shadow(0 0 0.25rem #61892F);
+        font-size: 1.5rem;
+        margin-left: 10%;
+    }
+
+    #loginPlaybtn {
+        left: 530px;
+    }
+
+    .email, .username, .inputText, .pword, .pwordConf{
+        filter: drop-shadow(0 0 0.4rem #61892F);
+    }
+  }  
+  
+/* Large screens ----------- */
+@media only screen and (min-width: 1224px) and (min-width : 1440px) {
+    /* Styles */
+    #one {
+        /* border: 2px solid red; */
+    }
+    
+    form {
+        position: unset;
+        transform: none;
+        align-items: center;
+    }
+    
+    label {
+        margin: 0;
+        padding: 5px;
+        /* border: 2px solid blue; */
+    }
+    
+    
+    .createForm {
+        margin-top: 20%;
+    
+    }
+    
+    .pwordForm {
+        margin-left: 0%;
+    }
+    
+    .inputText {
+        margin-bottom: 0rem;
+        margin-top: 10px;
+        color: white;
+    }
+    
+    .email, .username, .pword, .pwordConf {
+        margin-top: 5% !important;
+    }
+    
+    .signUpDiv {
+        margin-top: 200px;
+        margin-left: 630px;
+    }
+    
+    #signupHeader{
+        filter: drop-shadow(0 0 0.25rem #61892F);
+        font-size: 1.5rem;
+        margin-left: 10%;
+    }
+
+    #loginPlaybtn {
+        left: 745px;
+    }
+
+    .email, .username, .inputText, .pword, .pwordConf{
+        filter: drop-shadow(0 0 0.4rem #61892F);
+    }
+    }
+
+    @media only screen and (min-width: 1440px) and (min-width : 1824px) {
+        /* Styles */
+        #one {
+            /* border: 2px solid red; */
+        }
+        
+        form {
+            position: unset;
+            transform: none;
+            align-items: center;
+        }
+        
+        label {
+            margin: 0;
+            padding: 5px;
+            /* border: 2px solid blue; */
+        }
+        
+        
+        .createForm {
+            margin-top: 20%;
+        
+        }
+        
+        .pwordForm {
+            margin-left: 0%;
+        }
+        
+        .inputText {
+            margin-bottom: 0rem;
+            margin-top: 10px;
+            color: white;
+        }
+        
+        .email, .username, .pword, .pwordConf {
+            margin-top: 2% !important;
+        }
+        
+        .signUpDiv {
+            margin-top: 400px;
+            margin-left: 50%;
+        }
+        
+        #signupHeader{
+            filter: drop-shadow(0 0 0.25rem #61892F);
+            font-size: 1.5rem;
+            margin-left: 5%;
+        }
+    
+        #loginPlaybtn {
+            left: 54%;
+        }
+    
+        .email, .username, .inputText, .pword, .pwordConf{
+            filter: drop-shadow(0 0 0.4rem #61892F);
+        }
+        }

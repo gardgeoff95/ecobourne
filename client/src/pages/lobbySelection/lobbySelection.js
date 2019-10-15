@@ -6,6 +6,8 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import Container from 'react-bootstrap/Container';
 
+import './lobbySelection.css';
+
 class LobbySelection extends Component {
   state = {};
 
@@ -30,9 +32,11 @@ class LobbySelection extends Component {
             accountName={this.props.accountName}
           />
         </div>
-        <button type="button" onClick={this.props.goToGame}>
-          GoOOOOOOO
+        <div id="statsBtnDiv">
+          <button id="statsBtn" type="button" onClick={this.props.goToGame}>
+            Stats
         </button>
+        </div>
         <Chat
           chatBtnClick={this.props.chatBtnClick}
           onMessageChange={this.props.onMessageChange}

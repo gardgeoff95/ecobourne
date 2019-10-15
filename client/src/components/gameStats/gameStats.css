@@ -1,3 +1,52 @@
-#lobbyContainer {
-    border: 2px solid red;
+
+.lobbyContainer{
+  border: 2px solid red;
+}
+
+/* .lobbyCount {
+  margin-left: 0;
+  padding-left: 25px;
+  margin-top: 15px;
+  color: white !important;
+} */
+
+/* media queries */
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+    /* Styles */    
+    .lobbyCount {
+        margin-left: 0;
+        padding-left: 25px;
+        margin-top: 15px;;
+    }
+}
+
+  /* iPads (portrait and landscape) ----------- */
+@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+  /* Styles */
+  .lobbyCount {
+    margin-left: 0;
+    padding-left: 80px;
+    margin-top: 15px;;
+}
+}
+
+/* Desktops and laptops ----------- */
+@media only screen  and (min-width : 1224px) {
+  /* Styles */
+  .lobbyCount {
+    margin-left: 0;
+    padding-left: 180px;
+    margin-top: 15px;;
+}
+}
+
+/* Large screens ----------- */
+@media only screen  and (min-width : 1824px) {
+/* Styles */
+.lobbyCount {
+  margin-left: 0;
+  padding-left: 550px;
+  margin-top: 15px;;
+}
+
 }
