@@ -91,8 +91,50 @@ box-shadow: 0px 0px 5px #6B6E70 inset; */
 
 .messageLog > li > p{
   background: #222629;
-  border-radius: 25px;
+  display:inline-block;
+  clear: both;
+  padding: 20px;
+  border-radius: 30px;
+  margin-bottom: 2px;
+  font-family: Helvetica, Arial, sans-serif;
+  border-bottom-left-radius: 5px;
+  -webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
+  -moz-animation: fadein 2s; /* Firefox < 16 */
+   -ms-animation: fadein 2s; /* Internet Explorer */
+    -o-animation: fadein 2s; /* Opera < 12.1 */
+       animation: fadein 2s;
 }
+
+/* Chat animation */
+
+
+/* animations */
+
+@keyframes fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Firefox < 16 */
+@-moz-keyframes fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Safari, Chrome and Opera > 12.1 */
+@-webkit-keyframes fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Internet Explorer */
+@-ms-keyframes fadein {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/*
+
 /* 
 ====================
 toDO:
@@ -169,23 +211,20 @@ input {
 /* media queries */
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
   /* Styles */
-  .messageLog {
-    /* border: 2px solid orange; */
-    list-style: none;
-    word-break: break-all;
-    width: 270px;
-    margin: 0;
-    overflow-y: scroll;
-    padding: 10px 20px 10px 20px;
-    height: 400px;
-    margin-top: 25px;
-    margin-bottom: 15px;
-  
+  .messageLog > li > p{
     background: #222629;
-    border-radius: 25px;
-    filter: drop-shadow(0 0 0.5rem #6B6E70);
-    -webkit-filter: drop-shadow(0 0 0.5rem #6B6E70);
-  box-shadow: 0px 0px 5px #6B6E70 inset;
+    display:inline-block;
+    clear: both;
+    padding: 20px;
+    border-radius: 30px;
+    margin-bottom: 2px;
+    font-family: Helvetica, Arial, sans-serif;
+    border-bottom-left-radius: 5px;
+    -webkit-animation: fadein 2s; /* Safari, Chrome and Opera > 12.1 */
+    -moz-animation: fadein 2s; /* Firefox < 16 */
+     -ms-animation: fadein 2s; /* Internet Explorer */
+      -o-animation: fadein 2s; /* Opera < 12.1 */
+         animation: fadein 2s;
   }
   
   * {
