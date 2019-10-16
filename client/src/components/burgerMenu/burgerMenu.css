@@ -76,7 +76,7 @@
   }
 
   /* Desktops and laptops ----------- */
-@media only screen  and (min-width : 1224px) {
+@media only screen  and (min-device-width : 1224px) {
 /* Styles */
 .bm-burger-button {
   position: fixed;
@@ -112,7 +112,7 @@
 }
 
 /* Large screens ----------- */
-@media only screen  and (min-width : 1824px) {
+@media only screen  and (min-device-width : 1824px) {
 /* Styles */
 .bm-burger-button {
   position: fixed;

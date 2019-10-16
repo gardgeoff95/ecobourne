@@ -1,34 +1,33 @@
 .animalTitle {
-    font-weight: bold;
-    font-size: 15px;
+  font-weight: bold;
+  font-size: 15px;
 }
-.animalTitle, .deathByStarvation, .deathByPreditor,
-.deathByOldAge, .pop {
-    color: #FFFAFA;
-    font-weight: bold;
+.animalTitle,
+.deathByStarvation,
+.deathByPreditor,
+.deathByOldAge,
+.pop {
+  color: #fffafa;
+  font-weight: bold;
 }
 #chatDivider {
-    border: none;
-    height: 1px;
-    /* Set the hr color */
-    color: #333; /* old IE */
-    background-color: #333; /* Modern Browsers */
+  border: none;
+  height: 1px;
+  /* Set the hr color */
+  color: #333; /* old IE */
+  background-color: #333; /* Modern Browsers */
 }
 
 .stats {
   background: #222629;
   border-radius: 25px;
   padding: 10px;
-  border: 2px solid #6B6E70;
-  filter: drop-shadow(0 0 0.5rem #6B6E70);
-  -webkit-filter: drop-shadow(0 0 0.5rem #6B6E70);
-box-shadow: 0px 0px 5px #6B6E70 inset;
 }
-.animal{
+.animal {
   margin-top: 30px;
 }
 .statsContainer {
-    margin-top: 60px;
+  margin-top: 60px;
 }
 
 /* media queries */
@@ -37,47 +36,43 @@ box-shadow: 0px 0px 5px #6B6E70 inset;
   .statsContainer {
     margin-top: 150px;
     width: 95%;
-}
+  }
 }
 
-  /* iPads (portrait and landscape) ----------- */
-@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+/* iPads (portrait and landscape) ----------- */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
   /* Styles */
   .statsContainer {
     margin-top: 150px;
     width: 90% !important;
-}
- 
+  }
 }
 
 /* Desktops and laptops ----------- */
-@media only screen and (min-width: 1024px)  and (max-width : 1224px) {
+@media only screen and (min-device-width: 1024px) and (max-device-width: 1224px) {
   /* Styles */
   .statsContainer {
     margin-top: 150px;
     width: 92% !important;
-}
+  }
 }
 
 /* Large screens ----------- */
-@media only screen and (min-width: 1224px) and (max-width : 1824px) {
-/* Styles */
-.statsContainer {
-  margin-top: 150px;
-  width: 75% !important;
+@media only screen and (min-device-width: 1224px) and (max-device-width: 1824px) {
+  /* Styles */
+  .statsContainer {
+    margin-top: 150px;
+    width: 75% !important;
+  }
 }
 
-}
-
-
-@media only screen and (min-width : 1824px) {
+@media only screen and (min-device-width: 1824px) {
   /* Styles */
   .statsContainer {
     margin-top: 150px;
     width: 60% !important;
   }
-  
-  }
+}
 
 html::-webkit-scrollbar {
   display: none;

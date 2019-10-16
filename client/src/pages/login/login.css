@@ -30,17 +30,13 @@
 .loginPW {
   padding-left: 10px;
   margin-bottom: 5px;
-}
-
-.emailLogin,
-.loginPW {
   border-radius: 25px;
 }
 
-.loginBtn,
+/* .loginBtn,
 .loginPW {
   filter: drop-shadow(0 0 0.4rem #61892f);
-}
+} */
 
 #loginHeader {
   filter: drop-shadow(0 0 0.25rem #61892f);
@@ -52,7 +48,7 @@
 /* login email  */
 #logPlayBtn {
   /* width: 25%; */
-  filter: drop-shadow(0 0 0.5rem #61892f);
+  /* filter: drop-shadow(0 0 0.5rem #61892f); */
   border-radius: 25px;
   position: absolute;
   top: 25px;
@@ -249,6 +245,12 @@
 /* media queries */
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
   /* Styles */
+
+  .emailLogin,
+  .loginPW {
+    width: 185px;
+  }
+
   #loginHeader {
     margin-left: 10px;
     margin-bottom: 25px;
@@ -256,7 +258,7 @@
 
   #loginForm {
     /* border: 2px solid yellow; */
-    margin-left: 33px;
+    margin-left: 55px;
     display: inline-block;
   }
   #loginCont {
@@ -270,11 +272,11 @@
   }
   #logPlayBtn {
     /* width: 25%; */
-    filter: drop-shadow(0 0 0.5rem #61892f);
+    /* filter: drop-shadow(0 0 0.5rem #61892f); */
     border-radius: 25px;
     position: absolute;
     top: 25px;
-    left: 55px;
+    left: 60px;
     transform: translate(-50%, -50%);
   }
 }
@@ -282,6 +284,12 @@
 /* iPads (portrait and landscape) ----------- */
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
   /* Styles */
+
+  .emailLogin,
+  .loginPW {
+    width: 185px;
+  }
+
   #loginHeader {
     margin-left: 100px;
     margin-bottom: 25px;
@@ -289,7 +297,7 @@
 
   #loginForm {
     /* border: 2px solid yellow; */
-    margin-left: 275px;
+    margin-left: 300px;
     display: inline-block;
   }
   #loginCont {
@@ -304,6 +312,12 @@
 }
 
 @media only screen and (min-device-width: 1024px) and (max-device-width: 1224px) {
+
+  .emailLogin,
+  .loginPW {
+    width: 185px;
+  }
+
   #loginHeader {
     margin-left: 140px;
     margin-bottom: 25px;
@@ -311,7 +325,7 @@
 
   #loginForm {
     /* border: 2px solid yellow; */
-    margin-left: 405px;
+    margin-left: 420px;
     display: inline-block;
   }
   #loginCont {
@@ -326,8 +340,14 @@
 }
 
 /* Large screens ----------- */
-@media only screen and (min-width: 1224px) and (max-width: 1440px) {
+@media only screen and (min-device-width: 1224px) and (max-device-width: 1440px) {
 /* styles  */
+
+.emailLogin,
+.loginPW {
+  width: 185px;
+}
+
   #loginHeader {
     margin-left: 250px;
     margin-bottom: 25px;
@@ -335,7 +355,7 @@
 
   #loginForm {
     /* border: 2px solid yellow; */
-    margin-left: 650px;
+    margin-left: 675px;
     display: inline-block;
   }
   #loginCont {
@@ -349,8 +369,14 @@
   }
 }
 
-@media only screen and (min-width: 2560px) {
+@media only screen and (min-device-width: 2560px) {
     /* Styles */
+
+    .emailLogin,
+    .loginPW {
+      width: 185px;
+    }
+
     #loginHeader {
       margin-left: 390px;
       margin-bottom: 25px;
@@ -358,7 +384,7 @@
   
     #loginForm {
       /* border: 2px solid yellow; */
-      margin-left: 1165px;
+      margin-left: 1190px;
       display: inline-block;
     }
     #loginCont {
