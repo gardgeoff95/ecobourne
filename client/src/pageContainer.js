@@ -129,6 +129,15 @@ class PageContainer extends Component {
       page: "InGame"
     });
   };
+  scrollIntoView = () => {
+    let interval = window.setInterval(function() {
+      var elem = document.getElementById("log");
+      elem.scrollTop = elem.scrollHeight;
+    }, 500);
+    setTimeout(function() {
+      clearInterval(interval);
+    }, 501);
+  };
   addPlayer = playerName => {
     let newPlayers = this.state.playerNames;
     newPlayers.push(playerName);
@@ -188,6 +197,7 @@ class PageContainer extends Component {
       userMessage: ""
     });
     this.socket.emit("chat message", chatEntry);
+    this.scrollIntoView();
   };
 
   //This function will actually change the page
