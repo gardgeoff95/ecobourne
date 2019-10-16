@@ -33,16 +33,20 @@ function Chat(props) {
           </div>
         </li>
       </ul>
-      <input
-        id="message"
-        autocomplete="off"
-        name="userMessage"
-        value={props.userMessage}
-        onChange={props.onMessageChange}
-      />
-      <button id="chatSendBtn" type="submit" onClick={props.chatBtnClick}>
-        Send
+      <hr id="chatDivider"></hr>
+      <Row id="chatBoxSend">
+        <input
+          placeholder="Send a message.."
+          id="message"
+          autocomplete="off"
+          name="userMessage"
+          value={props.userMessage}
+          onChange={props.onMessageChange}
+        />
+        <button id="chatSendBtn" type="submit" onClick={props.chatBtnClick}>
+          Send
             </button>
+      </Row>
     </Container>
   );
 }
