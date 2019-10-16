@@ -5,6 +5,7 @@ import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
 
 import "./chat.css";
+import { array } from "prop-types";
 
 function Chat(props) {
   // console.log("hhhhh", props.userMessage);
@@ -21,6 +22,18 @@ function Chat(props) {
               {props.chatLog.map(user => {
                 var name = user.user;
                 var message = user.msg;
+                // if (Array.isArray(message)) {
+                //   return (
+                //     <p id="userMsg">
+                //       {name} :{" "}
+                //       {message.map(i => {
+                //         {
+                //           i;
+                //         }
+                //       })}
+                //     </p>
+                //   );
+                // } else {
                 return (
                   <li>
                     <p id="userMsg">
@@ -28,6 +41,7 @@ function Chat(props) {
                     </p>
                   </li>
                 );
+                // }
               })}
             </ul>
           </div>
