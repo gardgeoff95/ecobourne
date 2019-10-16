@@ -401,7 +401,7 @@ left: 50%;
 }
 
 /* Desktops and laptops ----------- */
-@media only screen  and (min-device-width : 1224px) {
+@media only screen and (min-device-width : 1024px) and (max-device-width : 1224px) {
   /* Styles */
   #text2{
     top: 44%;
@@ -422,10 +422,10 @@ left: 50%;
   }
   
   /* Large screens ----------- */
-  @media only screen  and (min-device-width : 1824px) {
+  @media only screen and (min-device-width : 1224px) and (max-device-width : 1824px) {
   /* Styles */
   #text2{
-    top: 410px;
+    /* top: 675px; */
   }
   
   .fadeInUp {
@@ -437,7 +437,7 @@ left: 50%;
   
   .userInput {
   position: absolute;
-  top: 450px;
+  /* top: 715px; */
   left: 50%;
   }
   }
