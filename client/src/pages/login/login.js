@@ -59,7 +59,7 @@ class Login extends Component {
     return (
       <div className="container-fluid">
         <div id="one">
-          <div>
+          <div id="loginDiv">
             <Row id="loginCont">
               <Col></Col>
               <Col id="loginTxt">

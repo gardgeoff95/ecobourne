@@ -1,3 +1,7 @@
+#loginDiv {
+  margin-left: 0px;
+}
+
 #loginCont {
   padding-top: 200px;
 }
@@ -14,7 +18,7 @@
 
 #loginForm {
   /* border: 2px solid yellow; */
-  margin-left: 845px;
+  margin-left: 45px;
   display: inline-block;
 }
 
@@ -41,7 +45,7 @@
 #loginHeader {
   filter: drop-shadow(0 0 0.25rem #61892f);
   font-size: 1.5rem;
-  margin-left: 280px;
+  margin-left: 10px;
   margin-bottom: 20px;
 }
 
@@ -52,7 +56,7 @@
   border-radius: 25px;
   position: absolute;
   top: 25px;
-  left: 310px;
+  left: 45px;
   font-weight: bold;
   transform: translate(-50%, -50%);
 }
@@ -243,160 +247,77 @@
 }
 
 /* media queries */
-@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
-  /* Styles */
+@media only screen and (min-device-width: 320px){
 
-  .emailLogin,
-  .loginPW {
-    width: 185px;
+  #loginDiv {
+    margin-left: 0px;
   }
 
   #loginHeader {
+    filter: drop-shadow(0 0 0.25rem #61892f);
+    font-size: 1.5rem;
     margin-left: 10px;
-    margin-bottom: 25px;
+    margin-bottom: 20px;
   }
+  #loginForm {
+    /* border: 2px solid yellow; */
+    margin-left: 45px;
+    display: inline-block;
+  }
+}
+
+@media only screen and (min-device-width: 375px){
 
   #loginForm {
     /* border: 2px solid yellow; */
-    margin-left: 55px;
+    margin-left: 65px;
     display: inline-block;
   }
-  #loginCont {
-    padding-top: 150px;
+  
+  #loginHeader {
+    margin-left: 15px;
   }
 
-  #loginTxt > h1 {
-    /* border: 2px solid green; */
-    padding-left: 250px;
-    margin-bottom: 45px;
-  }
   #logPlayBtn {
-    /* width: 25%; */
-    /* filter: drop-shadow(0 0 0.5rem #61892f); */
-    border-radius: 25px;
-    position: absolute;
-    top: 25px;
-    left: 60px;
-    transform: translate(-50%, -50%);
+    left: 50px;
   }
 }
 
-/* Galaxy S5 */
-@media only screen and (min-device-width: 360px) and (max-device-width: 480px) {
-   /* Styles */
+@media only screen and (min-device-width: 425px){
 
-   .emailLogin,
-   .loginPW {
-     width: 185px;
-   }
- 
-   #loginHeader {
-     margin-left: 10px;
-     margin-bottom: 25px;
-   }
- 
-   #loginForm {
-     /* border: 2px solid yellow; */
-     margin-left: 75px;
-     display: inline-block;
-   }
-   #loginCont {
-     padding-top: 150px;
-   }
- 
-   #loginTxt > h1 {
-     /* border: 2px solid green; */
-     padding-left: 250px;
-     margin-bottom: 45px;
-   }
-   #logPlayBtn {
-     /* width: 25%; */
-     /* filter: drop-shadow(0 0 0.5rem #61892f); */
-     border-radius: 25px;
-     position: absolute;
-     top: 25px;
-     left: 60px;
-     transform: translate(-50%, -50%);
-   }
+  #loginForm {
+    /* border: 2px solid yellow; */
+    margin-left: 85px;
+    display: inline-block;
+  }
+  #loginHeader {
+    margin-left: 20px;
+  }
+
+  #logPlayBtn {
+    left: 55px;
+  }
+
 }
-/* Pixel 2  */
-@media only screen and (min-device-width: 411px) and (max-device-width: 480px) {
-   /* Styles */
-
-   .emailLogin,
-   .loginPW {
-     width: 185px;
-   }
- 
-   #loginHeader {
-     margin-left: 10px;
-     margin-bottom: 25px;
-   }
- 
-   #loginForm {
-     /* border: 2px solid yellow; */
-     margin-left: 90px;
-     display: inline-block;
-   }
-   #loginCont {
-     padding-top: 150px;
-   }
- 
-   #loginTxt > h1 {
-     /* border: 2px solid green; */
-     padding-left: 250px;
-     margin-bottom: 45px;
-   }
-   #logPlayBtn {
-     /* width: 25%; */
-     /* filter: drop-shadow(0 0 0.5rem #61892f); */
-     border-radius: 25px;
-     position: absolute;
-     top: 25px;
-     left: 65px;
-     transform: translate(-50%, -50%);
-   }
-}
-
-
-
-
-
-
-
-
 
 /* iPads (portrait and landscape) ----------- */
-@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+@media only screen and (min-device-width: 768px){
   /* Styles */
 
-  .emailLogin,
-  .loginPW {
-    width: 185px;
-  }
-
   #loginHeader {
-    margin-left: 100px;
-    margin-bottom: 25px;
+    margin-left: 85px;
   }
 
   #loginForm {
-    /* border: 2px solid yellow; */
-    margin-left: 300px;
-    display: inline-block;
-  }
-  #loginCont {
-    padding-top: 180px;
+    margin-left: 265px;
   }
 
   #logPlayBtn {
-    position: absolute;
-    top: 25px;
-    left: 150px;
+    left: 120px;
   }
 }
 
-@media only screen and (min-device-width: 1024px) and (max-device-width: 1224px) {
+@media only screen and (min-device-width: 1024px){
 
   .emailLogin,
   .loginPW {
@@ -425,7 +346,7 @@
 }
 
 /* Large screens ----------- */
-@media only screen and (min-device-width: 1224px) and (max-device-width: 1440px) {
+@media only screen and (min-device-width: 1224px){
 /* styles  */
 
 .emailLogin,
@@ -439,8 +360,7 @@
   }
 
   #loginForm {
-    /* border: 2px solid yellow; */
-    margin-left: 675px;
+    margin-left: 825px;
     display: inline-block;
   }
   #loginCont {
@@ -453,6 +373,27 @@
     left: 300px;
   }
 }
+
+/* @media only screen and (min-device-width: 1440px){
+
+    #loginHeader {
+      margin-left: 250px;
+      margin-bottom: 25px;
+    }
+  
+    #loginForm {
+      margin-left: 675px;
+      display: inline-block;
+    }
+    #logPlayBtn {
+      position: absolute;
+      top: 25px;
+      left: 300px;
+    }
+  } */
+  
+
+
 
 @media only screen and (min-device-width: 2560px) {
     /* Styles */

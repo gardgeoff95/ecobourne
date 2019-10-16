@@ -40,7 +40,6 @@ html::-webkit-scrollbar {
   height: 400px;
   margin-top: 25px;
   border-radius: 25px;
-
 }
 
 * {
@@ -57,28 +56,31 @@ html::-webkit-scrollbar {
   font-weight: bold;
 }
 
+#chatTestBtn {
+  margin-top: -32px;
+  float: right;
+  margin-right: 281px;
+}
+
 #chatSendBtn {
   /* border: 2px solid red; */
-  margin-top: 360px;
-  margin-left: 85px;
+  /* margin-top: 360px; */
   padding: 3px;
   width: 60px;
-  margin-top: 25%;
   border-radius: 25px;
-  position: fixed;
-  top: 518px;
-  left: 175px;
+  /* position: fixed; */
+  /* top: 518px; */
+  /* left: 175px; */
   -webkit-appearance: none;
-  transform: translate(-50%, -50%);
-  -webkit-appearance: none;
-  position: absolute;
+  /* transform: translate(-50%, -50%); */
+  /* position: absolute; */
   font-size: inherit;
   font-family: inherit;
   font-weight: bold;
   color: white;
   outline: none;
   border: none;
-  background-color: #43479C;
+  background-color: #43479c;
 }
 
 #message {
@@ -120,23 +122,26 @@ CHANGING CHAT
 ============================ */
 
 /* change size of placeholder text inside "send message" box  */
-#message::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+#message::-webkit-input-placeholder {
+  /* Chrome/Opera/Safari */
   font-size: 12px;
-  opacity: .5;
+  opacity: 0.5;
 }
-#message::-moz-placeholder { /* Firefox 19+ */
+#message::-moz-placeholder {
+  /* Firefox 19+ */
   font-size: 12px;
-  opacity: .5;
+  opacity: 0.5;
 }
-#message:-ms-input-placeholder { /* IE 10+ */
+#message:-ms-input-placeholder {
+  /* IE 10+ */
   font-size: 12px;
-  opacity: .5;
+  opacity: 0.5;
 }
-#message:-moz-placeholder { /* Firefox 18- */
+#message:-moz-placeholder {
+  /* Firefox 18- */
   font-size: 12px;
-  opacity: .5;
+  opacity: 0.5;
 }
-
 
 /* animations */
 
@@ -225,13 +230,13 @@ CHANGING CHAT
 }
 
 /* media queries */
-@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px){
   /* Styles */
 
   #mainDiv {
     margin-left: 20px;
   }
-  .messageLog{
+  .messageLog {
     height: 295px;
   }
 
@@ -248,82 +253,157 @@ CHANGING CHAT
     height: 35px;
   }
 
+  #chatTestBtn {
+    margin-top: -32px;
+    margin-left: 162px;
+  }
   #chatSendBtn {
-    margin-left: 55px;
-    margin-top: -16px;
+    /* margin-left: 55px; */
+    /* margin-top: -16px; */
+  }
+}
+
+@media only screen and (min-device-width: 481px) and (max-device-width: 767px) {
+  /* Styles */
+
+  #mainDiv {
+    margin-left: 100px;
+  }
+  .messageLog {
+    height: 295px;
+  }
+
+  #chatDivider {
+    width: 150px;
+    margin-left: 43px;
+    height: 4px;
+    border-radius: 75px;
+  }
+
+  #message {
+    margin-left: 37px;
+    width: 190px;
+    height: 35px;
+  }
+
+  #chatTestBtn {
+    margin-top: -32px;
+    margin-left: 162px;
+  }
+  #chatSendBtn {
+    /* margin-left: 55px; */
+    /* margin-top: -16px; */
   }
 }
 
 /* iPads (portrait and landscape) ----------- */
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
   /* Styles */
-  .messageLog{
+
+#mainDiv {
+  margin-left: 60px;
+}
+
+  .messageLog {
     width: 500px;
     margin-left: 150px;
   }
 
   #chatDivider {
     width: 236px;
-    margin-left: 202px;
+    margin-left: 158px;
     height: 4px;
     border-radius: 75px;
   }
 
   #message {
-    margin-left: 185px;
-    width: 300px;
+    margin-left: 160px;
+    width: 260px;
     height: 35px;
   }
 
   #chatSendBtn {
-    margin-left: 315px;
-    margin-top: 90px;
+    margin-left: 195px;
+  }
+}
+
+@media only screen and (min-device-width: 992px) and (max-device-width: 1023px) {
+  /* Styles */
+
+#mainDiv {
+  margin-left: 165px;
+}
+
+  .messageLog {
+    width: 500px;
+    margin-left: 150px;
+  }
+
+  #chatDivider {
+    width: 236px;
+    margin-left: 158px;
+    height: 4px;
+    border-radius: 75px;
+  }
+
+  #message {
+    margin-left: 160px;
+    width: 260px;
+    height: 35px;
+  }
+
+  #chatSendBtn {
+    margin-left: 195px;
   }
 }
 
 /* Desktops and laptops ----------- */
-@media only screen and (min-device-width: 1024px) and (max-device-width: 1224px) {
+@media only screen and (min-device-width: 1024px) and (max-device-width: 1199px) {
   /* Styles */
+
+  #mainDiv {
+    margin-left: 80px;
+  }
 
   #userMsg {
     font-size: 16px;
   }
 
-  .messageLog{
+  .messageLog {
     width: 500px;
     margin-left: 205px;
   }
 
   #chatDivider {
     width: 236px;
-    margin-left: 340px;
+    margin-left: 255px;
     height: 4px;
     border-radius: 75px;
   }
 
   #message {
-    margin-left: 325px;
+    margin-left: 235px;
     width: 300px;
     height: 35px;
   }
 
   #chatSendBtn {
-    margin-left: 462px;
-    margin-top: 89px;
+    margin-left: 310px;
+    /* margin-top: 89px; */
   }
 }
 
 /* Large screens ----------- */
-@media only screen and (min-device-width: 1224px) and (max-device-width: 1440px) {
+@media only screen and (min-device-width: 1200px) and (max-device-width: 1439px) {
   /* Styles */
 
   #userMsg {
     font-size: 18px;
   }
   #mainDiv {
-    padding-left: 100px
+    margin-left: 180px;
   }
-  .messageLog{
+  .messageLog {
     width: 500px;
     margin-left: 200px;
     height: 600px;
@@ -331,124 +411,130 @@ CHANGING CHAT
 
   #chatDivider {
     width: 236px;
-    margin-left: 340px;
+    margin-left: 260px;
     height: 4px;
     border-radius: 75px;
   }
 
   #message {
-    margin-left: 300px;
+    margin-left: 235px;
     width: 313px;
     height: 35px;
   }
 
   #chatSendBtn {
-    margin-left: 668px;
-    margin-top: 289px;
+    margin-left: 320px;
   }
 }
 
-@media only screen and (min-device-width: 1440px) and (max-device-width: 1824px) {
-/* Styles  */
+@media only screen and (min-device-width: 1440px) and (max-device-width: 1823px) {
+  /* Styles  */
 
-#userMsg {
-  font-size: 20px;
-}
-
-#mainDiv {
-  padding-left: 100px
-}
-.messageLog{
-  width: 500px;
-  margin-left: 200px;
-  height: 600px;
-}
-
-#chatDivider {
-  width: 336px;
-  margin-left: 320px;
-  height: 4px;
-  border-radius: 75px;
-}
-
-#message {
-  margin-left: 300px;
-  width: 400px;
-  height: 38px;
-}
-
-#chatSendBtn {
-  margin-left: 755px;
-  margin-top: 291px;
-  font-size: 18px;
-}
-
-#message::-webkit-input-placeholder { /* Chrome/Opera/Safari */
-  font-size: 18px;
-  opacity: .5;
-}
-#message::-moz-placeholder { /* Firefox 19+ */
-  font-size: 18px;
-  opacity: .5;
-}
-#message:-ms-input-placeholder { /* IE 10+ */
-  font-size: 18px;
-  opacity: .5;
-}
-#message:-moz-placeholder { /* Firefox 18- */
-  font-size: 18px;
-  opacity: .5;
-}
-
-}
-
-@media only screen and (min-device-width: 1824px){
   #userMsg {
     font-size: 20px;
   }
-  
+
   #mainDiv {
-    padding-left: 100px
+    padding-left: 100px;
   }
-  .messageLog{
+  .messageLog {
     width: 500px;
     margin-left: 200px;
     height: 600px;
   }
-  
+
+  #chatDivider {
+    width: 300px;
+    margin-left: 300px;
+    height: 4px;
+    border-radius: 75px;
+  }
+
+  #message {
+    margin-left: 264px;
+    width: 400px;
+    height: 38px;
+  }
+
+  #chatSendBtn {
+    margin-top: -3px;
+    margin-left: 435px;
+  font-size: 18px;
+  }
+
+  #message::-webkit-input-placeholder {
+    /* Chrome/Opera/Safari */
+    font-size: 18px;
+    opacity: 0.5;
+  }
+  #message::-moz-placeholder {
+    /* Firefox 19+ */
+    font-size: 18px;
+    opacity: 0.5;
+  }
+  #message:-ms-input-placeholder {
+    /* IE 10+ */
+    font-size: 18px;
+    opacity: 0.5;
+  }
+  #message:-moz-placeholder {
+    /* Firefox 18- */
+    font-size: 18px;
+    opacity: 0.5;
+  }
+}
+
+@media only screen and (min-device-width: 1824px) {
+  #userMsg {
+    font-size: 20px;
+  }
+
+  #mainDiv {
+    padding-left: 100px;
+  }
+  .messageLog {
+    width: 500px;
+    margin-left: 200px;
+    height: 600px;
+  }
+
   #chatDivider {
     width: 336px;
     margin-left: 320px;
     height: 4px;
     border-radius: 75px;
   }
-  
+
   #message {
-    margin-left: 300px;
+    margin-left: 265px;
     width: 400px;
     height: 38px;
   }
-  
+
   #chatSendBtn {
-    margin-left: 1315px;
-    margin-top: 290px;
+    margin-top: -3px;
+    margin-left: 435px;
     font-size: 18px;
   }
-  
-  #message::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+
+  #message::-webkit-input-placeholder {
+    /* Chrome/Opera/Safari */
     font-size: 18px;
-    opacity: .5;
+    opacity: 0.5;
   }
-  #message::-moz-placeholder { /* Firefox 19+ */
+  #message::-moz-placeholder {
+    /* Firefox 19+ */
     font-size: 18px;
-    opacity: .5;
+    opacity: 0.5;
   }
-  #message:-ms-input-placeholder { /* IE 10+ */
+  #message:-ms-input-placeholder {
+    /* IE 10+ */
     font-size: 18px;
-    opacity: .5;
+    opacity: 0.5;
   }
-  #message:-moz-placeholder { /* Firefox 18- */
+  #message:-moz-placeholder {
+    /* Firefox 18- */
     font-size: 18px;
-    opacity: .5;
+    opacity: 0.5;
   }
 }

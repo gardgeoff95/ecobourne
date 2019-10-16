@@ -19,7 +19,7 @@ function Chat(props) {
             also in order to make it work like a chat I think it needs overflow auto or overflow scroll*/}
 
             <div className="chatArea">
-              <ul className="messageLog">
+              <ul className="messageLog" id="log">
                 {props.chatLog.map(user => {
                   var name = user.user;
                   var message = user.msg;
@@ -46,10 +46,11 @@ function Chat(props) {
               value={props.userMessage}
               onChange={props.onMessageChange}
             />
-
-            <button id="chatSendBtn" type="submit" onClick={props.chatBtnClick}>
-              Send
-            </button>
+            <div id='chatTestBtn'>
+              <button id="chatSendBtn" type="submit" onClick={props.chatBtnClick}>
+                Send
+        </button>
+            </div>
           </form>
         </Row>
       </div>
