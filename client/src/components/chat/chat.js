@@ -43,9 +43,10 @@ function Chat(props) {
           value={props.userMessage}
           onChange={props.onMessageChange}
         />
+
         <button id="chatSendBtn" type="submit" onClick={props.chatBtnClick}>
           Send
-            </button>
+        </button>
       </Row>
     </Container>
   );
