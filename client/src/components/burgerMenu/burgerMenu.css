@@ -6,6 +6,14 @@
   top: 50px;
 }
 
+.bm-menu {
+  background: #222629;
+}
+
+.bm-item {
+  color: rgb(107, 110, 112);
+}
+
  /* =========== media queries ============= */
   /* Smartphones (portrait and landscape) ----------- */
 @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
