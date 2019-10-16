@@ -63,7 +63,48 @@ io.on("connection", function(socket) {
     console.log("My Chat Message listener", msg);
 
     io.emit("chat message", msg);
+    if (msg.msg == "!help") {
+      let serverHelp = {
+        user: "Command",
+        msg:
+          "!bunny-yellow        -      !bunny-yellow      -       !bunny-blue        -         !bunny-pink        -      !bunny-brown       -        !fox-left         -      !fox-right"
+      };
+      io.emit("chat message", serverHelp);
+      // if (msg.msg == "!help") {
+      //   let serverHelp1 = {
+      //     user: "Command",
+      //     msg: "!bunny-yellow"
+      //   };
+      //   let serverHelp2 = {
+      //     user: "Command",
+      //     msg: "!bunny-blue"
+      //   };
+      //   let serverHelp3 = {
+      //     user: "Command",
+      //     msg: "!bunny-pink"
+      //   };
+      //   let serverHelp4 = {
+      //     user: "Command",
+      //     msg: "!bunny-brown"
+      //   };
+      //   let serverHelp5 = {
+      //     user: "Command",
+      //     msg: "!fox-left"
+      //   };
+      //   let serverHelp6 = {
+      //     user: "Command",
+      //     msg: "!fox-right"
+      //   };
+
+      //   io.emit("chat message", serverHelp1);
+      //   io.emit("chat message", serverHelp2);
+      //   io.emit("chat message", serverHelp3);
+      //   io.emit("chat message", serverHelp4);
+      //   io.emit("chat message", serverHelp5);
+      //   io.emit("chat message", serverHelp6);
+    }
   });
+
   //Deals with user name
   socket.on("user listener", function(nickname) {
     socket.nickname = nickname;
