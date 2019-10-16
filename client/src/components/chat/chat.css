@@ -229,14 +229,14 @@ CHANGING CHAT
   /* Styles */
 
   #mainDiv {
-    margin-left: 35px;
+    margin-left: 20px;
   }
   .messageLog{
     height: 295px;
   }
 
   #chatDivider {
-    width: 175px;
+    width: 150px;
     margin-left: 43px;
     height: 4px;
     border-radius: 75px;
@@ -249,7 +249,7 @@ CHANGING CHAT
   }
 
   #chatSendBtn {
-    margin-left: 65px;
+    margin-left: 55px;
     margin-top: -1px;
   }
 }
@@ -282,12 +282,16 @@ CHANGING CHAT
 }
 
 /* Desktops and laptops ----------- */
-@media only screen and (min-width: 1024px) and (max-width: 1224px) {
+@media only screen and (min-device-width: 1024px) and (max-device-width: 1224px) {
   /* Styles */
+
+  #userMsg {
+    font-size: 16px;
+  }
 
   .messageLog{
     width: 500px;
-    margin-left:  285px;
+    margin-left: 205px;
   }
 
   #chatDivider {
@@ -310,11 +314,19 @@ CHANGING CHAT
 }
 
 /* Large screens ----------- */
-@media only screen and (min-width: 1224px) and (min-width: 1440px) {
+@media only screen and (min-device-width: 1224px) and (max-device-width: 1440px) {
   /* Styles */
+
+  #userMsg {
+    font-size: 18px;
+  }
+  #mainDiv {
+    padding-left: 100px
+  }
   .messageLog{
     width: 500px;
-    margin-left:  285px;
+    margin-left: 200px;
+    height: 600px;
   }
 
   #chatDivider {
@@ -325,13 +337,67 @@ CHANGING CHAT
   }
 
   #message {
-    margin-left: 325px;
-    width: 300px;
+    margin-left: 300px;
+    width: 313px;
     height: 35px;
   }
 
   #chatSendBtn {
-    margin-left: 462px;
-    margin-top: 104px;
+    margin-left: 668px;
+    margin-top: 304px;
   }
+}
+
+@media only screen and (min-device-width: 1440px) and (min-device-width: 1824px) {
+/* Styles  */
+
+#userMsg {
+  font-size: 20px;
+}
+
+#mainDiv {
+  padding-left: 100px
+}
+.messageLog{
+  width: 500px;
+  margin-left: 200px;
+  height: 600px;
+}
+
+#chatDivider {
+  width: 236px;
+  margin-left: 340px;
+  height: 4px;
+  border-radius: 75px;
+}
+
+#message {
+  margin-left: 300px;
+  width: 313px;
+  height: 38px;
+}
+
+#chatSendBtn {
+  margin-left: 910px;
+  margin-top: 291px;
+  font-size: 18px;
+}
+
+#message::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  font-size: 18px;
+  opacity: .5;
+}
+#message::-moz-placeholder { /* Firefox 19+ */
+  font-size: 18px;
+  opacity: .5;
+}
+#message:-ms-input-placeholder { /* IE 10+ */
+  font-size: 18px;
+  opacity: .5;
+}
+#message:-moz-placeholder { /* Firefox 18- */
+  font-size: 18px;
+  opacity: .5;
+}
+
 }
