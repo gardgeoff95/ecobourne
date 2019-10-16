@@ -38,7 +38,10 @@ class InGame extends Component {
             accountName={this.props.accountName}
           />
         </Row>
-        <button onClick={this.props.goToLobby}>Chat</button>
+        <div id="chatBackDiv">
+          <button id="chatBackBtn" onClick={this.props.goToLobby}>Chat</button>
+        </div>
+
       </Container>
     );
   }
