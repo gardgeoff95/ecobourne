@@ -227,6 +227,14 @@ CHANGING CHAT
 /* media queries */
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
   /* Styles */
+
+  #mainDiv {
+    margin-left: 35px;
+  }
+  .messageLog{
+    height: 295px;
+  }
+
   #chatDivider {
     width: 175px;
     margin-left: 43px;
@@ -236,13 +244,13 @@ CHANGING CHAT
 
   #message {
     margin-left: 37px;
-    width: 222px;
+    width: 190px;
     height: 35px;
   }
 
   #chatSendBtn {
     margin-left: 65px;
-    margin-top: 104px;
+    margin-top: -1px;
   }
 }
 
@@ -251,24 +259,24 @@ CHANGING CHAT
   /* Styles */
   .messageLog{
     width: 500px;
-    margin-left: 100px;
+    margin-left: 150px;
   }
 
   #chatDivider {
     width: 236px;
-    margin-left: 215px;
+    margin-left: 202px;
     height: 4px;
     border-radius: 75px;
   }
 
   #message {
-    margin-left: 235px;
-    width: 222px;
+    margin-left: 185px;
+    width: 300px;
     height: 35px;
   }
 
   #chatSendBtn {
-    margin-left: 286px;
+    margin-left: 315px;
     margin-top: 104px;
   }
 }
@@ -279,24 +287,24 @@ CHANGING CHAT
 
   .messageLog{
     width: 500px;
-    margin-left: 235px;
+    margin-left:  285px;
   }
 
   #chatDivider {
     width: 236px;
-    margin-left: 338px;
+    margin-left: 340px;
     height: 4px;
     border-radius: 75px;
   }
 
   #message {
-    margin-left: 360px;
-    width: 222px;
+    margin-left: 325px;
+    width: 300px;
     height: 35px;
   }
 
   #chatSendBtn {
-    margin-left: 420px;
+    margin-left: 462px;
     margin-top: 104px;
   }
 }
@@ -304,21 +312,26 @@ CHANGING CHAT
 /* Large screens ----------- */
 @media only screen and (min-width: 1224px) and (min-width: 1440px) {
   /* Styles */
+  .messageLog{
+    width: 500px;
+    margin-left:  285px;
+  }
+
   #chatDivider {
-    width: 175px;
-    margin-left: 43px;
+    width: 236px;
+    margin-left: 340px;
     height: 4px;
     border-radius: 75px;
   }
 
   #message {
-    margin-left: 37px;
-    width: 222px;
+    margin-left: 325px;
+    width: 300px;
     height: 35px;
   }
 
   #chatSendBtn {
-    margin-left: 65px;
+    margin-left: 462px;
     margin-top: 104px;
   }
 }
