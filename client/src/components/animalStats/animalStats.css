@@ -7,7 +7,7 @@
     color: #FFFAFA;
     font-weight: bold;
 }
-hr {
+#chatDivider {
     border: none;
     height: 1px;
     /* Set the hr color */

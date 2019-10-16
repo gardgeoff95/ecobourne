@@ -1,70 +1,373 @@
-.loginBtn, .loginPW {
-    filter: drop-shadow(0 0 0.4rem #61892F);
+#loginCont {
+  padding-top: 200px;
 }
+
+#loginTxt > h1 {
+  /* border: 2px solid green; */
+  padding-left: 250px;
+  margin-bottom: 45px;
+}
+
+#logRow {
+  /* border: 2px solid dodgerblue; */
+}
+
+#loginForm {
+  /* border: 2px solid yellow; */
+  margin-left: 845px;
+  display: inline-block;
+}
+
+#btnRow {
+  /* border: 2px solid red; */
+}
+
+#logPlayBtnDiv {
+  /* border: 2px dotted purple; */
+}
+
+.emailLogin,
+.loginPW {
+  padding-left: 10px;
+  margin-bottom: 5px;
+}
+
+.emailLogin,
+.loginPW {
+  border-radius: 25px;
+}
+
+.loginBtn,
+.loginPW {
+  filter: drop-shadow(0 0 0.4rem #61892f);
+}
+
+#loginHeader {
+  filter: drop-shadow(0 0 0.25rem #61892f);
+  font-size: 1.5rem;
+  margin-left: 280px;
+  margin-bottom: 20px;
+}
+
 /* login email  */
-#loginBtn {
-    /* width: 25%; */
-    filter: drop-shadow(0 0 0.5rem #61892F);
-    border-radius: 25px;
-    position: absolute;
-    top: 50px;
-    left: 0;
-    transform: translate(-50%, -50%);
-  }
-  
-  #loginBtn {
-    border-radius: 25px;
-    z-index: 1;
-    position: relative;
-    font-size: inherit;
-    font-family: inherit;
-    color: white;
-    padding: 0.5em 1em;
-    outline: none;
-    border: none;
-    background-color: #86c232;
-  }
-  
-  #loginBtn:hover {
-    cursor: pointer;
-  }
-  
-  #loginBtn::before {
-    border-radius: 25px;
-    content: "";
-    z-index: -1;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    border: 4px solid #86c232;
-    transform-origin: center;
-    transform: scale(1);
-  }
-  
-  #loginBtn:hover::before {
-    transition: all 0.75s ease-in-out;
-    transform-origin: center;
-    transform: scale(1.75);
+#logPlayBtn {
+  /* width: 25%; */
+  filter: drop-shadow(0 0 0.5rem #61892f);
+  border-radius: 25px;
+  position: absolute;
+  top: 25px;
+  left: 310px;
+  font-weight: bold;
+  transform: translate(-50%, -50%);
+}
+
+#logPlayBtn {
+  border-radius: 25px;
+  z-index: 1;
+  position: relative;
+  font-size: inherit;
+  font-family: inherit;
+  color: white;
+  padding: 0.5em 1em;
+  outline: none;
+  border: none;
+  background-color: #86c232;
+}
+
+#logPlayBtn:hover {
+  cursor: pointer;
+}
+
+#logPlayBtn::before {
+  border-radius: 25px;
+  content: "";
+  z-index: -1;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border: 4px solid #86c232;
+  transform-origin: center;
+  transform: scale(1);
+}
+
+#logPlayBtn:hover::before {
+  transition: all 0.75s ease-in-out;
+  transform-origin: center;
+  transform: scale(1.75);
+  opacity: 0;
+}
+
+/* animations */
+@keyframes fadein {
+  from {
     opacity: 0;
   }
+  to {
+    opacity: 1;
+  }
+}
+@-moz-keyframes fadein {
+  /* Firefox */
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@-webkit-keyframes fadein {
+  /* Safari and Chrome */
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@-o-keyframes fadein {
+  /* Opera */
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
 
-  
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.loginTitle,
+#loginTitle {
+  -webkit-animation-name: fadeIn;
+  animation-name: fadeIn;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1.2s;
+  animation-delay: 0.4s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+.emailLogin {
+  -webkit-animation-name: fadeIn;
+  animation-name: fadeIn;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1.6s;
+  animation-delay: 1s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+.loginPW {
+  -webkit-animation-name: fadeIn;
+  animation-name: fadeIn;
+  -webkit-animation-duration: 1s;
+  animation-duration: 2s;
+  animation-delay: 1.5s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
+.loginFade,
+#logPlaybtn {
+  -webkit-animation-name: fadeIn;
+  animation-name: fadeIn;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  animation-delay: 2s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+
 /* media queries */
 @media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
-  /* Styles */    
+  /* Styles */
+  #loginHeader {
+    margin-left: 10px;
+    margin-bottom: 25px;
+  }
 
+  #loginForm {
+    /* border: 2px solid yellow; */
+    margin-left: 33px;
+    display: inline-block;
+  }
+  #loginCont {
+    padding-top: 150px;
+  }
+
+  #loginTxt > h1 {
+    /* border: 2px solid green; */
+    padding-left: 250px;
+    margin-bottom: 45px;
+  }
+  #logPlayBtn {
+    /* width: 25%; */
+    filter: drop-shadow(0 0 0.5rem #61892f);
+    border-radius: 25px;
+    position: absolute;
+    top: 25px;
+    left: 55px;
+    transform: translate(-50%, -50%);
+  }
 }
 
 /* iPads (portrait and landscape) ----------- */
-@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
-/* Styles */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+  /* Styles */
+  #loginHeader {
+    margin-left: 100px;
+    margin-bottom: 25px;
+  }
 
+  #loginForm {
+    /* border: 2px solid yellow; */
+    margin-left: 275px;
+    display: inline-block;
+  }
+  #loginCont {
+    padding-top: 180px;
+  }
+
+  #logPlayBtn {
+    position: absolute;
+    top: 25px;
+    left: 150px;
+  }
+}
+
+@media only screen and (min-device-width: 1024px) and (max-device-width: 1224px) {
+  #loginHeader {
+    margin-left: 140px;
+    margin-bottom: 25px;
+  }
+
+  #loginForm {
+    /* border: 2px solid yellow; */
+    margin-left: 405px;
+    display: inline-block;
+  }
+  #loginCont {
+    padding-top: 180px;
+  }
+
+  #logPlayBtn {
+    position: absolute;
+    top: 25px;
+    left: 190px;
+  }
 }
 
 /* Large screens ----------- */
-@media only screen  and (min-width : 1824px) {
-/* Styles */
+@media only screen and (min-width: 1224px) and (max-width: 1440px) {
+/* styles  */
+  #loginHeader {
+    margin-left: 250px;
+    margin-bottom: 25px;
+  }
 
+  #loginForm {
+    /* border: 2px solid yellow; */
+    margin-left: 650px;
+    display: inline-block;
+  }
+  #loginCont {
+    padding-top: 180px;
+  }
+
+  #logPlayBtn {
+    position: absolute;
+    top: 25px;
+    left: 300px;
+  }
+}
+
+@media only screen and (min-width: 2560px) {
+    /* Styles */
+    #loginHeader {
+      margin-left: 390px;
+      margin-bottom: 25px;
+    }
+  
+    #loginForm {
+      /* border: 2px solid yellow; */
+      margin-left: 1165px;
+      display: inline-block;
+    }
+    #loginCont {
+      padding-top: 180px;
+    }
+  
+    #logPlayBtn {
+      position: absolute;
+      top: 25px;
+      left: 440px;
+    }
 }

@@ -17,7 +17,7 @@ import './animalStats.css';
 
 
 function AnimalStats(props) {
-  console.log(props);
+  // console.log(props);
   return (
     <Container className="statsContainer" fluid={true}>
       <div className="stats">

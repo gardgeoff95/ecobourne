@@ -1,485 +1,594 @@
-/* login/play button  */
-#loginPlaybtn {
-    /* width: 25%; */
-    filter: drop-shadow(0 0 0.5rem #61892F);
-    border-radius: 25px;
-    position: absolute;
-    top: 40px;
-    left: 50%;
-    transform: translate(-50%, -50%);
-  }
-  
-  #loginPlaybtn {
-    border-radius: 25px;
-    z-index: 1;
-    position: relative;
-    font-size: inherit;
-    font-family: inherit;
-    color: white;
-    padding: 0.5em 1em;
-    outline: none;
-    border: none;
-    background-color: #86c232;
-  }
-  
-  #loginPlaybtn:hover {
-    cursor: pointer;
-  }
-  
-  #loginPlaybtn::before {
-    border-radius: 25px;
-    content: "";
-    z-index: -1;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    border: 4px solid #86c232;
-    transform-origin: center;
-    transform: scale(1);
-  }
-  
-  #loginPlaybtn:hover::before {
-    transition: all 0.75s ease-in-out;
-    transform-origin: center;
-    transform: scale(1.75);
-    opacity: 0;
-  }
-
-  
-  /* animations */
-  @keyframes fadein {
-    from {
-        opacity:0;
-    }
-    to {
-        opacity:1;
-    }
+/* Styles */
+#one {
+  /* border: 2px solid red; */
 }
-@-moz-keyframes fadein { /* Firefox */
-    from {
-        opacity:0;
-    }
-    to {
-        opacity:1;
-    }
-}
-@-webkit-keyframes fadein { /* Safari and Chrome */
-    from {
-        opacity:0;
-    }
-    to {
-        opacity:1;
-    }
-}
-@-o-keyframes fadein { /* Opera */
-    from {
-        opacity:0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
-.fadeInBtn, #loginPlaybtn {
-    -webkit-animation-name: fadeIn;
-    animation-name: fadeIn;
-    -webkit-animation-duration: 1s;
-    animation-duration: 1s;
-    animation-delay: 3.5s;
-    -webkit-animation-fill-mode: both;
-    animation-fill-mode: both;
-    }
-    @-webkit-keyframes fadeIn {
-    0% {opacity: 0;}
-    100% {opacity: 1;}
-    }
-    @keyframes fadeIn {
-    0% {opacity: 0;}
-    100% {opacity: 1;}
-    }
-
-.signupTitle, #signupTitle{
-        -webkit-animation-name: fadeIn;
-        animation-name: fadeIn;
-        -webkit-animation-duration: 1s;
-        animation-duration: 1.2s;
-        animation-delay: 0.4s;
-        -webkit-animation-fill-mode: both;
-        animation-fill-mode: both;
-        }
-        @-webkit-keyframes fadeIn {
-        0% {opacity: 0;}
-        100% {opacity: 1;}
-        }
-        @keyframes fadeIn {
-        0% {opacity: 0;}
-        100% {opacity: 1;}
-        }
-
-
-.fadeInEmail, #fadeInEmail{
-        -webkit-animation-name: fadeIn;
-        animation-name: fadeIn;
-        -webkit-animation-duration: 1s;
-        animation-duration: 1.4s;
-        animation-delay: 0.9s;
-        -webkit-animation-fill-mode: both;
-        animation-fill-mode: both;
-        }
-        @-webkit-keyframes fadeIn {
-        0% {opacity: 0;}
-        100% {opacity: 1;}
-        }
-        @keyframes fadeIn {
-        0% {opacity: 0;}
-        100% {opacity: 1;}
-        }
-
-.fadeInUsername, #fadeInUsername{
-            -webkit-animation-name: fadeIn;
-            animation-name: fadeIn;
-            -webkit-animation-duration: 1s;
-            animation-duration: 1.6s;
-            animation-delay: 1.5s;
-            -webkit-animation-fill-mode: both;
-            animation-fill-mode: both;
-            }
-            @-webkit-keyframes fadeIn {
-            0% {opacity: 0;}
-            100% {opacity: 1;}
-            }
-            @keyframes fadeIn {
-            0% {opacity: 0;}
-            100% {opacity: 1;}
-            }
-
-
-.fadeInPW, #fadeInPW{
-                -webkit-animation-name: fadeIn;
-                animation-name: fadeIn;
-                -webkit-animation-duration: 1s;
-                animation-duration: 1.8s;
-                animation-delay: 2s;
-                -webkit-animation-fill-mode: both;
-                animation-fill-mode: both;
-                }
-                @-webkit-keyframes fadeIn {
-                0% {opacity: 0;}
-                100% {opacity: 1;}
-                }
-                @keyframes fadeIn {
-                0% {opacity: 0;}
-                100% {opacity: 1;}
-                }
-        
-
-.fadeInPWConf, #fadeInPWConf{
-                    -webkit-animation-name: fadeIn;
-                    animation-name: fadeIn;
-                    -webkit-animation-duration: 1s;
-                    animation-duration: 2s;
-                    animation-delay: 2.6s;
-                    -webkit-animation-fill-mode: both;
-                    animation-fill-mode: both;
-                    }
-                    @-webkit-keyframes fadeIn {
-                    0% {opacity: 0;}
-                    100% {opacity: 1;}
-                    }
-                    @keyframes fadeIn {
-                    0% {opacity: 0;}
-                    100% {opacity: 1;}
-                    }
-
-
-
-/* media queries */
-@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
-    /* Styles */
-    #one {
-        /* border: 2px solid red; */
-    }
-    
-    form {
-        position: unset;
-        transform: none;
-        align-items: center;
-    }
-    
-    label {
-        margin: 0;
-        padding: 5px;
-        /* border: 2px solid blue; */
-    }
-    
-    
-    .createForm {
-        margin-top: 20%;
-    
-    }
-    
-    .pwordForm {
-        margin-left: 0%;
-    }
-    
-    .inputText {
-        margin-bottom: 0rem;
-        margin-top: 10px;
-        color: white;
-    }
-    
-    .email, .username, .pword, .pwordConf {
-        margin-top: 5% !important;
-    }
-    
-    .signUpDiv {
-        margin-top: 50%;
-        margin-left: 40px;
-    }
-    
-    #signupHeader{
-        filter: drop-shadow(0 0 0.25rem #61892F);
-        font-size: 1.5rem;
-        margin-left: 75px;
-    }
-
-    .email, .username, .inputText, .pword, .pwordConf{
-        filter: drop-shadow(0 0 0.4rem #61892F);
-    }
-  }  
-  
-  /* iPads (portrait and landscape) ----------- */
-  @media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
-   /* Styles */
-   #one {
-    /* border: 2px solid red; */
-}
-
-form {
-    position: unset;
-    transform: none;
-    align-items: center;
-}
-
-label {
-    margin: 0;
-    padding: 5px;
-    /* border: 2px solid blue; */
-}
-
 
 .createForm {
-    margin-top: 20%;
+  position: unset;
+  transform: none;
+  align-items: center;
+}
 
+.createForm {
+  margin-top: 20%;
 }
 
 .pwordForm {
-    margin-left: 0%;
+  margin-left: 0%;
 }
 
 .inputText {
-    margin-bottom: 0rem;
-    margin-top: 10px;
-    color: white;
+  margin-bottom: 0rem;
+  margin-top: 10px;
+  color: white;
 }
 
-.email, .username, .pword, .pwordConf {
-    margin-top: 5% !important;
+.email,
+.username,
+.pword,
+.pwordConf {
+  margin-top: 2% !important;
+  border-radius: 25px;
+  padding-left: 10px;
 }
 
 .signUpDiv {
+  margin-top: 200px;
+  margin-left: 550px;
+}
+
+#signupHeader {
+  filter: drop-shadow(0 0 0.25rem #61892f);
+  font-size: 1.5rem;
+  margin-left: 70px;
+}
+
+.email,
+.username,
+.inputText,
+.pword,
+.pwordConf {
+  filter: drop-shadow(0 0 0.4rem #61892f);
+}
+
+/* login/play button  */
+#loginPlaybtn {
+  /* width: 25%; */
+  filter: drop-shadow(0 0 0.5rem #61892f);
+  border-radius: 25px;
+  position: absolute;
+  top: 40px;
+  left: 675px;
+  font-weight: bold;
+  transform: translate(-50%, -50%);
+}
+
+#loginPlaybtn {
+  border-radius: 25px;
+  z-index: 1;
+  position: relative;
+  font-size: inherit;
+  font-family: inherit;
+  color: white;
+  padding: 0.5em 1em;
+  outline: none;
+  border: none;
+  background-color: #86c232;
+}
+
+#loginPlaybtn:hover {
+  cursor: pointer;
+}
+
+#loginPlaybtn::before {
+  border-radius: 25px;
+  content: "";
+  z-index: -1;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  border: 4px solid #86c232;
+  transform-origin: center;
+  transform: scale(1);
+}
+
+#loginPlaybtn:hover::before {
+  transition: all 0.75s ease-in-out;
+  transform-origin: center;
+  transform: scale(1.75);
+  opacity: 0;
+}
+
+/* animations */
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@-moz-keyframes fadein {
+  /* Firefox */
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@-webkit-keyframes fadein {
+  /* Safari and Chrome */
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@-o-keyframes fadein {
+  /* Opera */
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.fadeInBtn,
+#loginPlaybtn {
+  -webkit-animation-name: fadeIn;
+  animation-name: fadeIn;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1s;
+  animation-delay: 3.5s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.signupTitle,
+#signupTitle {
+  -webkit-animation-name: fadeIn;
+  animation-name: fadeIn;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1.2s;
+  animation-delay: 0.4s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.fadeInEmail,
+#fadeInEmail {
+  -webkit-animation-name: fadeIn;
+  animation-name: fadeIn;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1.4s;
+  animation-delay: 0.9s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.fadeInUsername,
+#fadeInUsername {
+  -webkit-animation-name: fadeIn;
+  animation-name: fadeIn;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1.6s;
+  animation-delay: 1.5s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.fadeInPW,
+#fadeInPW {
+  -webkit-animation-name: fadeIn;
+  animation-name: fadeIn;
+  -webkit-animation-duration: 1s;
+  animation-duration: 1.8s;
+  animation-delay: 2s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.fadeInPWConf,
+#fadeInPWConf {
+  -webkit-animation-name: fadeIn;
+  animation-name: fadeIn;
+  -webkit-animation-duration: 1s;
+  animation-duration: 2s;
+  animation-delay: 2.6s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+}
+@-webkit-keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* media queries */
+@media only screen and (min-device-width: 320px) and (max-device-width: 480px) {
+  /* Styles */
+  #one {
+    /* border: 2px solid red; */
+  }
+
+  .createForm {
+    position: unset;
+    transform: none;
+    align-items: center;
+  }
+
+  .createForm {
+    margin-top: 20%;
+  }
+
+  .pwordForm {
+    margin-left: 0%;
+  }
+
+  .inputText {
+    margin-bottom: 0rem;
+    margin-top: 10px;
+    color: white;
+  }
+
+  /* .email,
+  .username,
+  .pword,
+  .pwordConf {
+    margin-top: 5% !important;
+  } */
+
+  .signUpDiv {
+    margin-top: 50%;
+    margin-left: 40px;
+  }
+
+  #signupHeader {
+    filter: drop-shadow(0 0 0.25rem #61892f);
+    font-size: 1.5rem;
+    margin-left: 70px;
+  }
+
+  #loginPlaybtn {
+    /* width: 25%; */
+    filter: drop-shadow(0 0 0.5rem #61892f);
+    border-radius: 25px;
+    position: absolute;
+    top: 390px;
+    left: 165px;
+  }
+
+  .email,
+  .username,
+  .inputText,
+  .pword,
+  .pwordConf {
+    filter: drop-shadow(0 0 0.4rem #61892f);
+  }
+}
+
+/* iPads (portrait and landscape) ----------- */
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+  /* Styles */
+  #one {
+    /* border: 2px solid red; */
+  }
+
+  .createForm {
+    position: unset;
+    transform: none;
+    align-items: center;
+  }
+
+  .createForm {
+    margin-top: 20%;
+  }
+
+  .pwordForm {
+    margin-left: 0%;
+  }
+
+  .inputText {
+    margin-bottom: 0rem;
+    margin-top: 10px;
+    color: white;
+  }
+
+  /* .email,
+  .username,
+  .pword,
+  .pwordConf {
+    margin-top: 5% !important;
+  } */
+
+  .signUpDiv {
     margin-top: 185px;
     margin-left: 275px;
-}
-#loginPlaybtn {
+  }
+  #loginPlaybtn {
     left: 400px;
-}
+  }
 
-#signupHeader{
-    filter: drop-shadow(0 0 0.25rem #61892F);
+  #signupHeader {
+    filter: drop-shadow(0 0 0.25rem #61892f);
     font-size: 1.5rem;
     margin-left: 75px;
-}
-
-.email, .username, .inputText, .pword, .pwordConf{
-    filter: drop-shadow(0 0 0.4rem #61892F);
-}
   }
-  
-  /* Desktops and laptops ----------- */
-  @media only screen and (min-width : 1024px) and (max-width : 1224px) {
-    /* Styles */
-    #one {
-        /* border: 2px solid red; */
-    }
-    
-    form {
-        position: unset;
-        transform: none;
-        align-items: center;
-    }
-    
-    label {
-        margin: 0;
-        padding: 5px;
-        /* border: 2px solid blue; */
-    }
-    
-    
-    .createForm {
-        margin-top: 20%;
-    
-    }
-    
-    .pwordForm {
-        margin-left: 0%;
-    }
-    
-    .inputText {
-        margin-bottom: 0rem;
-        margin-top: 10px;
-        color: white;
-    }
-    
-    .email, .username, .pword, .pwordConf {
-        margin-top: 5% !important;
-    }
-    
-    .signUpDiv {
-        margin-top: 200px;
-        margin-left: 410px;
-    }
-    
-    #signupHeader{
-        filter: drop-shadow(0 0 0.25rem #61892F);
-        font-size: 1.5rem;
-        margin-left: 10%;
-    }
 
-    #loginPlaybtn {
-        left: 530px;
-    }
+  .email,
+  .username,
+  .inputText,
+  .pword,
+  .pwordConf {
+    filter: drop-shadow(0 0 0.4rem #61892f);
+  }
+}
 
-    .email, .username, .inputText, .pword, .pwordConf{
-        filter: drop-shadow(0 0 0.4rem #61892F);
-    }
-  }  
-  
+/* Desktops and laptops ----------- */
+@media only screen and (min-width: 1024px) and (max-width: 1224px) {
+  /* Styles */
+  #one {
+    /* border: 2px solid red; */
+  }
+
+  .createForm {
+    position: unset;
+    transform: none;
+    align-items: center;
+  }
+
+  .createForm {
+    margin-top: 20%;
+  }
+
+  .pwordForm {
+    margin-left: 0%;
+  }
+
+  .inputText {
+    margin-bottom: 0rem;
+    margin-top: 10px;
+    color: white;
+  }
+
+  /* .email,
+  .username,
+  .pword,
+  .pwordConf {
+    margin-top: 5% !important;
+  } */
+
+  .signUpDiv {
+    margin-top: 200px;
+    margin-left: 410px;
+  }
+
+  #signupHeader {
+    filter: drop-shadow(0 0 0.25rem #61892f);
+    font-size: 1.5rem;
+    margin-left: 10%;
+  }
+
+  #loginPlaybtn {
+    left: 530px;
+  }
+
+  .email,
+  .username,
+  .inputText,
+  .pword,
+  .pwordConf {
+    filter: drop-shadow(0 0 0.4rem #61892f);
+  }
+}
+
 /* Large screens ----------- */
-@media only screen and (min-width: 1224px) and (min-width : 1440px) {
-    /* Styles */
-    #one {
-        /* border: 2px solid red; */
-    }
-    
-    form {
-        position: unset;
-        transform: none;
-        align-items: center;
-    }
-    
-    label {
-        margin: 0;
-        padding: 5px;
-        /* border: 2px solid blue; */
-    }
-    
-    
-    .createForm {
-        margin-top: 20%;
-    
-    }
-    
-    .pwordForm {
-        margin-left: 0%;
-    }
-    
-    .inputText {
-        margin-bottom: 0rem;
-        margin-top: 10px;
-        color: white;
-    }
-    
-    .email, .username, .pword, .pwordConf {
-        margin-top: 5% !important;
-    }
-    
-    .signUpDiv {
-        margin-top: 200px;
-        margin-left: 630px;
-    }
-    
-    #signupHeader{
-        filter: drop-shadow(0 0 0.25rem #61892F);
-        font-size: 1.5rem;
-        margin-left: 10%;
-    }
+@media only screen and (min-width: 1224px) and (min-width: 1440px) {
+  /* Styles */
+  #one {
+    /* border: 2px solid red; */
+  }
 
-    #loginPlaybtn {
-        left: 745px;
-    }
+  .createForm {
+    position: unset;
+    transform: none;
+    align-items: center;
+  }
 
-    .email, .username, .inputText, .pword, .pwordConf{
-        filter: drop-shadow(0 0 0.4rem #61892F);
-    }
-    }
+  .createForm {
+    margin-top: 20%;
+  }
 
-    @media only screen and (min-width: 1440px) and (min-width : 1824px) {
-        /* Styles */
-        #one {
-            /* border: 2px solid red; */
-        }
-        
-        form {
-            position: unset;
-            transform: none;
-            align-items: center;
-        }
-        
-        label {
-            margin: 0;
-            padding: 5px;
-            /* border: 2px solid blue; */
-        }
-        
-        
-        .createForm {
-            margin-top: 20%;
-        
-        }
-        
-        .pwordForm {
-            margin-left: 0%;
-        }
-        
-        .inputText {
-            margin-bottom: 0rem;
-            margin-top: 10px;
-            color: white;
-        }
-        
-        .email, .username, .pword, .pwordConf {
-            margin-top: 2% !important;
-        }
-        
-        .signUpDiv {
-            margin-top: 400px;
-            margin-left: 50%;
-        }
-        
-        #signupHeader{
-            filter: drop-shadow(0 0 0.25rem #61892F);
-            font-size: 1.5rem;
-            margin-left: 5%;
-        }
-    
-        #loginPlaybtn {
-            left: 54%;
-        }
-    
-        .email, .username, .inputText, .pword, .pwordConf{
-            filter: drop-shadow(0 0 0.4rem #61892F);
-        }
-        }
+  .pwordForm {
+    margin-left: 0%;
+  }
+
+  .inputText {
+    margin-bottom: 0rem;
+    margin-top: 10px;
+    color: white;
+  }
+
+  /* .email,
+  .username,
+  .pword,
+  .pwordConf {
+    margin-top: 5% !important;
+  } */
+
+  .signUpDiv {
+    margin-top: 200px;
+    margin-left: 630px;
+  }
+
+  #signupHeader {
+    filter: drop-shadow(0 0 0.25rem #61892f);
+    font-size: 1.5rem;
+    margin-left: 10%;
+  }
+
+  #loginPlaybtn {
+    left: 745px;
+  }
+
+  .email,
+  .username,
+  .inputText,
+  .pword,
+  .pwordConf {
+    filter: drop-shadow(0 0 0.4rem #61892f);
+  }
+}
+
+@media only screen and (min-width: 1440px) and (min-width: 1824px) {
+  /* Styles */
+  #one {
+    /* border: 2px solid red; */
+  }
+
+  .createForm {
+    position: unset;
+    transform: none;
+    align-items: center;
+  }
+
+  .createForm {
+    margin-top: 20%;
+  }
+
+  .pwordForm {
+    margin-left: 0%;
+  }
+
+  .inputText {
+    margin-bottom: 0rem;
+    margin-top: 10px;
+    color: white;
+  }
+
+  /* .email,
+  .username,
+  .pword,
+  .pwordConf {
+    margin-top: 2% !important;
+  } */
+
+  .signUpDiv {
+    margin-top: 200px;
+    margin-left: 1180px;
+  }
+
+  #signupHeader {
+    filter: drop-shadow(0 0 0.25rem #61892f);
+    font-size: 1.5rem;
+    margin-left: 70px;
+  }
+
+  #loginPlaybtn {
+    left: 1300px;
+  }
+
+  .email,
+  .username,
+  .inputText,
+  .pword,
+  .pwordConf {
+    filter: drop-shadow(0 0 0.4rem #61892f);
+  }
+}
