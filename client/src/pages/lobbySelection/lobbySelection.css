@@ -4,7 +4,7 @@
     position: fixed;
     top: 25px;
     left: 50%;
-    height: 21px;
+    height: 24px;
     width: 60px;
     -webkit-appearance: none;
     transform: translate(-50%, -50%);
@@ -15,9 +15,9 @@
   }
   
   #statsBtn {
-    filter: drop-shadow(0 0 0.5rem #61892F);
+    /* filter: drop-shadow(0 0 0.5rem #61892F);
     -webkit-filter: drop-shadow(0 0 0.5rem #61892F);
-  box-shadow: 0px 0px 5px green inset;
+  box-shadow: 0px 0px 5px green inset; */
   -webkit-appearance: none;
   
     border-radius: 25px;

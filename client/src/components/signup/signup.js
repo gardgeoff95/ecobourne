@@ -113,7 +113,7 @@ class SignUp extends Component {
                   {/* <p className="inputText">Confirm</p> */}
                   <input
                     className="pwordConf"
-                    placeholder="Confirm Password"
+                    placeholder="Confirm"
                     type="text"
                     value={this.state.passwordC}
                     onChange={this.onChangePasswordC}

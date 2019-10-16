@@ -29,7 +29,7 @@
 }
 
 /* Desktops and laptops ----------- */
-@media only screen  and (min-width : 1224px) {
+@media only screen  and (min-device-width : 1224px) {
   /* Styles */
   .lobbyCount {
     margin-left: 0;
@@ -38,11 +38,11 @@
 }
 
 /* Large screens ----------- */
-@media only screen  and (min-width : 1824px) {
+@media only screen  and (min-device-width : 1824px) {
 /* Styles */
 .lobbyCount {
   margin-left: 0;
-  padding-left: 550px;
+  padding-left: 485px;
 }
 
 }
