@@ -5,13 +5,14 @@ import Row from "react-bootstrap/Row";
 import Container from "react-bootstrap/Container";
 
 import "./chat.css";
+import { array } from "prop-types";
 
 function Chat(props) {
   // console.log("hhhhh", props.userMessage);
 
   return (
     <Container>
-      <div id='mainDiv'>
+      <div id="mainDiv">
         <ul className="pages">
           <li className="chat page">
             {/* In Styling this element should include the property list-style-type: none 
@@ -35,8 +36,8 @@ function Chat(props) {
           </li>
         </ul>
         <hr id="chatDivider"></hr>
-        <Row>
-          <form id="chatBoxSend">
+        <Row id="chatBoxSend">
+          <form>
             <input
               placeholder="Send a message.."
               id="message"
