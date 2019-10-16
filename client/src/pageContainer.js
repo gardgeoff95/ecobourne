@@ -179,6 +179,7 @@ class PageContainer extends Component {
   chatBtnClick = event => {
     console.log(this.state);
     event.preventDefault();
+    this.database.ref("chat/message").set(this.state.userMessage);
     let chatEntry = {
       user: this.state.currentUser,
       msg: this.state.userMessage
