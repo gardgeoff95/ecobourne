@@ -43,13 +43,13 @@
   margin-left: 70px;
 }
 
-.email,
+/* .email,
 .username,
 .inputText,
 .pword,
 .pwordConf {
   filter: drop-shadow(0 0 0.4rem #61892f);
-}
+} */
 
 /* login/play button  */
 #loginPlaybtn {
@@ -336,7 +336,7 @@
 
   .signUpDiv {
     margin-top: 50%;
-    margin-left: 40px;
+    margin-left: 45px;
   }
 
   #signupHeader {
@@ -350,16 +350,8 @@
     filter: drop-shadow(0 0 0.5rem #61892f);
     border-radius: 25px;
     position: absolute;
-    top: 390px;
+    top: 350px;
     left: 165px;
-  }
-
-  .email,
-  .username,
-  .inputText,
-  .pword,
-  .pwordConf {
-    filter: drop-shadow(0 0 0.4rem #61892f);
   }
 }
 
@@ -410,18 +402,10 @@
     font-size: 1.5rem;
     margin-left: 75px;
   }
-
-  .email,
-  .username,
-  .inputText,
-  .pword,
-  .pwordConf {
-    filter: drop-shadow(0 0 0.4rem #61892f);
-  }
 }
 
 /* Desktops and laptops ----------- */
-@media only screen and (min-width: 1024px) and (max-width: 1224px) {
+@media only screen and (min-device-width: 1024px) and (max-device-width: 1224px) {
   /* Styles */
   #one {
     /* border: 2px solid red; */
@@ -469,17 +453,10 @@
     left: 530px;
   }
 
-  .email,
-  .username,
-  .inputText,
-  .pword,
-  .pwordConf {
-    filter: drop-shadow(0 0 0.4rem #61892f);
-  }
 }
 
 /* Large screens ----------- */
-@media only screen and (min-width: 1224px) and (min-width: 1440px) {
+@media only screen and (min-device-width: 1224px) and (min-device-width: 1440px) {
   /* Styles */
   #one {
     /* border: 2px solid red; */
@@ -526,20 +503,12 @@
   #loginPlaybtn {
     left: 745px;
   }
-
-  .email,
-  .username,
-  .inputText,
-  .pword,
-  .pwordConf {
-    filter: drop-shadow(0 0 0.4rem #61892f);
-  }
 }
 
-@media only screen and (min-width: 1440px) and (min-width: 1824px) {
+@media only screen and (min-device-width: 1440px) and (min-device-width: 1824px) {
   /* Styles */
-  #one {
-    /* border: 2px solid red; */
+  #loginCont {
+    padding-top: 280px;
   }
 
   .createForm {
@@ -571,24 +540,24 @@
 
   .signUpDiv {
     margin-top: 200px;
-    margin-left: 1180px;
+    margin-left: 825px;
   }
 
   #signupHeader {
-    filter: drop-shadow(0 0 0.25rem #61892f);
+    /* filter: drop-shadow(0 0 0.25rem #61892f); */
     font-size: 1.5rem;
     margin-left: 70px;
   }
 
   #loginPlaybtn {
-    left: 1300px;
+    left: 955px;
   }
 
-  .email,
+  /* .email,
   .username,
   .inputText,
   .pword,
   .pwordConf {
     filter: drop-shadow(0 0 0.4rem #61892f);
-  }
+  } */
 }

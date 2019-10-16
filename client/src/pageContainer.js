@@ -179,6 +179,7 @@ class PageContainer extends Component {
   chatBtnClick = event => {
     console.log(this.state);
     event.preventDefault();
+    this.database.ref("chat/message").set(this.state.userMessage);
     let chatEntry = {
       user: this.state.currentUser,
       msg: this.state.userMessage
@@ -215,7 +216,7 @@ class PageContainer extends Component {
           playerNames={this.state.playerNames}
           accountName={this.state.accountName}
           goToLocalScore={this.goToLocalScore}
-          gotToLobby={this.goToLobby}
+          goToLobby={this.goToLobby}
           bunnyStats={this.state.bunnyStats}
           bearStats={this.state.bearStats}
           foxStats={this.state.foxStats}
