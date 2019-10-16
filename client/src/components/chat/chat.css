@@ -58,7 +58,8 @@ html::-webkit-scrollbar {
 
 #chatTestBtn {
   margin-top: -32px;
-  margin-left: 162px;
+  float: right;
+  margin-right: 281px;
 }
 
 #chatSendBtn {
