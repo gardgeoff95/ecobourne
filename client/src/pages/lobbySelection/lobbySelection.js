@@ -22,7 +22,7 @@ class LobbySelection extends Component {
   };
 
   render() {
-    console.log(<Chat />);
+    // console.log(<Chat />);
     return (
       <Container>
         <div className="titleSection">

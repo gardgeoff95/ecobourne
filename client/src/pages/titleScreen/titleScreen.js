@@ -45,7 +45,7 @@ class TitleScreen extends Component {
         </Row>
         <Row id='test'>
           <div className="userInput">
-            <form>
+            <form id="titleForm">
               <label>
                 <input
                   id="fadeInNickname"

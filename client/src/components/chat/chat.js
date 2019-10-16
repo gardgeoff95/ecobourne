@@ -7,7 +7,7 @@ import Container from "react-bootstrap/Container";
 import "./chat.css";
 
 function Chat(props) {
-  console.log("hhhhh", props.userMessage);
+  // console.log("hhhhh", props.userMessage);
 
   return (
     <Container>
@@ -30,20 +30,23 @@ function Chat(props) {
                 );
               })}
             </ul>
-
-            <input
-              id="message"
-              autocomplete="off"
-              name="userMessage"
-              value={props.userMessage}
-              onChange={props.onMessageChange}
-            />
-            <button id="chatSendBtn" type="submit" onClick={props.chatBtnClick}>
-              Send
-            </button>
           </div>
         </li>
       </ul>
+      <hr id="chatDivider"></hr>
+      <Row id="chatBoxSend">
+        <input
+          placeholder="Send a message.."
+          id="message"
+          autocomplete="off"
+          name="userMessage"
+          value={props.userMessage}
+          onChange={props.onMessageChange}
+        />
+        <button id="chatSendBtn" type="submit" onClick={props.chatBtnClick}>
+          Send
+            </button>
+      </Row>
     </Container>
   );
 }

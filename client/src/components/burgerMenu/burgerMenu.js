@@ -46,13 +46,13 @@ class BurgerMenu extends React.Component {
                     >
                         Home
           </a>
-                    {/* <a
+                    <a
                         onClick={() => this.handleItemClick("goToLogin")}
                         id="about"
                         className="menu-item"
                     >
                         Login
-          </a> */}
+          </a>
                     <a
                         onClick={() => this.handleItemClick("goToSignUp")}
                         id="contact"
